@@ -125,6 +125,41 @@
             border: 2px solid gray;
             border-radius: 3px;
         }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(250, 252, 255);
+            box-shadow: 0 10px 10px rgb(226, 226, 226);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 100%;
+            height: 40px;
+            margin: 0 50px;
+        }
+        .header-nav {
+            display: none;
+            column-gap: 20px;
+            flex-wrap: wrap;
+            list-style-type: none;
+        }
+        .header-nav-active {
+            display: flex;
+        }
+        main {
+            margin: 100px 0;
+        }
+        .header-nav-button {
+            padding: 5px 15px;
+            background: #eeeeee;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
     </style>
     <script>
         window.onload = function(){
@@ -137,6 +172,13 @@
                     result = result + "&" + "#" + htmlOuterText.charCodeAt(i) + ";";
                 }
                 target.innerHTML = result;
+            });
+            const menu = document.querySelector(`[data-type="nav-menu"]`);
+            const jump_target = document.querySelectorAll(`[data-target="jump"]`);
+            jump_target.forEach((target, index) => {
+                target.id = "jump-id-"+index;
+                const jump_link = `<li><a href="#${target.id}">${target.innerHTML}</a></li>`;
+                menu.innerHTML = menu.innerHTML + jump_link;
             });
         }
         function stringToDecNumRef(){
@@ -152,11 +194,32 @@
         }
         text.innerHTML = target_x;
         }
+        function listOnOff(clicked_button){
+            const target = document.querySelector(`[data-type="nav-menu"]`);
+            if(clicked_button.innerHTML == "List show"){
+                clicked_button.innerHTML = "List close";
+            }else {
+                clicked_button.innerHTML = "List show";
+            }
+            if(target.classList.contains("header-nav-active")){
+                target.classList.remove("header-nav-active");
+            }else {
+                target.classList.add("header-nav-active");
+            }
+        }
     </script>
 </head>
 <body>
     <header>
-        <h1>HTML</h1>
+        <article class="header-container">
+            <h1 class="header-title">HTML</h1>
+            <button class="header-nav-button" onclick="listOnOff(this);">List show</button>
+        </article>
+        <article>
+            <nav>
+                <ul class="header-nav" data-type="nav-menu"></ul>
+            </nav>
+        </article>
     </header>
     <main>
         <ul>
@@ -174,7 +237,7 @@
         </ul>
         <div class="container">
             <div class="card">
-                <h2>エンティティ</h2>
+                <h2 data-target="jump">エンティティ</h2>
                 <p>& <code>&amp;amp</code></p>
                 <p>Á <code>&amp;Aacute</code></p>
                 <p><code>&lt;a href=&quot;リンク&quot;&gt;html entities code サイト&lt;/a&gt;</code></p>
@@ -188,7 +251,7 @@
                 </a>
             </div>
             <div class="card col-single">
-                <h2>pre</h2>
+                <h2 data-target="jump">pre</h2>
                 <p>両方コード上内容、空白、改行同一</p>
                 <h3><code>&lt;pre&gt;</code></h3>
                 <pre>
@@ -218,7 +281,7 @@
                 </p>          
             </div>
             <div class="card">
-                <h2>強調タグ</h2>
+                <h2 data-target="jump">強調タグ</h2>
                 <ul>
                     <li>
                         <code>&lt;<em>em</em>&gt;</code> - イタリック体に見える
@@ -295,7 +358,7 @@
                 </ul>
             </div>
             <div class="card">
-                <h2>dlタグ（Description lists）</h2>
+                <h2 data-target="jump">dlタグ（Description lists）</h2>
                 <dl>
                     <dt>dlタグとは</dt>
                     <dd>
@@ -390,7 +453,7 @@
                 </dl>
             </div>
             <div class="card">
-                <h2>abbr</h2>
+                <h2 data-target="jump">abbr</h2>
                 <dl>
                     <dt>
                         &lt;abbr&gt;タグとは
@@ -402,7 +465,7 @@
                 </dl>
             </div>
             <div class="card">
-                <h2>address</h2>
+                <h2 data-target="jump">address</h2>
                 <dl>
                     <dt>
                         &lt;address&gt;タグとは
@@ -418,7 +481,7 @@
                 </dl>
             </div>
             <div class="card">
-                <h2>sup, sub</h2>
+                <h2 data-target="jump">sup, sub</h2>
                 <dl>
                     <dt>
                         sup
@@ -435,7 +498,7 @@
                 </dl>
             </div>
             <div class="card">
-                <h2>コードを表示する</h2>
+                <h2 data-target="jump">コードを表示する</h2>
                 <dl>
                     <dt>
                         var
@@ -477,7 +540,7 @@
                 </dl>
             </div>
             <div class="card">
-                <h2>時間・日付を表示</h2>
+                <h2 data-target="jump">時間・日付を表示</h2>
                 <dl>
                     <dt>
                         &lt;time&gt;タグとは
@@ -538,7 +601,7 @@
                 </dl>
             </div>
             <article class="card">
-                <h2>正しい構成</h2>
+                <h2 data-target="jump">正しい構成</h2>
                 <dl>
                     <dt>
                         正しい構成とは
@@ -633,7 +696,7 @@
                     </dd>
                 </dl>
                 <article>
-                    <h2>section</h2>
+                    <h2 data-target="jump">section</h2>
                     <section>
                         <h3>sectionタグの説明</h3>
                         <dl>
@@ -674,7 +737,7 @@
                 </article>
                 <!--ここから正しいarticle, section使いになっている-->
                 <article>
-                    <h2>aside</h2>
+                    <h2 data-target="jump">aside</h2>
                     <section>
                         <h3>aside</h3>
                         <section>
@@ -714,7 +777,7 @@
             </article>
             <article class="card">
                 <section>
-                    <h2>MVS</h2>
+                    <h2 data-target="jump">MVS</h2>
                     <p>を利用し、HTMLの問題・その他の情報が確認できる</p>
                         <a target="_blank" href="https://validator.w3.org/#validate_by_input">Markup Validator Service</a>
                         
@@ -728,7 +791,7 @@
                 </section>
             </article>
             <article class="card">
-                <h2>カード</h2>
+                <h2 data-target="jump">カード</h2>
                 <section>
                     <h3>定義</h3>
                     <dl>
@@ -773,7 +836,7 @@
                 </section>
             </article>
             <article class="card">
-                <h2>Marking up a letter</h2>
+                <h2 data-target="jump">Marking up a letter</h2>
                 <section>
                     <h3>定義</h3>
                     <dl>
