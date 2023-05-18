@@ -155,690 +155,696 @@
     </script>
 </head>
 <body>
-    <h1>HTML</h1>
-    <ul>
-        <li>
-            HTMLの技術の中「間違えて理解していた・知らなかった・存在の理由がわからず感覚的に使っていた・使っていなかった」もの
-        </li>
-        <li>
-            主にMDNを用いてHTMLの正確な理解・検証・ものづくり「作業スピード・正確さを上げる」
-        </li>
-        <li>
-            <a target="_blank" href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML">
-                Mozilla Developer Network
-            </a>
-        </li>
-    </ul>
-    <div class="container">
-        <div class="card">
-            <h2>エンティティ</h2>
-            <p>& <code>&amp;amp</code></p>
-            <p>Á <code>&amp;Aacute</code></p>
-            <p><code>&lt;a href=&quot;リンク&quot;&gt;html entities code サイト&lt;/a&gt;</code></p>
-            <div>
-                <input id="stringForDecNum" type="text" placeholder="特殊記号を入力">
-                <button onclick="stringToDecNumRef();">変換</button>
-                <p id="stringCopyButton"></p>
+    <header>
+        <h1>HTML</h1>
+    </header>
+    <main>
+        <ul>
+            <li>
+                HTMLの技術の中「間違えて理解していた・知らなかった・存在の理由がわからず感覚的に使っていた・使っていなかった」もの
+            </li>
+            <li>
+                主にMDNを用いてHTMLの正確な理解・検証・ものづくり「作業スピード・正確さを上げる」
+            </li>
+            <li>
+                <a target="_blank" href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML">
+                    Mozilla Developer Network
+                </a>
+            </li>
+        </ul>
+        <div class="container">
+            <div class="card">
+                <h2>エンティティ</h2>
+                <p>& <code>&amp;amp</code></p>
+                <p>Á <code>&amp;Aacute</code></p>
+                <p><code>&lt;a href=&quot;リンク&quot;&gt;html entities code サイト&lt;/a&gt;</code></p>
+                <div>
+                    <input id="stringForDecNum" type="text" placeholder="特殊記号を入力">
+                    <button onclick="stringToDecNumRef();">変換</button>
+                    <p id="stringCopyButton"></p>
+                </div>
+                <a target="_blank" href="https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references">
+                    html entities code サイト
+                </a>
             </div>
-            <a target="_blank" href="https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references">
-                html entities code サイト
-            </a>
-        </div>
-        <div class="card col-single">
-            <h2>pre</h2>
-            <p>両方コード上内容、空白、改行同一</p>
-            <h3><code>&lt;pre&gt;</code></h3>
-            <pre>
-                L          TE
-                A       A
-                C    V
-                    R A
-                    DOU
-                OTE-  TU VEUX
-                LA    BIEN
-                SI      RESPI
-                        RER      
-                            - Apollinaire
-            </pre>
-            <h3><code>&lt;p&gt;</code></h3>
-            <p>
-                L          TE
-                A       A
-                C    V
-                    R A
-                    DOU
-                OTE-  TU VEUX
-                LA    BIEN
-                SI      RESPI
-                        RER      
-                            - Apollinaire
-            </p>          
-        </div>
-        <div class="card">
-            <h2>強調タグ</h2>
-            <ul>
-                <li>
-                    <code>&lt;<em>em</em>&gt;</code> - イタリック体に見える
-                </li>
-                <li>
-                    <code>&lt;<strong>strong</strong>&gt;</code> - 太字に見える
-                </li>
-                <li>
-                    これらは<strong>視覚・聴覚的</strong>に単語を強調するために使う
-                </li>
-                <li>
-                    プログラムによって音声としても強調されて発音される
-                </li>
-                <li>
-                    スタイル(視覚)のためだけには使わない
-                    <h3>スタイルのみ使う時は</h3>
-                    <ul>
-                        <li>
-                            <code>&lt;span&gt;</code>タグを利用しCSSの追加で表現
-                            または下記のものを使う
-                        </li>
-                        <li>
-                            <code>&lt;i&gt;</code><i>iタグを使っている</i>
-                            <p>使用範囲：外来語、分類学名称、専門用語、考え</p>
-                        </li>
-                        <li>
-                            <code>&lt;em&gt;</code><em>emタグを使っている</em>
-                            <h4>iタグとemタグの違い</h4>
-                            <ul>
-                                <li>
-                                    em要素は重ねればより大きい強調の意味を表す
-                                </li>
-                                <li>
-                                    emとiタグは視覚的には一緒
-                                </li>
-                                <li>
-                                    emタグはコンテンツを強調する
-                                </li>
-                                <li>
-                                    iタグは外国語、登場人物の考えなど一般的な話の流れから逸れる時にそのそれた部分を強調する
-                                    <br>&#8251;本・映画の名前はciteタグを使うこと
-                                </li>
-                                <li>
-                                    em: "Just <em>do</em> it already!"または "We <em>had</em> to do something about it."
-                                </li>
-                                <li>
-                                    文の中でコンテンツの意味のままdoを強調している
-                                </li>
-                                <li>
-                                    i: "The Queen <i>Mary</i> sailed last night."
-                                    <br>&#8251;sailed = 出航した
-                                </li>
-                                <li>
-                                    文の中の流れ、意味とは別の意味を持っている時使う
-                                </li>
-                                <li>
-                                    The Queen MaryだけではMaryという名前を持った女王になるが、
-                                </li>
-                                <li>
-                                    The Queen <i>Mary</i>のようにiタグを使うことで「女王の名前」としてでなく「女王Mary（の名を持った船）」自体が名前になる
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <code>&lt;b&gt;</code><b>bタグを使っている</b>
-                            <p>使用範囲：重要単語、製品名、重要文章</p>
-                        </li>
-                        <li>
-                            <code>&lt;u&gt;</code><u>uタグを使っている</u>
-                            <p>使用範囲：適切な名前、誤字</p>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="card">
-            <h2>dlタグ（Description lists）</h2>
-            <dl>
-                <dt>dlタグとは</dt>
-                <dd>
-                    <p>用語・定義 → 質問・回答のような一連の項目・説明を表示するために使うもの
-                        <br>&#8251;このカードの中身も<code>&lt;dl&gt;,&lt;dt&gt;,&lt;dd&gt;</code>を使っている</p>
-                </dd>
-            </dl>
-            <pre class="code-pre">
-    &lt;div class=&quot;card&quot;&gt;
-        &lt;h2&gt;dlタグ（Description Description lists）&lt;&sol;h2&gt;
-        &lt;dl&gt;
-            &lt;dt&gt;dlタグとは&lt;/dt&gt;
-            &lt;dd&gt;用語・定義、質問・回答のような一連の項目・説明を表示するために使うもの&lt;&sol;dd&gt;
-            &lt;p&gt;&#8251;(&amp;amp;&amp;amp;num;8251)このカードの中身も&lt;code&gt;&lt;dl&gt;,&lt;dt&gt;,&lt;dd&gt;&lt;&sol;code&gt;を使っている&lt;&sol;p&gt;
-        &lt;&sol;dl&gt;
-    &lt;&sol;div&gt;
-            </pre>
-        </div>
-        <div class="card">
-            <h2>Blockquotes</h2>
-            <dl>
-                <dt>blockquoteタグとは</dt>
-                <dd data-type="html-code">
-                    <p>ブロックレベルコンテンツのセクションが引用された場合使う。属性にはciteを入れて元を表記。インデントあり+CSSスタイリングーオススメ</p>
-                    <p>&#8251;下記はblockquoteタグを使っている</p>
-                    <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-                    <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
-                    Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
-                    <p>
-                        <b>&lt;p&gt;</b>タグ（改行されるタグ）が<b>&lt;blockquote&gt;</b>タグの中に混ざっている状態。
-                    </p>
-                    <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-                        <cite>
-                            MDN Web Docs
-                        </cite>
-                    </a>
-                    </blockquote>
-                    <pre class="code-pre" data-type="html-outer-text"></pre>
-                </dd>
-                <dt>
-                    qタグとは
-                </dt>
-                <dd>
-                    <p>Inline quotationsは<code>&lt;q&gt;</code>１行の中で使える（インライン）</p>
-                    <p><code>&lt;q&gt;</code>は引用句の語尾に&#8221;も自動でつく</p>
-                    <div data-type="html-code">
-                        <q class="error" cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-                            <b>&lt;q&gt;</b>タグの中に改行されるタグが混ざっている場合このようになる。
-                            <br><b>&lt;p&gt;</b>タグ（改行されるタグ）が<b>&lt;q&gt;</b>タグの中に混ざっている状態。
-                            
-                            <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
-                                <cite>
-                                    (this is <b>&lt;cite&gt;</b> tag.) MDN Web Docs
-                                </cite>
-                            </a>
-                        </q>
-                        <pre class="code-pre" data-type="html-outer-text"></pre>
-                    </div>
-                    <div data-type="html-code">
-                        <p>正しい書き方は下記のように<b>&lt;q&gt;</b>タグの中に改行されるタグが混ざっていない状態。</p>
-                        <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
-                            intended for short quotations that don't require paragraph breaks.
-                            <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+            <div class="card col-single">
+                <h2>pre</h2>
+                <p>両方コード上内容、空白、改行同一</p>
+                <h3><code>&lt;pre&gt;</code></h3>
+                <pre>
+                    L          TE
+                    A       A
+                    C    V
+                        R A
+                        DOU
+                    OTE-  TU VEUX
+                    LA    BIEN
+                    SI      RESPI
+                            RER      
+                                - Apollinaire
+                </pre>
+                <h3><code>&lt;p&gt;</code></h3>
+                <p>
+                    L          TE
+                    A       A
+                    C    V
+                        R A
+                        DOU
+                    OTE-  TU VEUX
+                    LA    BIEN
+                    SI      RESPI
+                            RER      
+                                - Apollinaire
+                </p>          
+            </div>
+            <div class="card">
+                <h2>強調タグ</h2>
+                <ul>
+                    <li>
+                        <code>&lt;<em>em</em>&gt;</code> - イタリック体に見える
+                    </li>
+                    <li>
+                        <code>&lt;<strong>strong</strong>&gt;</code> - 太字に見える
+                    </li>
+                    <li>
+                        これらは<strong>視覚・聴覚的</strong>に単語を強調するために使う
+                    </li>
+                    <li>
+                        プログラムによって音声としても強調されて発音される
+                    </li>
+                    <li>
+                        スタイル(視覚)のためだけには使わない
+                        <h3>スタイルのみ使う時は</h3>
+                        <ul>
+                            <li>
+                                <code>&lt;span&gt;</code>タグを利用しCSSの追加で表現
+                                または下記のものを使う
+                            </li>
+                            <li>
+                                <code>&lt;i&gt;</code><i>iタグを使っている</i>
+                                <p>使用範囲：外来語、分類学名称、専門用語、考え</p>
+                            </li>
+                            <li>
+                                <code>&lt;em&gt;</code><em>emタグを使っている</em>
+                                <h4>iタグとemタグの違い</h4>
+                                <ul>
+                                    <li>
+                                        em要素は重ねればより大きい強調の意味を表す
+                                    </li>
+                                    <li>
+                                        emとiタグは視覚的には一緒
+                                    </li>
+                                    <li>
+                                        emタグはコンテンツを強調する
+                                    </li>
+                                    <li>
+                                        iタグは外国語、登場人物の考えなど一般的な話の流れから逸れる時にそのそれた部分を強調する
+                                        <br>&#8251;本・映画の名前はciteタグを使うこと
+                                    </li>
+                                    <li>
+                                        em: "Just <em>do</em> it already!"または "We <em>had</em> to do something about it."
+                                    </li>
+                                    <li>
+                                        文の中でコンテンツの意味のままdoを強調している
+                                    </li>
+                                    <li>
+                                        i: "The Queen <i>Mary</i> sailed last night."
+                                        <br>&#8251;sailed = 出航した
+                                    </li>
+                                    <li>
+                                        文の中の流れ、意味とは別の意味を持っている時使う
+                                    </li>
+                                    <li>
+                                        The Queen MaryだけではMaryという名前を持った女王になるが、
+                                    </li>
+                                    <li>
+                                        The Queen <i>Mary</i>のようにiタグを使うことで「女王の名前」としてでなく「女王Mary（の名を持った船）」自体が名前になる
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <code>&lt;b&gt;</code><b>bタグを使っている</b>
+                                <p>使用範囲：重要単語、製品名、重要文章</p>
+                            </li>
+                            <li>
+                                <code>&lt;u&gt;</code><u>uタグを使っている</u>
+                                <p>使用範囲：適切な名前、誤字</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>dlタグ（Description lists）</h2>
+                <dl>
+                    <dt>dlタグとは</dt>
+                    <dd>
+                        <p>用語・定義 → 質問・回答のような一連の項目・説明を表示するために使うもの
+                            <br>&#8251;このカードの中身も<code>&lt;dl&gt;,&lt;dt&gt;,&lt;dd&gt;</code>を使っている</p>
+                    </dd>
+                </dl>
+                <pre class="code-pre">
+        &lt;div class=&quot;card&quot;&gt;
+            &lt;h2&gt;dlタグ（Description Description lists）&lt;&sol;h2&gt;
+            &lt;dl&gt;
+                &lt;dt&gt;dlタグとは&lt;/dt&gt;
+                &lt;dd&gt;用語・定義、質問・回答のような一連の項目・説明を表示するために使うもの&lt;&sol;dd&gt;
+                &lt;p&gt;&#8251;(&amp;amp;&amp;amp;num;8251)このカードの中身も&lt;code&gt;&lt;dl&gt;,&lt;dt&gt;,&lt;dd&gt;&lt;&sol;code&gt;を使っている&lt;&sol;p&gt;
+            &lt;&sol;dl&gt;
+        &lt;&sol;div&gt;
+                </pre>
+            </div>
+            <div class="card">
+                <h2>Blockquotes</h2>
+                <dl>
+                    <dt>blockquoteタグとは</dt>
+                    <dd data-type="html-code">
+                        <p>ブロックレベルコンテンツのセクションが引用された場合使う。属性にはciteを入れて元を表記。インデントあり+CSSスタイリングーオススメ</p>
+                        <p>&#8251;下記はblockquoteタグを使っている</p>
+                        <blockquote cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+                        <p>The <strong>HTML <code>&lt;blockquote&gt;</code> Element</strong> (or <em>HTML Block
+                        Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
+                        <p>
+                            <b>&lt;p&gt;</b>タグ（改行されるタグ）が<b>&lt;blockquote&gt;</b>タグの中に混ざっている状態。
+                        </p>
+                        <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+                            <cite>
                                 MDN Web Docs
-                            </a>
-                        </q>
+                            </cite>
+                        </a>
+                        </blockquote>
                         <pre class="code-pre" data-type="html-outer-text"></pre>
-                    </div>
-                </dd>
-                <dt>citesタグとは（出所）</dt>
-                <dd data-type="html-code">
-                    <p>
-                        <q class="error" cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
-                            &lt;q&gt;タグが使われている
+                    </dd>
+                    <dt>
+                        qタグとは
+                    </dt>
+                    <dd>
+                        <p>Inline quotationsは<code>&lt;q&gt;</code>１行の中で使える（インライン）</p>
+                        <p><code>&lt;q&gt;</code>は引用句の語尾に&#8221;も自動でつく</p>
+                        <div data-type="html-code">
+                            <q class="error" cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+                                <b>&lt;q&gt;</b>タグの中に改行されるタグが混ざっている場合このようになる。
+                                <br><b>&lt;p&gt;</b>タグ（改行されるタグ）が<b>&lt;q&gt;</b>タグの中に混ざっている状態。
+                                
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+                                    <cite>
+                                        (this is <b>&lt;cite&gt;</b> tag.) MDN Web Docs
+                                    </cite>
+                                </a>
+                            </q>
+                            <pre class="code-pre" data-type="html-outer-text"></pre>
+                        </div>
+                        <div data-type="html-code">
+                            <p>正しい書き方は下記のように<b>&lt;q&gt;</b>タグの中に改行されるタグが混ざっていない状態。</p>
+                            <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+                                intended for short quotations that don't require paragraph breaks.
+                                <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">
+                                    MDN Web Docs
+                                </a>
+                            </q>
+                            <pre class="code-pre" data-type="html-outer-text"></pre>
+                        </div>
+                    </dd>
+                    <dt>citesタグとは（出所）</dt>
+                    <dd data-type="html-code">
+                        <p>
+                            <q class="error" cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+                                &lt;q&gt;タグが使われている
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+                                    <cite>この部分に&lt;cite&gt;タグが使われている</cite>
+                                </a>.
+                            </q>
+                            <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
+                                &lt;q&gt;タグが使われている
+                            </q>
                             <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
                                 <cite>この部分に&lt;cite&gt;タグが使われている</cite>
                             </a>.
-                        </q>
-                        <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
-                            &lt;q&gt;タグが使われている
-                        </q>
-                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">
-                            <cite>この部分に&lt;cite&gt;タグが使われている</cite>
-                        </a>.
-                    </p>
-                    <p>
-                        MDNの&lt;cite&gt;の説明では、&lt;q&gt;タグの中に&lt;cite&gt;タグを入れるのではなく、<br>
-                        同じ階層に存在する書き方になっている。
-                    </p>
-                    <pre class="code-pre" data-type="html-outer-text"></pre>
-                </dd>
-            </dl>
-        </div>
-        <div class="card">
-            <h2>abbr</h2>
-            <dl>
-                <dt>
-                    &lt;abbr&gt;タグとは
-                </dt>
-                <dd>
-                    <p>略語を表すタグでtitle属性を利用し、マウスを乗せることで元の用語を表すことができる。</p>
-                    <p>We use <abbr title="Hypertext Markup Language">HTML</abbr> to structure our web documents.</p>
-                </dd>
-            </dl>
-        </div>
-        <div class="card">
-            <h2>address</h2>
-            <dl>
-                <dt>
-                    &lt;address&gt;タグとは
-                </dt>
-                <dd>
-                    <p>
-                        addressタグは「そのHTML文章を作成した人」の連絡先情報を表示するために使う。
-                    </p>
-                    <address>
-                        <p>Jiyong Hong, Yahata-word, Nagasaki, Japan</p>
-                    </address>                      
-                </dd>
-            </dl>
-        </div>
-        <div class="card">
-            <h2>sup, sub</h2>
-            <dl>
-                <dt>
-                    sup
-                </dt>
-                <dd>
-                    <p>If x<sup>2</sup> is 9, x must equal 3 or -3.</p>
-                </dd>
-                <dt>
-                    sub
-                </dt>
-                <dd>
-                    <p>C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>.</p>
-                </dd>
-            </dl>
-        </div>
-        <div class="card">
-            <h2>コードを表示する</h2>
-            <dl>
-                <dt>
-                    var
-                </dt>
-                <dd>
-                    <p>変数名を特別に表示する</p>
-                    <p>
-                        変数<var>htmlOuterText</var>はHTML ElementをStringとしてコードを画面に表示するために、HTML ElementのouterHTMLを参照している。
-                    </p> 
-                    <p>&#8251;ただしスタイリングのためだけでは使わない
-                        <br>
-                        その場合&lt;i&gt;、&lt;em&gt;どちらかを目的に合わせて使う。
-                    </p>
-                </dd>
-                <dt>
-                    kbd
-                </dt>
-                <dd>
-                    <p>パソコンから入力されたキーの入力を表示</p>
-                    <p>例：Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
-                    <p>スタイルのためのタグはないと思っていい。(semantic,セマンティック=意味論的な)
-                        <br>だから見た目に変化がなくても、
-                        <br>正しいタグを使ってその正しい目的・意味をプログラムに伝える必要がある
-                        <br>SEOになる・そのためにもタグをたくさん理解していて正しく使えるようになるのが大事
-                        <br>セマンテっくの話は後でまた出る（っていうかHTML全てに当てはまる）
-                    </p>
-                </dd>
-                <dt>
-                    samp
-                </dt>
-                <dd>
-                    <p>プログラムの出力を表示
-                        <br>普通CSSと一緒に固定幅としてフォントにCourier, Lucida Consoleを設定する
-                        <br>設定したCSSより、ブラウザのユーザー設定を優先されて表示されることもある
-                    </p>
-                    <p>例：プロセスが完了すれば <samp>Scan complete. Found <em>N</em> results.</samp>
-                        を出力します。 出力内容を確認の上、次のステップに進めてください。</p>
-                </dd>
-            </dl>
-        </div>
-        <div class="card">
-            <h2>時間・日付を表示</h2>
-            <dl>
-                <dt>
-                    &lt;time&gt;タグとは
-                </dt>
-                <dd>
-                    <p>timeタグは機械が読み取れる形式に時間を表示するためにある
-                        <br>人間からしたら下記の時間・日付の書き方は普通に通じるけど、
-                        <br>機械には難しいところがある
-                    </p>
-                    <ul>
-                        <li>
-                            20 January 2016
-                        </li>
-                        <li>
-                            Jan 20 2016
-                        </li>
-                        <li>
-                            06/20/16
-                        </li>
-                        <li>
-                            2016 年 1 月 20 日　などなど
-                        </li>
-                    </ul>
-                    <div data-type="html-code">
-                        <h4>timeタグを使って時間・日付を表示する</h4>
+                        </p>
+                        <p>
+                            MDNの&lt;cite&gt;の説明では、&lt;q&gt;タグの中に&lt;cite&gt;タグを入れるのではなく、<br>
+                            同じ階層に存在する書き方になっている。
+                        </p>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </dd>
+                </dl>
+            </div>
+            <div class="card">
+                <h2>abbr</h2>
+                <dl>
+                    <dt>
+                        &lt;abbr&gt;タグとは
+                    </dt>
+                    <dd>
+                        <p>略語を表すタグでtitle属性を利用し、マウスを乗せることで元の用語を表すことができる。</p>
+                        <p>We use <abbr title="Hypertext Markup Language">HTML</abbr> to structure our web documents.</p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="card">
+                <h2>address</h2>
+                <dl>
+                    <dt>
+                        &lt;address&gt;タグとは
+                    </dt>
+                    <dd>
+                        <p>
+                            addressタグは「そのHTML文章を作成した人」の連絡先情報を表示するために使う。
+                        </p>
+                        <address>
+                            <p>Jiyong Hong, Yahata-word, Nagasaki, Japan</p>
+                        </address>                      
+                    </dd>
+                </dl>
+            </div>
+            <div class="card">
+                <h2>sup, sub</h2>
+                <dl>
+                    <dt>
+                        sup
+                    </dt>
+                    <dd>
+                        <p>If x<sup>2</sup> is 9, x must equal 3 or -3.</p>
+                    </dd>
+                    <dt>
+                        sub
+                    </dt>
+                    <dd>
+                        <p>C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>.</p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="card">
+                <h2>コードを表示する</h2>
+                <dl>
+                    <dt>
+                        var
+                    </dt>
+                    <dd>
+                        <p>変数名を特別に表示する</p>
+                        <p>
+                            変数<var>htmlOuterText</var>はHTML ElementをStringとしてコードを画面に表示するために、HTML ElementのouterHTMLを参照している。
+                        </p> 
+                        <p>&#8251;ただしスタイリングのためだけでは使わない
+                            <br>
+                            その場合&lt;i&gt;、&lt;em&gt;どちらかを目的に合わせて使う。
+                        </p>
+                    </dd>
+                    <dt>
+                        kbd
+                    </dt>
+                    <dd>
+                        <p>パソコンから入力されたキーの入力を表示</p>
+                        <p>例：Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</p>
+                        <p>スタイルのためのタグはないと思っていい。(semantic,セマンティック=意味論的な)
+                            <br>だから見た目に変化がなくても、
+                            <br>正しいタグを使ってその正しい目的・意味をプログラムに伝える必要がある
+                            <br>SEOになる・そのためにもタグをたくさん理解していて正しく使えるようになるのが大事
+                            <br>セマンテっくの話は後でまた出る（っていうかHTML全てに当てはまる）
+                        </p>
+                    </dd>
+                    <dt>
+                        samp
+                    </dt>
+                    <dd>
+                        <p>プログラムの出力を表示
+                            <br>普通CSSと一緒に固定幅としてフォントにCourier, Lucida Consoleを設定する
+                            <br>設定したCSSより、ブラウザのユーザー設定を優先されて表示されることもある
+                        </p>
+                        <p>例：プロセスが完了すれば <samp>Scan complete. Found <em>N</em> results.</samp>
+                            を出力します。 出力内容を確認の上、次のステップに進めてください。</p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="card">
+                <h2>時間・日付を表示</h2>
+                <dl>
+                    <dt>
+                        &lt;time&gt;タグとは
+                    </dt>
+                    <dd>
+                        <p>timeタグは機械が読み取れる形式に時間を表示するためにある
+                            <br>人間からしたら下記の時間・日付の書き方は普通に通じるけど、
+                            <br>機械には難しいところがある
+                        </p>
                         <ul>
                             <li>
-                                <time datetime="2016-01-20">20 January 2016</time>
+                                20 January 2016
                             </li>
                             <li>
-                                <time datetime="2016-01">January 2016</time>
+                                Jan 20 2016
                             </li>
                             <li>
-                                <time datetime="2016-01-20">20 January 2016</time>
+                                06/20/16
                             </li>
                             <li>
-                                <time datetime="01-20">20 January</time>
-                            </li>
-                            <li>
-                                <time datetime="19:30">19:30</time>
-                            </li>
-                            <li>
-                                <time datetime="19:30:01.856">19:30:01.856</time>
-                            </li>
-                            <li>
-                                <time datetime="2016-01-20T19:30">7.30pm, 20 January 2016</time>
-                            </li>
-                            <li>
-                                <time datetime="2016-01-20T19:30+01:00">7.30pm, 20 January 2016 is 8.30pm in France</time>
-                            </li>
-                            <li>
-                                <time datetime="2016-W04">The fourth week of 2016</time>
+                                2016 年 1 月 20 日　などなど
                             </li>
                         </ul>
-                        <pre class="code-pre" data-type="html-outer-text"></pre>
-                    </div>
-                </dd>
-            </dl>
-        </div>
-        <article class="card">
-            <h2>正しい構成</h2>
-            <dl>
-                <dt>
-                    正しい構成とは
-                </dt>
-                <dd>
-                    <ul>
-                        <li>
-                            header
-                        </li>
-                        <li>
-                            nav
-                        </li>
-                        <li>
-                            main, article, section, div, etc
-                        </li>
-                        <li>
-                            aside - 時々mainの中に位置することもある
-                        </li>
-                        <li>
-                            footer
-                        </li>
-                    </ul>
+                        <div data-type="html-code">
+                            <h4>timeタグを使って時間・日付を表示する</h4>
+                            <ul>
+                                <li>
+                                    <time datetime="2016-01-20">20 January 2016</time>
+                                </li>
+                                <li>
+                                    <time datetime="2016-01">January 2016</time>
+                                </li>
+                                <li>
+                                    <time datetime="2016-01-20">20 January 2016</time>
+                                </li>
+                                <li>
+                                    <time datetime="01-20">20 January</time>
+                                </li>
+                                <li>
+                                    <time datetime="19:30">19:30</time>
+                                </li>
+                                <li>
+                                    <time datetime="19:30:01.856">19:30:01.856</time>
+                                </li>
+                                <li>
+                                    <time datetime="2016-01-20T19:30">7.30pm, 20 January 2016</time>
+                                </li>
+                                <li>
+                                    <time datetime="2016-01-20T19:30+01:00">7.30pm, 20 January 2016 is 8.30pm in France</time>
+                                </li>
+                                <li>
+                                    <time datetime="2016-W04">The fourth week of 2016</time>
+                                </li>
+                            </ul>
+                            <pre class="code-pre" data-type="html-outer-text"></pre>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <article class="card">
+                <h2>正しい構成</h2>
+                <dl>
+                    <dt>
+                        正しい構成とは
+                    </dt>
+                    <dd>
+                        <ul>
+                            <li>
+                                header
+                            </li>
+                            <li>
+                                nav
+                            </li>
+                            <li>
+                                main, article, section, div, etc
+                            </li>
+                            <li>
+                                aside - 時々mainの中に位置することもある
+                            </li>
+                            <li>
+                                footer
+                            </li>
+                        </ul>
+                        <section>
+                            <h3><i>仮のタイトル</i></h3>
+                            <p><i>MDNのsectionタグの説明ではタイトルを含まないこともあると書いてあったが、
+                                <br>MVSでのコード確認ではやっぱりあったほうがいいらしい
+                            </i></p>
+                            <dl>
+                                <dt>
+                                    main
+                                </dt>
+                                <dd>
+                                    <p>
+                                        今までbodyをmainの意味まで含めて使っていてしまった。
+                                        実は大きくみて下記のような構成になるべき
+                                    </p>
+                                    <pre class="code-pre">
+    &lt;body&gt;
+        &lt;header&gt;
+        <b>&lt;main&gt;</b>
+            &lt;section&gt;
+                &lt;div&gt;
+                    ...
+        &lt;footer&gt;
+                                    </pre>
+                                    <b>&#8251;注意点：mainタグは１ページ１個使える</b>
+                                </dd>
+                                <dt>
+                                    article
+                                </dt>
+                                <dd>
+                                    <p>
+                                        ページ、アプリ、サイトの中で独立的に区分してデプロイしたり、再利用できる単位
+                                        <br>例:掲示板、ブログの投稿、マガジン、ニュース
+                                        <br>&#8251;だから今このHTMLページのカードはdivタグで分けられているけど、
+                                        <br>そのdivをarticleに変えればいいこと（複数あっていいってこと）
+                                        <br>その中に複数のsectionを入れることもできる
+                                        <br>イメージだと下記のようになる
+                                    </p>
+                                    <pre class="code-pre">
+        &lt;main&gt;
+            &lt;article&gt;
+                &lt;section&gt;
+                    &lt;div&gt;
+                        ...
+                    &lt;div&gt;
+                        ...
+                &lt;section&gt;
+                    &lt;div&gt;
+                        ...
+                    &lt;div&gt;
+                        ...
+            &lt;article&gt;
+                &lt;section&gt;
+                    &lt;div&gt;
+                        ...
+                    &lt;div&gt;
+                        ...
+                &lt;section&gt;
+                    &lt;div&gt;
+                        ...
+                    &lt;div&gt;
+                        ...
+                                    </pre>
+                                    <b>&#8251;注意点としてarticleタグはaddressの子要素としては使えない</b>
+                                    <p>投稿を1つのarticleとして考えることもできるし、その投稿のコメント１個もarticleとして考えられる。
+                                        <br>articleの中にarticleが存在できる
+                                    </p>
+                                </dd>
+                            </dl>
+                        </section>
+                    </dd>
+                </dl>
+                <article>
+                    <h2>section</h2>
                     <section>
-                        <h3><i>仮のタイトル</i></h3>
-                        <p><i>MDNのsectionタグの説明ではタイトルを含まないこともあると書いてあったが、
-                            <br>MVSでのコード確認ではやっぱりあったほうがいいらしい
-                        </i></p>
+                        <h3>sectionタグの説明</h3>
                         <dl>
                             <dt>
-                                main
+                                sectionとは
                             </dt>
                             <dd>
-                                <p>
-                                    今までbodyをmainの意味まで含めて使っていてしまった。
-                                    実は大きくみて下記のような構成になるべき
-                                </p>
-                                <pre class="code-pre">
-&lt;body&gt;
-    &lt;header&gt;
-    <b>&lt;main&gt;</b>
-        &lt;section&gt;
-            &lt;div&gt;
-                ...
-    &lt;footer&gt;
-                                </pre>
-                                <b>&#8251;注意点：mainタグは１ページ１個使える</b>
-                            </dd>
-                            <dt>
-                                article
-                            </dt>
-                            <dd>
-                                <p>
-                                    ページ、アプリ、サイトの中で独立的に区分してデプロイしたり、再利用できる単位
-                                    <br>例:掲示板、ブログの投稿、マガジン、ニュース
-                                    <br>&#8251;だから今このHTMLページのカードはdivタグで分けられているけど、
-                                    <br>そのdivをarticleに変えればいいこと（複数あっていいってこと）
-                                    <br>その中に複数のsectionを入れることもできる
-                                    <br>イメージだと下記のようになる
-                                </p>
-                                <pre class="code-pre">
-    &lt;main&gt;
-        &lt;article&gt;
-            &lt;section&gt;
-                &lt;div&gt;
-                    ...
-                &lt;div&gt;
-                    ...
-            &lt;section&gt;
-                &lt;div&gt;
-                    ...
-                &lt;div&gt;
-                    ...
-        &lt;article&gt;
-            &lt;section&gt;
-                &lt;div&gt;
-                    ...
-                &lt;div&gt;
-                    ...
-            &lt;section&gt;
-                &lt;div&gt;
-                    ...
-                &lt;div&gt;
-                    ...
-                                </pre>
-                                <b>&#8251;注意点としてarticleタグはaddressの子要素としては使えない</b>
-                                <p>投稿を1つのarticleとして考えることもできるし、その投稿のコメント１個もarticleとして考えられる。
-                                    <br>articleの中にarticleが存在できる
-                                </p>
-                            </dd>
-                        </dl>
-                    </section>
-                </dd>
-            </dl>
-            <article>
-                <h2>section</h2>
-                <section>
-                    <h3>sectionタグの説明</h3>
-                    <dl>
-                        <dt>
-                            sectionとは
-                        </dt>
-                        <dd>
-                            <p>より適合な意味を持った要素がないときに使う</p>
-                        </dd>
-                    </dl>
-                </section>
-                <section data-type="html-code">
-                    <h3>例題コード</h3>
-                    <div class="bq">
-                        <h4>Heading</h4>
-                        <p>some text</p>
-                    </div>
-                    <p>を下記のように変えることができる</p>
-                    <section class="bq">
-                        <h4>Heading</h4>
-                        <p>some text</p>
-                    </section>
-                    <section>
-                        <h4>コードの中身</h4>
-                        <pre class="code-pre" data-type="html-outer-text"></pre>
-                    </section>             
-                </section>
-            </article>
-            <article>
-                <h2><i>仮のタイトル</i></h2>
-                <p><i>MDNのsectionタグの説明ではタイトルを含まないこともあると書いてあったが、
-                    <br>MVSでのコード確認ではやっぱりあったほうがいいらしい</i></p>
-                <section>
-                    <h3 class="text-caution"><i>注意</i></h3>
-                    <p><i>
-                        <br>本ページのここまでの内容に構成的・セグマンティックの観点で問題があった部分は学習の「過程」の視覚化として残しおく</i></p>
-                </section>
-            </article>
-            <!--ここから正しいarticle, section使いになっている-->
-            <article>
-                <h2>aside</h2>
-                <section>
-                    <h3>aside</h3>
-                    <section>
-                        <h4>定義</h4>
-                        <dl>
-                            <dt>
-                                asideタグとは
-                            </dt>
-                            <dd>
-                                <p>
-                                    文章の重要内容と間接的に関連された部分を表す
-                                    <br>サイドバー、コールアウトボックス
-                                    <br>時々navの内容が入っていることもある
-                                </p>
+                                <p>より適合な意味を持った要素がないときに使う</p>
                             </dd>
                         </dl>
                     </section>
                     <section data-type="html-code">
-                        <h4>例題コード</h4>
-                        <section>
-                            <h5>出力結果</h5>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><aside><p>個人的にLoremは例の文字として表示確認のために使っている。</p></aside><p>Minima fugiat dolores quaerat possimus atque quos impedit, optio pariatur at numquam iste id ad nemo, ratione assumenda corrupti maxime exercitationem sapiente.
-                            </p>
+                        <h3>例題コード</h3>
+                        <div class="bq">
+                            <h4>Heading</h4>
+                            <p>some text</p>
+                        </div>
+                        <p>を下記のように変えることができる</p>
+                        <section class="bq">
+                            <h4>Heading</h4>
+                            <p>some text</p>
                         </section>
                         <section>
-                            <h5>コード</h5>
+                            <h4>コードの中身</h4>
                             <pre class="code-pre" data-type="html-outer-text"></pre>
+                        </section>             
+                    </section>
+                </article>
+                <article>
+                    <h2><i>仮のタイトル</i></h2>
+                    <p><i>MDNのsectionタグの説明ではタイトルを含まないこともあると書いてあったが、
+                        <br>MVSでのコード確認ではやっぱりあったほうがいいらしい</i></p>
+                    <section>
+                        <h3 class="text-caution"><i>注意</i></h3>
+                        <p><i>
+                            <br>本ページのここまでの内容に構成的・セグマンティックの観点で問題があった部分は学習の「過程」の視覚化として残しおく</i></p>
+                    </section>
+                </article>
+                <!--ここから正しいarticle, section使いになっている-->
+                <article>
+                    <h2>aside</h2>
+                    <section>
+                        <h3>aside</h3>
+                        <section>
+                            <h4>定義</h4>
+                            <dl>
+                                <dt>
+                                    asideタグとは
+                                </dt>
+                                <dd>
+                                    <p>
+                                        文章の重要内容と間接的に関連された部分を表す
+                                        <br>サイドバー、コールアウトボックス
+                                        <br>時々navの内容が入っていることもある
+                                    </p>
+                                </dd>
+                            </dl>
                         </section>
+                        <section data-type="html-code">
+                            <h4>例題コード</h4>
+                            <section>
+                                <h5>出力結果</h5>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><aside><p>個人的にLoremは例の文字として表示確認のために使っている。</p></aside><p>Minima fugiat dolores quaerat possimus atque quos impedit, optio pariatur at numquam iste id ad nemo, ratione assumenda corrupti maxime exercitationem sapiente.
+                                </p>
+                            </section>
+                            <section>
+                                <h5>コード</h5>
+                                <pre class="code-pre" data-type="html-outer-text"></pre>
+                            </section>
+                        </section>
+                    </section>
+                </article>
+                <section>
+                    <h2>最後に</h2>
+                    <p>正しい構成・セマンティックの意味はタグを目的・存在理由に合わせて適材適所使うこと。それによってdivタグを減らしていくこと。</p>
+                </section>
+            </article>
+            <article class="card">
+                <section>
+                    <h2>MVS</h2>
+                    <p>を利用し、HTMLの問題・その他の情報が確認できる</p>
+                        <a target="_blank" href="https://validator.w3.org/#validate_by_input">Markup Validator Service</a>
+                        
+                    <section>
+                        <h3>画像</h3>
+                        <div class="container-image">
+                            <img class="img-fluid" src="/assets/images/MVS_home.png" alt="" width="150" height="150">
+                            <img class="img-fluid" src="/assets/images/MVS_error1.png" alt="" width="150" height="150">
+                        </div>
                     </section>
                 </section>
             </article>
-            <section>
-                <h2>最後に</h2>
-                <p>正しい構成・セマンティックの意味はタグを目的・存在理由に合わせて適材適所使うこと。それによってdivタグを減らしていくこと。</p>
-            </section>
-        </article>
-        <article class="card">
-            <section>
-                <h2>MVS</h2>
-                <p>を利用し、HTMLの問題・その他の情報が確認できる</p>
-                    <a target="_blank" href="https://validator.w3.org/#validate_by_input">Markup Validator Service</a>
-                    
+            <article class="card">
+                <h2>カード</h2>
                 <section>
-                    <h3>画像</h3>
-                    <div class="container-image">
-                        <img class="img-fluid" src="/assets/images/MVS_home.png" alt="" width="150" height="150">
-                        <img class="img-fluid" src="/assets/images/MVS_error1.png" alt="" width="150" height="150">
-                    </div>
+                    <h3>定義</h3>
+                    <dl>
+                        <dt>
+                            <abbr title="カードデザイン">カード</abbr>とは
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    カードデザインとも呼ばれている
+                                </li>
+                                <li>
+                                    カードは「カードのような四角形を並べたスタイルのデザイン」のこと
+                                </li>
+                                <li>
+                                    多くの場合、ひとつの項目に対して画像やテキスト、ボタン等、様々な要素が含まれている
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
                 </section>
-            </section>
-        </article>
-        <article class="card">
-            <h2>カード</h2>
-            <section>
-                <h3>定義</h3>
-                <dl>
-                    <dt>
-                        <abbr title="カードデザイン">カード</abbr>とは
-                    </dt>
-                    <dd>
-                        <ul>
-                            <li>
-                                カードデザインとも呼ばれている
-                            </li>
-                            <li>
-                                カードは「カードのような四角形を並べたスタイルのデザイン」のこと
-                            </li>
-                            <li>
-                                多くの場合、ひとつの項目に対して画像やテキスト、ボタン等、様々な要素が含まれている
-                            </li>
-                        </ul>
-                    </dd>
-                </dl>
-            </section>
-            <section data-type="html-code">
-                <h3>例題</h3>
-                <article>
-                    <h4>出力結果</h4>
-                    <section class="test-card">
-                        <img class="test-card-img" src="images/bear.jpg" alt="">
-                        <div class="test-card-content">
-                          <h5 class="test-card-title">Webクリエイターボックス</h5>
-                          <p class="test-card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
-                        </div>
-                        <div class="test-card-link">
-                          <a href="http://webcreatorbox.com/about">About</a>
-                          <a href="http://webcreatorbox.com/">Website</a>
-                        </div>
+                <section data-type="html-code">
+                    <h3>例題</h3>
+                    <article>
+                        <h4>出力結果</h4>
+                        <section class="test-card">
+                            <img class="test-card-img" src="images/bear.jpg" alt="">
+                            <div class="test-card-content">
+                              <h5 class="test-card-title">Webクリエイターボックス</h5>
+                              <p class="test-card-text">WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
+                            </div>
+                            <div class="test-card-link">
+                              <a href="http://webcreatorbox.com/about">About</a>
+                              <a href="http://webcreatorbox.com/">Website</a>
+                            </div>
+                        </section>
+                    </article>
+                    <article>
+                        <h4>コード</h4>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
+                </section>
+            </article>
+            <article class="card">
+                <h2>Marking up a letter</h2>
+                <section>
+                    <h3>定義</h3>
+                    <dl>
+                        <dt>
+                            Text formattingの練習
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>
+                                    正しい構成・セマンティックを意識しながら下記のサイトの画像通り作る。
+                                </li>
+                                <li>
+                                    <a target="_blank" href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter">
+                                        Marking up a letter.
+                                    </a>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </section>
+                <section>
+                    <h3>例題</h3>
+                    <section>
+                        <h4>元データ</h4>
+                        <cite>
+                            <a target="_blank" href="https://github.com/mdn/learning-area/blob/main/html/introduction-to-html/marking-up-a-letter-start/letter-text.txt">
+                                Github - chrisdavidmills - mdn/learning-area
+                            </a>
+                        </cite>
                     </section>
-                </article>
-                <article>
-                    <h4>コード</h4>
-                    <pre class="code-pre" data-type="html-outer-text"></pre>
-                </article>
-            </section>
-        </article>
-        <article class="card">
-            <h2>Marking up a letter</h2>
-            <section>
-                <h3>定義</h3>
-                <dl>
-                    <dt>
-                        Text formattingの練習
-                    </dt>
-                    <dd>
+                    <section>
+                        <h4>結果</h4>
+                        <a target="_blank" href="./marking-up-a-letter.html">
+                            例題marking-up-a-letter
+                        </a>
+                    </section>
+                    <section>
+                        <h4>MVS検証でわかったこと・よく出たエラー</h4>
                         <ul>
                             <li>
-                                正しい構成・セマンティックを意識しながら下記のサイトの画像通り作る。
+                                <p>dlタグの構造は下記の書き方のみでdtタグの中にheadingタグなど入ってはいけない</p>
+                                <pre class="code-pre">
+        &lt;dl&gt;
+            &lt;dt&gt;
+                テキスト（質問）
+                &lt;dd&gt;
+                    テキスト（解答・説明）
+                                </pre>
                             </li>
                             <li>
-                                <a target="_blank" href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Marking_up_a_letter">
-                                    Marking up a letter.
-                                </a>
+                                article, sectionタグはタイトル（headingタグ）の記述が必須ではないが、タイトルがない場合MVS上ではWarningの形でタイトルを入れることをオススメしてくれる。
+                            </li>
+                            <li>
+                                imgタグのwidth, height属性には単位を除いた値だけを入れるpx, %, autoなどはエラー（pxとして翻訳されるらしい）
+                            </li>
+                            <li>
+                                styleタグにtype属性は要らない（type="text/css"と書く必要がない）、逆にWarningで教えてくれる
+                            </li>
+                            <li>
+                                同一ページ内でh1が2つ以上使われた場合、MVSは教えてくれるけど、構成に間違った順（h3タグを使った要素より深い位置にある要素にh2タグを使う）にheadingタグを使ってもそれは教えてくれない。気にしながら書いた方がいい
+                            </li>
+                            <li>
+                                metaタグのcharset属性によって引用の表示が異なるjaにした場合引用句の語尾に「」がつく、enの場合語尾に""がつく
                             </li>
                         </ul>
-                    </dd>
-                </dl>
-            </section>
-            <section>
-                <h3>例題</h3>
-                <section>
-                    <h4>元データ</h4>
-                    <cite>
-                        <a target="_blank" href="https://github.com/mdn/learning-area/blob/main/html/introduction-to-html/marking-up-a-letter-start/letter-text.txt">
-                            Github - chrisdavidmills - mdn/learning-area
-                        </a>
-                    </cite>
+                    </section>
                 </section>
-                <section>
-                    <h4>結果</h4>
-                    <a target="_blank" href="./marking-up-a-letter.html">
-                        例題marking-up-a-letter
-                    </a>
-                </section>
-                <section>
-                    <h4>MVS検証でわかったこと・よく出たエラー</h4>
-                    <ul>
-                        <li>
-                            <p>dlタグの構造は下記の書き方のみでdtタグの中にheadingタグなど入ってはいけない</p>
-                            <pre class="code-pre">
-    &lt;dl&gt;
-        &lt;dt&gt;
-            テキスト（質問）
-            &lt;dd&gt;
-                テキスト（解答・説明）
-                            </pre>
-                        </li>
-                        <li>
-                            article, sectionタグはタイトル（headingタグ）の記述が必須ではないが、タイトルがない場合MVS上ではWarningの形でタイトルを入れることをオススメしてくれる。
-                        </li>
-                        <li>
-                            imgタグのwidth, height属性には単位を除いた値だけを入れるpx, %, autoなどはエラー（pxとして翻訳されるらしい）
-                        </li>
-                        <li>
-                            styleタグにtype属性は要らない（type="text/css"と書く必要がない）、逆にWarningで教えてくれる
-                        </li>
-                        <li>
-                            同一ページ内でh1が2つ以上使われた場合、MVSは教えてくれるけど、構成に間違った順（h3タグを使った要素より深い位置にある要素にh2タグを使う）にheadingタグを使ってもそれは教えてくれない。気にしながら書いた方がいい
-                        </li>
-                        <li>
-                            metaタグのcharset属性によって引用の表示が異なるjaにした場合引用句の語尾に「」がつく、enの場合語尾に""がつく
-                        </li>
-                    </ul>
-                </section>
-            </section>
-        </article>
-    </div>
+            </article>
+        </div>
+    </main>
+    <footer>
+    </footer>
 </body>
 </html>
