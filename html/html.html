@@ -807,6 +807,36 @@
                         例題marking-up-a-letter
                     </a>
                 </section>
+                <section>
+                    <h4>MVS検証でわかったこと・よく出たエラー</h4>
+                    <ul>
+                        <li>
+                            <p>dlタグの構造は下記の書き方のみでdtタグの中にheadingタグなど入ってはいけない</p>
+                            <pre class="code-pre">
+    &lt;dl&gt;
+        &lt;dt&gt;
+            テキスト（質問）
+            &lt;dd&gt;
+                テキスト（解答・説明）
+                            </pre>
+                        </li>
+                        <li>
+                            article, sectionタグはタイトル（headingタグ）の記述が必須ではないが、タイトルがない場合MVS上ではWarningの形でタイトルを入れることをオススメしてくれる。
+                        </li>
+                        <li>
+                            imgタグのwidth, height属性には単位を除いた値だけを入れるpx, %, autoなどはエラー（pxとして翻訳されるらしい）
+                        </li>
+                        <li>
+                            styleタグにtype属性は要らない（type="text/css"と書く必要がない）、逆にWarningで教えてくれる
+                        </li>
+                        <li>
+                            同一ページ内でh1が2つ以上使われた場合、MVSは教えてくれるけど、構成に間違った順（h3タグを使った要素より深い位置にある要素にh2タグを使う）にheadingタグを使ってもそれは教えてくれない。気にしながら書いた方がいい
+                        </li>
+                        <li>
+                            metaタグのcharset属性によって引用の表示が異なるjaにした場合引用句の語尾に「」がつく、enの場合語尾に""がつく
+                        </li>
+                    </ul>
+                </section>
             </section>
         </article>
     </div>
