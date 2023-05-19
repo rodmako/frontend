@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Embedding</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/for_test.css">
+    <script src="/src/js/index.js"></script>
+</head>
+<body>
+    <header>
+        <article class="header-container">
+            <h1 class="header-title">HTML</h1>
+            <button class="header-nav-button" onclick="listOnOff(this);">List show</button>
+        </article>
+        <article>
+            <nav>
+                <ul class="header-nav" data-type="nav-menu"></ul>
+            </nav>
+        </article>
+    </header>
+    <main>
+        <article class="container">
+            <article class="card">
+                <h2 data-target="jump">video, audio</h2>
+                <section>
+                    <h3>video</h3>
+                    <article data-type="html-code">
+                        <video width="500" height="315" preload="auto" poster="/assets/images/MVS_error1.png" controls>
+                            <source src="/assets/video/videoTagVideo.mov" type="video/mp4">
+                            <track kind="subtitles" src="/assets/video/subtitles/subtitle_for_test.vtt" srclang="en" label="English" default>
+                            <p>
+                              ブラウザによって実行できない場合があるmp4なら大体大丈夫、その実行されない場合のために下記のようにリンクを一緒に書いた方がいい
+                              <a href="/assets/video/videoTagVideo.mov">その代わりの動画のリンク</a> 
+                            </p>
+                        </video>
+                        <br>
+                        <i>
+                            字幕作成
+                            <a target="_blank" href="https://www.happyscribe.com/subtitle-tools/online-subtitle-editor/free">
+                                happyscribe
+                            </a>
+                        </i>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
+                    <article>
+                        <ul>
+                            <li>
+                                モバイル・ブラウザによって動画を支援していないこともある（codec）videoタグの中にそれぞれの形式の動画を盛るための複数のsourceタグが必要(type="video/mp4" type="video/webm"で大体のフラットフォームにおいても大丈夫)
+                            </li>
+                            <li>
+                                videoタグ-poster属性-動画を実行する前の待機画面の画像を指定
+                            </li>
+                            <li>
+                                videoタグ-preload-大容量動画のバファリンの設定・値としてnone, auto, metadataがある
+                            </li>
+                            <li>
+                                videoタグ-controls属性-動画・音を制御できるようにする属性
+                            </li>
+                            <li>
+                                字幕を使うにはwebVTT(vtt)ファイルが必要
+                            </li>
+                            <li>
+                                vttファイルは&lt;track&gt;タグを利用し実装・属性はkind="subtitles" src"~.vtt" srclang="en" label="English"が必要
+                            </li>
+                        </ul>
+                    </article>
+                </section>
+                <section>
+                    <h3>audio</h3>
+                    <article data-type="html-code">
+                        <audio preload="auto" controls>
+                            <source src="/assets/audio/512674__drumartist__smooth-686-cm.mp3" type="audio/mp3">
+                            <p>
+                                ブラウザによって実行できない場合がある
+                                <a href="https://freesound.org/people/Drumartist/sounds/512674/">その代わりの音源のリンク</a>
+                            </p>
+                        </audio>
+                        <br>
+                        <cite>
+                            出所
+                            <a target="_blank" href="https://freesound.org/people/Drumartist/sounds/512674/">
+                                --freesound-Drumarist
+                            </a>
+                        </cite>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
+                </section>
+                <section>
+                    <h3 class="text-caution">わかったこと</h3>
+                    <ul>
+                        <li>
+                            MVS検証はせめてPUSHの前にすること、注意した方がいい
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card">
+                <h2>iframe, object</h2>
+                <section>
+                    <h3>iframe</h3>
+                    <article data-type="html-code">
+                        <h4>iframeでYOUTUBE動画を利用</h4>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3sE2grIDYNw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <br>
+                        <cite>
+                            出所
+                            <a href="https://www.youtube.com/@countryexperience90">
+                                --countryexperience90
+                            </a>
+                        </cite>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
+                    <article data-type="html-code">
+                        <h4>iframeでGOOGLE MAPのマップを利用</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.4768288059704!2d130.42586007514555!3d33.61887644048997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35418e347f58058f%3A0xa720a6ff9e6f7546!2z44Kk44Oz44OJ5paZ55CG77yk77yv77yt77yh77yk77yv77yt77yh!5e0!3m2!1sja!2sjp!4v1684486323954!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <cite>
+                            出所
+                            <a href="https://www.youtube.com/@countryexperience90">
+                                --countryexperience90
+                            </a>
+                        </cite>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
+                </section>
+                <section>
+                    <h3>object</h3>
+                </section>
+            </article>
+        </article>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
