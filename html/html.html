@@ -234,13 +234,11 @@
         function htmlCodeToString(){
             const nodes = document.querySelectorAll(`[data-type="html-code"]`);
             nodes.forEach(node => {
-                let target = node.querySelector(`[data-type="html-outer-text"]`);
+                const target = node.querySelector(`[data-type="html-outer-text"]`);
                 let htmlOuterText = node.outerHTML;
-                let result = "";
-                for(let i = 0; i<htmlOuterText.length;i++){
-                    result = result + "&" + "#" + htmlOuterText.charCodeAt(i) + ";";
-                }
-                target.innerHTML = result;
+                htmlOuterText = htmlOuterText.replaceAll("<","&lt;");
+                htmlOuterText = htmlOuterText.replaceAll(">","&gt;");
+                target.innerHTML = htmlOuterText;
             });
         }
     </script>
