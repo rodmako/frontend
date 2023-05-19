@@ -906,47 +906,69 @@
                 </section>
             </article>
             <article class="card">
-                <h2>video, audio</h2>
-                <section data-type="html-code">
-                    <h3 data-target="jump">video</h3>
-                    <video width="500" height="500" preload="auto" poster="/assets/images/MVS_error1.png" controls>
-                        <source src="/assets/video/videoTagVideo.mov" type="video/mp4">
-                        <p>
-                          ブラウザによって実行できない場合があるmp4なら大体大丈夫、その実行されない場合のために下記のようにリンクを一緒に書いた方がいい
-                          <a href="/assets/video/videoTagVideo.mov">その代わりの動画のリンク</a> 
-                        </p>
-                    </video>
-                    <pre class="code-pre" data-type="html-outer-text"></pre>
-                    <ul>
-                        <li>
-                            モバイル・ブラウザによって動画を支援していないこともある（codec）videoタグの中にそれぞれの形式の動画を盛るための複数のsourceタグが必要(type="video/mp4" type="video/webm"で大体のフラットフォームにおいても大丈夫)
-                        </li>
-                        <li>
-                            videoタグ-poster属性-動画を実行する前の待機画面の画像を指定
-                        </li>
-                        <li>
-                            videoタグ-preload-大容量動画のバファリンの設定・値としてnone, auto, metadataがある
-                        </li>
-                        <li>
-                            videoタグ-controls属性-動画・音を制御できるようにする属性
-                        </li>
-                    </ul>
+                <h2 data-target="jump">video, audio</h2>
+                <section>
+                    <h3>video</h3>
+                    <article data-type="html-code">
+                        <video width="500" height="500" preload="auto" poster="/assets/images/MVS_error1.png" controls>
+                            <source src="/assets/video/videoTagVideo.mov" type="video/mp4">
+                            <track kind="subtitles" src="/assets/video/subtitles/subtitle_for_test.vtt" srclang="en" label="English" default>
+                            <p>
+                              ブラウザによって実行できない場合があるmp4なら大体大丈夫、その実行されない場合のために下記のようにリンクを一緒に書いた方がいい
+                              <a href="/assets/video/videoTagVideo.mov">その代わりの動画のリンク</a> 
+                            </p>
+                        </video>
+                        <br>
+                        <i>
+                            字幕作成
+                            <a target="_blank" href="https://www.happyscribe.com/subtitle-tools/online-subtitle-editor/free">
+                                happyscribe
+                            </a>
+                        </i>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
+                    <article>
+                        <ul>
+                            <li>
+                                モバイル・ブラウザによって動画を支援していないこともある（codec）videoタグの中にそれぞれの形式の動画を盛るための複数のsourceタグが必要(type="video/mp4" type="video/webm"で大体のフラットフォームにおいても大丈夫)
+                            </li>
+                            <li>
+                                videoタグ-poster属性-動画を実行する前の待機画面の画像を指定
+                            </li>
+                            <li>
+                                videoタグ-preload-大容量動画のバファリンの設定・値としてnone, auto, metadataがある
+                            </li>
+                            <li>
+                                videoタグ-controls属性-動画・音を制御できるようにする属性
+                            </li>
+                            <li>
+                                字幕を使うにはwebVTT(vtt)ファイルが必要
+                            </li>
+                            <li>
+                                vttファイルは&lt;track&gt;タグを利用し実装・属性はkind="subtitles" src"~.vtt" srclang="en" label="English"が必要
+                            </li>
+                        </ul>
+                    </article>
                 </section>
                 <section>
                     <h3>audio</h3>
-                    <audio controls>
-                        <source src="/assets/audio/512674__drumartist__smooth-686-cm.mp3" preload="auto" type="audio/mp3">
-                        <p>
-                            ブラウザによって実行できない場合がある
-                            <a href="https://freesound.org/people/Drumartist/sounds/512674/">その代わりの音源のリンク</a>
-                        </p>
-                    </audio>
-                    <cite>
-                        出所
-                        <a target="_blank" href="https://freesound.org/people/Drumartist/sounds/512674/">
-                            --freesound-Drumarist
-                        </a>
-                    </cite>
+                    <article data-type="html-code">
+                        <audio controls>
+                            <source src="/assets/audio/512674__drumartist__smooth-686-cm.mp3" preload="auto" type="audio/mp3">
+                            <p>
+                                ブラウザによって実行できない場合がある
+                                <a href="https://freesound.org/people/Drumartist/sounds/512674/">その代わりの音源のリンク</a>
+                            </p>
+                        </audio>
+                        <br>
+                        <cite>
+                            出所
+                            <a target="_blank" href="https://freesound.org/people/Drumartist/sounds/512674/">
+                                --freesound-Drumarist
+                            </a>
+                        </cite>
+                        <pre class="code-pre" data-type="html-outer-text"></pre>
+                    </article>
                 </section>
             </article>
         </div>
