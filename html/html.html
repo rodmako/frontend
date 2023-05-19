@@ -905,6 +905,34 @@
                     </section>
                 </section>
             </article>
+            <article class="card">
+                <h2>video, audio</h2>
+                <section data-type="html-code">
+                    <h3 data-target="jump">video</h3>
+                    <video width="500" height="500" preload="auto" poster="/assets/images/MVS_error1.png" controls>
+                        <source src="/assets/video/videoTagVideo.mov" type="video/mp4" />
+                        <p>
+                          ブラウザによって実行できない場合があるmp4なら大体大丈夫、その実行されない場合のために下記のようにリンクを一緒に書いた方がいい
+                          <a href="/assets/video/videoTagVideo.mov">その代わりの動画のリンク</a> 
+                        </p>
+                    </video>
+                    <pre class="code-pre" data-type="html-outer-text"></pre>
+                    <ul>
+                        <li>
+                            モバイル・ブラウザによって動画を支援していないこともある（codec）videoタグの中にそれぞれの形式の動画を盛るための複数のsourceタグが必要(type="video/mp4" type="video/webm"で大体のフラットフォームにおいても大丈夫)
+                        </li>
+                        <li>
+                            videoタグ-poster属性-動画を実行する前の待機画面の画像を指定
+                        </li>
+                        <li>
+                            videoタグ-preload-大容量動画のバファリンの設定・値としてnone, auto, metadataがある
+                        </li>
+                        <li>
+                            videoタグ-controls属性-動画・音を制御できるようにする属性
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </div>
     </main>
     <footer>
