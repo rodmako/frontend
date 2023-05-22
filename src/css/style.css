@@ -141,3 +141,15 @@ video {
     width: 50%;
     height: auto;
 }
+
+.header-title {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.header-button-logo {
+    background: none;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
