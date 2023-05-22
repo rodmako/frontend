@@ -24,22 +24,9 @@
         </article>
     </header>
     <main>
-        <ul>
-            <li>
-                HTMLの技術の中「間違えて理解していた・知らなかった・存在の理由がわからず感覚的に使っていた・使っていなかった」もの
-            </li>
-            <li>
-                主にMDNを用いてHTMLの正確な理解・検証・ものづくり「作業スピード・正確さを上げる」
-            </li>
-            <li>
-                <a target="_blank" href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML">
-                    Mozilla Developer Network
-                </a>
-            </li>
-        </ul>
         <div class="container">
-            <div class="card">
-                <h2 data-target="jump">エンティティ</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">エンティティ</h2>
                 <p>& <code>&amp;amp</code></p>
                 <p>Á <code>&amp;Aacute</code></p>
                 <p><code>&lt;a href=&quot;リンク&quot;&gt;html entities code サイト&lt;/a&gt;</code></p>
@@ -52,8 +39,8 @@
                     html entities code サイト
                 </a>
             </div>
-            <div class="card col-single">
-                <h2 data-target="jump">pre</h2>
+            <div class="card col-single" data-target="jump">
+                <h2 data-target="jump-title">pre</h2>
                 <p>両方コード上内容、空白、改行同一</p>
                 <h3><code>&lt;pre&gt;</code></h3>
                 <pre>
@@ -82,8 +69,8 @@
                                 - Apollinaire
                 </p>          
             </div>
-            <div class="card">
-                <h2 data-target="jump">強調タグ</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">強調タグ</h2>
                 <ul>
                     <li>
                         <code>&lt;<em>em</em>&gt;</code> - イタリック体に見える
@@ -159,8 +146,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="card">
-                <h2 data-target="jump">dlタグ（Description lists）</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">dlタグ（Description lists）</h2>
                 <dl>
                     <dt>dlタグとは</dt>
                     <dd>
@@ -179,8 +166,8 @@
         &lt;&sol;div&gt;
                 </pre>
             </div>
-            <div class="card">
-                <h2>Blockquotes</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">Blockquotes</h2>
                 <dl>
                     <dt>blockquoteタグとは</dt>
                     <dd data-type="html-code">
@@ -254,8 +241,8 @@
                     </dd>
                 </dl>
             </div>
-            <div class="card">
-                <h2 data-target="jump">abbr</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">abbr</h2>
                 <dl>
                     <dt>
                         &lt;abbr&gt;タグとは
@@ -266,8 +253,8 @@
                     </dd>
                 </dl>
             </div>
-            <div class="card">
-                <h2 data-target="jump">address</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">address</h2>
                 <dl>
                     <dt>
                         &lt;address&gt;タグとは
@@ -282,8 +269,8 @@
                     </dd>
                 </dl>
             </div>
-            <div class="card">
-                <h2 data-target="jump">sup, sub</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">sup, sub</h2>
                 <dl>
                     <dt>
                         sup
@@ -299,8 +286,8 @@
                     </dd>
                 </dl>
             </div>
-            <div class="card">
-                <h2 data-target="jump">コードを表示する</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">コードを表示する</h2>
                 <dl>
                     <dt>
                         var
@@ -341,8 +328,8 @@
                     </dd>
                 </dl>
             </div>
-            <div class="card">
-                <h2 data-target="jump">時間・日付を表示</h2>
+            <div class="card" data-target="jump">
+                <h2 data-target="jump-title">時間・日付を表示</h2>
                 <dl>
                     <dt>
                         &lt;time&gt;タグとは
@@ -402,8 +389,8 @@
                     </dd>
                 </dl>
             </div>
-            <article class="card">
-                <h2 data-target="jump">正しい構成</h2>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">正しい構成</h2>
                 <dl>
                     <dt>
                         正しい構成とは
@@ -497,8 +484,8 @@
                         </section>
                     </dd>
                 </dl>
-                <article>
-                    <h2 data-target="jump">section</h2>
+                <article data-target="jump">
+                    <h2 data-target="jump-title">section</h2>
                     <section>
                         <h3>sectionタグの説明</h3>
                         <dl>
@@ -538,8 +525,8 @@
                     </section>
                 </article>
                 <!--ここから正しいarticle, section使いになっている-->
-                <article>
-                    <h2 data-target="jump">aside</h2>
+                <article data-target="jump">
+                    <h2 data-target="jump-title">aside</h2>
                     <section>
                         <h3>aside</h3>
                         <section>
@@ -577,9 +564,9 @@
                     <p>正しい構成・セマンティックの意味はタグを目的・存在理由に合わせて適材適所使うこと。それによってdivタグを減らしていくこと。</p>
                 </section>
             </article>
-            <article class="card">
+            <article class="card" data-target="jump">
                 <section>
-                    <h2 data-target="jump">MVS</h2>
+                    <h2 data-target="jump-title">MVS</h2>
                     <p>を利用し、HTMLの問題・その他の情報が確認できる</p>
                         <a target="_blank" href="https://validator.w3.org/#validate_by_input">Markup Validator Service</a>
                         
@@ -592,8 +579,8 @@
                     </section>
                 </section>
             </article>
-            <article class="card">
-                <h2 data-target="jump">カード</h2>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">カード</h2>
                 <section>
                     <h3>定義</h3>
                     <dl>
@@ -637,8 +624,8 @@
                     </article>
                 </section>
             </article>
-            <article class="card">
-                <h2 data-target="jump">Marking up a letter</h2>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">Marking up a letter</h2>
                 <section>
                     <h3>定義</h3>
                     <dl>

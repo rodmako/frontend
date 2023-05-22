@@ -8,8 +8,9 @@ function nav_list_make(){
     const menu = document.querySelector(`[data-type="nav-menu"]`);
     const jump_target = document.querySelectorAll(`[data-target="jump"]`);
     jump_target.forEach((target, index) => {
+        const target_title = target.querySelector(`[data-target="jump-title"]`);
         target.id = "jump-id-"+index;
-        const jump_link = `<li><a href="#${target.id}">${target.innerHTML}</a></li>`;
+        const jump_link = `<li><a href="#${target.id}">${target_title.innerHTML}</a></li>`;
         menu.innerHTML = menu.innerHTML + jump_link;
     });
 }
