@@ -137,6 +137,12 @@ main {
     border-radius: 3px;
 }
 
+iframe {
+    margin: 0 20px 20px 0;
+    max-width: 100%;
+    border: none;
+}
+
 video {
     width: 50%;
     height: auto;
