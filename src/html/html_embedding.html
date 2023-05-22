@@ -156,6 +156,47 @@
                     <h3>結果</h3>
                     <a target="_blank" href="/src/html/mozilla_splash_page.html">mozilla_splash_page.html</a>
                 </section>
+                <section>
+                    <h3>
+                        MVS検証でわかったこと
+                    </h3>
+                    <ul>
+                        <li>
+                            iframeタグのframeborder属性は使わず、CSSの方でborder: noneで表現した方がいい（Youtubeからのhtmlコードを使用したのだが、MVSではエラーとして出た）
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>
+                        まだスッキリしない部分
+                    </h3>
+                    <ul>
+                        <li>
+                            imgタグのsizes属性「(max-width: 500px) ~px」この部分
+                        </li>
+                        <li>
+                            max-widthは画面幅500px以下の時の意味
+                        </li>
+                        <li>
+                            srcsetにimage-400w 400w, image-700w 700wが指定されている時、
+                            <br>画面幅が500px以下の場合400wに指定した画像が表示される。
+                        </li>
+                        <li>
+                            ~pxの部分はさらにそのimage-400wの画像の幅を調整しているかもしれない
+                        </li>
+                        <li>
+                            極端にsizes属性を「(max-width: 500px) 1000pxに指定すると画面幅500px以下の時image-400wの画像の方に変わることは変わりないが、
+                            <br>そのimage-400w画像を1000pxに伸ばして表示するかも（元々は画面幅が狭い時は低画質の画像を利用して最適化をする用途の技術だけどこの場合は低画質の画像に変えてさらに大きく伸ばしているからもっと画像が荒れて見える）
+                        </li>
+                        <li>
+                            ちょっとこの課題の元データのCSSを消して試してみよう->予想通りだった
+                        </li>
+                        <li>
+                            svg形式は画面幅による画像の入れ替わりをCSSの方でコントロールした方がいいと内容があった
+                            <br>この課題はHTML課題だったためCSSを触る内容を省き、SVGの画像だけスルーしているのかも
+                        </li>
+                    </ul>
+                </section>
             </article>
         </article>
     </main>
