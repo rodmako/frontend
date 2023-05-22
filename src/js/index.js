@@ -64,3 +64,7 @@ function htmlCodeToString(){
         target.innerHTML = htmlOuterText;
     });
 }
+
+function logoTextClickToIndexPage(){
+    window.location.href = "./index.html";
+}
