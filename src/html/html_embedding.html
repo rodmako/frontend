@@ -125,8 +125,21 @@
                         <pre class="code-pre" data-type="html-outer-text"></pre>
                     </article>
                 </section>
-                <section>
-                    <h3>object</h3>
+                <section data-type="html-code">
+                    <h3>object, embed</h3>
+                    <object data="/assets/docs/sample_pdf.pdf" type="application/pdf" width="600" height="600">
+                        <p>
+                          You don't have a PDF plugin, but you can
+                          <a href="/assets/docs/sample_pdf.pdf">download the PDF file. </a>
+                        </p>
+                    </object>
+                    <embed src="/assets/docs/sample_pdf.pdf" type="application/pdf" width="600" height="600">
+                    <pre class="code-pre" data-type="html-outer-text"></pre>
+                    <ul>
+                        <li>
+                            object-PDF pluginがない時にaタグが代わりに見える
+                        </li>
+                    </ul>
                 </section>
             </article>
         </article>
