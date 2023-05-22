@@ -5,32 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INDEX</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        header {
+            padding: 5px 50px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+        }
+        
+        .container {
+            padding: 0 100px;
+        }
+
+        section {
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>INDEX</h1>
-    <ul>
-        <li>
-            <h2>HTML</h2>
-            <ul>
-                <li>
-                    <a href="/src/html/html_beginner.html">HTML Beginner</a>
-                </li>
-                <li>
-                    <a href="/src/html/html_embedding.html">HTML Embedding</a>
-                </li>
-                <li>
-                    <a href="/src/html/html_table.html">HTML Table</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <h2>CSS</h2>
-            <ul>
-                <li>
-                    <a href="./css.html">CSS</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <header>
+        <h1>INDEX</h1>
+    </header>
+    <main>
+        <article class="container">
+            <article>
+                <ul>
+                    <li>
+                        HTML・CSSの技術の中「間違えて理解していた・知らなかった・存在の理由がわからず感覚的に使っていた・使っていなかった」もの
+                    </li>
+                    <li>
+                        主にMDNを用いてHTML・CSSの正確な理解・検証・ものづくり「作業スピード・正確さを上げる」
+                    </li>
+                    <li>
+                        参考--
+                        <a target="_blank" href="https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML">
+                            Mozilla Developer Network
+                        </a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h2>HTML</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="/src/html/html_beginner.html">HTML Beginner</a>
+                        </li>
+                        <li>
+                            <a href="/src/html/html_embedding.html">HTML Embedding</a>
+                        </li>
+                        <li>
+                            <a href="/src/html/html_table.html">HTML Table</a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article>
+                <h2>CSS</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="/src/html/css.html">CSS</a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </article>     
+    </main>
+    <footer>
+    </footer>
 </body>
 </html>
