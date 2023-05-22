@@ -99,14 +99,12 @@
   <body>
     <header>
       <h1>Mozilla</h1>
-      <!-- insert <img> element, link to the small
-          version of the Firefox logo -->
-
+      <img src="/assets/images/mozilla_splash_page_image/firefox_logo-only_RGB-120w.png" alt="">
     </header>
 
     <main>
       <article>
-        <!-- insert iframe from youtube -->
+        <iframe width="400" height="315" src="https://www.youtube.com/embed/ojcNcvb1olg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
         <h2>Rocking the free web</h2>
 
@@ -117,23 +115,41 @@
 
       <div class="further-info">
         <!-- insert images with srcsets and sizes -->
-        <a href="https://www.mozilla.org/en-US/firefox/new/">
-          <img>
+        <a target="_blank" href="https://www.mozilla.org/en-US/firefox/new/">
+            <img 
+            srcset="/assets/images/mozilla_splash_page_image/firefox_logo-only_RGB-120w.png 120w,
+            /assets/images/mozilla_splash_page_image/firefox_logo-only_RGB-400w.png 400w" 
+            sizes="(max-width: 500px) 300px, 100%"
+            src="/assets/images/mozilla_splash_page_image/firefox_logo-only_RGB-400w.png" 
+            alt="">
         </a>
-        <a href="https://www.mozilla.org/">
-          <img>
+        <a target="_blank" href="https://www.mozilla.org/">
+            <img 
+            srcset="/assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-120w.png 120w,
+            /assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-400w.png 400w" 
+            sizes="(max-width: 500px) 300px, 100%"
+            src="/assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-400w.png" 
+            alt="">
         </a>
-        <a href="https://addons.mozilla.org/">
-          <img>
+        <a target="_blank" href="https://addons.mozilla.org/">
+            <img 
+            srcset="/assets/images/mozilla_splash_page_image/firefox-addons-120w.jpg 120w,
+            /assets/images/mozilla_splash_page_image/firefox-addons-400w.jpg 400w" 
+            sizes="(max-width: 500px) 300px, 100%"
+            src="/assets/images/mozilla_splash_page_image/firefox-addons-400w.jpg" 
+            alt="">
         </a>
-        <a href="https://developer.mozilla.org/en-US/">
-          <img>
+        <a target="_blank" href="https://developer.mozilla.org/en-US/">
+            <img src="/assets/images/mozilla_splash_page_image/mdn.svg" alt="">
         </a>
         <div class="clearfix"></div>
       </div>
 
       <div class="red-panda">
-        <!-- insert picture element -->
+        <picture>
+            <source srcset="/assets/images/mozilla_splash_page_image/red-panda-600w.jpg" media="(max-width: 600px)">
+            <img src="/assets/images/mozilla_splash_page_image/red-panda-1600w.jpg" alt="">
+        </picture>
       </div>
 
     </main>
