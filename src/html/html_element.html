@@ -429,6 +429,147 @@
                 <p>Rocks!</p>
                 <p>chrome設定(アドレスバーにコピー): chrome://settings/content/javascript/</p>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">optgroup</h2>
+                <section>
+                    <ul>
+                        <li>
+                            optgroupの名前から連想できるようにselectタグの中のoptionらをさらにグループ化する用途
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <label for="selectForOptgroupTest"></label>
+                    <select name="item" id="selectForOptgroupTest">
+                        <optgroup label="ホワイト">
+                            <option value="xs">ホワイト-サイズ-s</option>
+                            <option value="x">ホワイト-サイズ-m</option>
+                            <option value="l" disabled>ホワイト-サイズ-l</option>
+                            <option value="xl">ホワイト-サイズ-xl</option>
+                        </optgroup>
+                        <optgroup label="ブラック">
+                            <option value="xs">ブラック-サイズ-s</option>
+                            <option value="x">ブラック-サイズ-m</option>
+                            <option value="l" disabled>ブラック-サイズ-l</option>
+                            <option value="xl" disabled>ブラック-サイズ-xl</option>
+                        </optgroup>
+                    </select>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">output</h2>
+                <section>
+                    <ul>
+                        <li>
+                            output　名前通り計算や利用者の行動の結果を示すタグ
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <form oninput="output.value=parseInt(a.value)%parseInt(b.value)">
+                        <input id="a" name="a" type="number" step="1" max="255"> % <br>
+                        <input id="b" name="b" type="range" min="0" max="100" value="50" onchange="labelB.innerHTML=this.value">
+                        (<label id="labelB" for="b">50</label>) <br>
+                        = <output name="output" for="a b">0</output>
+                    </form>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">progress</h2>
+                <section>
+                    <ul>
+                        <li>
+                            progress　そのまま家庭、進行状態
+                        </li>
+                        <li>
+                            max指定しないと1 minは0で属性として指定不可
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <progress max="100" value="20"></progress>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">ruby, rp, rt</h2>
+                <section>
+                    <ul>
+                        <li>
+                            ruby 東アジアの発音を表す
+                        </li>
+                        <li>
+                            rpの間には「(」、「)」を使う。（rubyタグを支援していない時に環境で文字の上じゃなくて横に発音が出る。漢（kan）字(ji)）
+                        </li>
+                        <li>
+                            rtは発音そのものを入れる
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>日本
+                        <ruby>
+                            明日<rp>(</rp><rt>Ashita</rt><rp>)</rp>
+                        </ruby>
+                    </p>
+                    <p>韓国
+                        <ruby>
+                            明<rp>(</rp><rt>myon</rt><rp>)</rp>
+                            日<rp>(</rp><rt>il</rt><rp>)</rp>
+                        </ruby>
+                    </p>
+                    <p>中国（簡体）
+                        <ruby>
+                            明<rp>(</rp><rt>ming</rt><rp>)</rp>
+                            日<rp>(</rp><rt>ri</rt><rp>)</rp>
+                        </ruby>
+                    </p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">s</h2>
+                <section>
+                    <ul>
+                        <li>
+                            sタグはもう関係がない・もう正確ではない部分を取消線で表す
+                        </li>
+                        <li>
+                            文書編集<em>記録</em>用途に使うのは望ましくない（del, insタグを使う）
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p>今日の夜ご飯は<s>ステーキ</s>TKGにたくあん2枚</p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">select</h2>
+                <section>
+                    <ul>
+                        <li>
+                            multiple属性をつけたら複数選択可能になる
+                        </li>
+                        <li>
+                            size属性は中の要素optionを何個見せるか
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <form action="/src/html/html_element.html" method="get">
+                        <fieldset>
+                            <legend>多分command(ctrl)押しながら選択したほうがいい</legend>
+                            <select name="ingredient" id="ingredient" size="2" multiple>
+                                <optgroup label="食材">
+                                    <option value="carrot">にんじん</option>
+                                    <option value="onion">玉ねぎ</option>
+                                    <option value="pumpkin">カボチャ</option>
+                                    <option value="beanSeedling">闘病</option>
+                                </optgroup>
+                            </select>
+                            <input type="submit" value="買う">
+                        </fieldset>
+                    </form>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
