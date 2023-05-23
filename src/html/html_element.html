@@ -541,6 +541,35 @@
                     <p>今日の夜ご飯は<s>ステーキ</s>TKGにたくあん2枚</p>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">select</h2>
+                <section>
+                    <ul>
+                        <li>
+                            multiple属性をつけたら複数選択可能になる
+                        </li>
+                        <li>
+                            size属性は中の要素optionを何個見せるか
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <form action="/src/html/html_element.html" method="get">
+                        <fieldset>
+                            <legend>多分command(ctrl)押しながら選択したほうがいい</legend>
+                            <select name="ingredient" id="ingredient" size="2" multiple>
+                                <optgroup label="食材">
+                                    <option value="carrot">にんじん</option>
+                                    <option value="onion">玉ねぎ</option>
+                                    <option value="pumpkin">カボチャ</option>
+                                    <option value="beanSeedling">闘病</option>
+                                </optgroup>
+                            </select>
+                            <input type="submit" value="買う">
+                        </fieldset>
+                    </form>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
