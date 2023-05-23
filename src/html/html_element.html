@@ -285,6 +285,32 @@
                     <a href="#dfn-definition">定義の定義</a>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">fieldset</h2>
+                <section>
+                    <ul>
+                        <li>
+                            複数のコントローラ（input）とラベルをつなぐ
+                        </li>
+                    </ul>             
+                </section>
+                <section>
+                    <form action="/src/html/html_element.html" method="get" id="fieldsetTestForm">
+                        <fieldset>
+                            <legend>動物</legend>
+                            <label for="animal-name">名前：</label>
+                            <input type="text" name="animalName" id="animalName" placeholder="動物の名前をつけてください。"><br>
+                            <input type="radio" name="animal" id="monkey" value="monkey">
+                            <label for="monkey">猿</label><br>
+                            <input type="radio" name="animal" id="dog" value="dog">
+                            <label for="dog">ワンちゃん</label><br>
+                            <input type="radio" name="animal" id="cat" value="cat">
+                            <label for="cat">猫</label><br>
+                        </fieldset>
+                        <input type="submit" value="名前をつける">
+                    </form>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
