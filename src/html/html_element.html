@@ -205,6 +205,22 @@
                     <p>ただvalueを指定するタグかもしれない</p>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">datalist</h2>
+                <p>他のコントロールで選べる・オススメの選択肢が表現できる<br>
+                複数のoptionタグを用いる</p>
+                <section>
+                    <label for="juice-choice">好きな飲み物は？</label>
+                    <input type="text" list="juice-products" id="juice-choice" name="juice-choice">
+                    <datalist id="juice-products">
+                        <option value="コカコーラゼロ"></option>
+                        <option value="711ファイバ"></option>
+                        <option value="炭酸水"></option>
+                        <option value="緑茶"></option>
+                        <option value="ジャスミンティ"></option>
+                    </datalist>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
