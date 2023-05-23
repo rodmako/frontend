@@ -7,6 +7,26 @@
     <title>HTML Element</title>
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/index.js"></script>
+    <style>
+        data:hover::after {
+            content: ' (ID ' attr(value) ')';
+            font-size: 0.7em;
+        }
+        hgroup {
+            text-align: right;
+            padding-right: 16px;
+            border-right: 10px solid #00c8d7;
+        }
+
+        hgroup h1 {
+            margin-bottom: 0;
+        }
+
+        hgroup p {
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -172,6 +192,242 @@
                     ボタンにformmethod="post"or"get"を追加すればformactionと同じくformのmethodより優先される</p>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">data</h2>
+                <section>
+                    <ul>
+                        <li>
+                            機械が読み取れる解釈本とつなぐ
+                        </li>
+                        <li>
+                            時間・日付に関連した情報はtimeタグを使うこと
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            <data value="日本語">日本語</data>
+                        </li>
+                        <li>
+                            <data value="100145">数字</data>
+                        </li>
+                        <li>
+                            <data value="english">英語</data>
+                        </li>
+                    </ul>
+                    <p>ただvalueを指定するタグかもしれない</p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">datalist</h2>
+                <p>他のコントロールで選べる・オススメの選択肢が表現できる<br>
+                複数のoptionタグを用いる</p>
+                <section>
+                    <label for="juice-choice">好きな飲み物は？</label>
+                    <input type="text" list="juice-products" id="juice-choice" name="juice-choice">
+                    <datalist id="juice-products">
+                        <option value="コカコーラゼロ"></option>
+                        <option value="711ファイバ"></option>
+                        <option value="炭酸水"></option>
+                        <option value="緑茶"></option>
+                        <option value="ジャスミンティ"></option>
+                    </datalist>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">del, ins</h2>
+                <ul>
+                    <li>
+                        del(delete): 削除された部分(変更理由を追跡するチケット・リソースのURL-cite, datetime属性可)
+                    </li>
+                    <li>
+                        ins(insert): 追加された部分(変更理由を追跡するチケット・リソースのURL-cite,datetime属性可)
+                    </li>
+                </ul>
+                <section>
+                    2月11日の昼メニュー・<del cite="チケット・理由のリソースURL" datetime="2001-02-09">ハンバーグ</del>・<ins cite="チケット・理由のリソースURL" datetime="2002-02-10">肉じゃが</ins>・玄米飯・キムチ・バナナ
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">details</h2>
+                <section>
+                    <ul>
+                        <li>
+                            開く・閉じるのが可能なウィジェット
+                        </li>
+                        <li>
+                            閲覧（開く）状態のみ詳細内容を見せる
+                        </li>
+                        <li>
+                            summaryタグを使ってlabelのテキストが指定できる
+                        </li>
+                        <li>
+                            detailsタグにopenの属性を追加すれば開いた状態になる
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <details open>
+                        <summary>詳細を開く</summary>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolor nisi aspernatur possimus molestias est officia officiis labore libero dolorum? Voluptatem ex tempora molestiae quis dolorum, iusto qui eos accusamus!</p>
+                    </details>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">dfn</h2>
+                <section>
+                    <ul>
+                        <li>
+                            単語を定義するためのタグ
+                        </li>
+                        <li>
+                            &lt;dfn id="def-html"&gt;&lt;abbr title="Hyper Text Markup Language"&gt;HTML...<br>
+                            &lt;a href="#def-html"&gt;HTML&lt;/a&gt;<br>
+                            のようによく使う
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <details>
+                        <summary>
+                            <dfn id="dfn-definition">定義</dfn>
+                        </summary>
+                        <p>定義（ていぎ）は、ある言葉の正確な意味や用法について、人々の間で共通認識を定めるよう行われる作業。語義。一般的にそれは「○○とは・・・・・である」という言い換えの形で表現される。コミュニケーションを円滑で取り違いなく行うために必要とされる。[1]
+                            基本的に定義が決められる場合は1つである。これは、複数の場合、矛盾が生じるからである。ただし例外もある(例：電子掲示板用語の「キャップ」、CDソフトに付く帯の「キャップ」など)。</p>
+                    </details>
+                    <a href="#dfn-definition">定義の定義</a>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">fieldset</h2>
+                <section>
+                    <ul>
+                        <li>
+                            複数のコントローラ（input）とラベルをつなぐ
+                        </li>
+                    </ul>             
+                </section>
+                <section>
+                    <form action="/src/html/html_element.html" method="get" id="fieldsetTestForm">
+                        <fieldset>
+                            <legend>動物</legend>
+                            <label for="animalName">名前：</label>
+                            <input type="text" name="animalName" id="animalName" placeholder="動物の名前をつけてください。"><br>
+                            <input type="radio" name="animal" id="monkey" value="monkey">
+                            <label for="monkey">猿</label><br>
+                            <input type="radio" name="animal" id="dog" value="dog">
+                            <label for="dog">ワンちゃん</label><br>
+                            <input type="radio" name="animal" id="cat" value="cat">
+                            <label for="cat">猫</label><br>
+                        </fieldset>
+                        <input type="submit" value="名前をつける">
+                    </form>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">figure, figcaption</h2>
+                <section>
+                    <ul>
+                        <li>
+                            独立的コンテンツ表現
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <figure>
+                        <img src="/assets/images/mozilla_splash_page_image/firefox_logo-only_RGB-120w.png" alt="">
+                        <figcaption>crazy fox rolling</figcaption>
+                    </figure>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <ul>
+                    <li>
+                        複数のh1~h6をグループ化
+                    </li>
+                    <li>
+                        MDNの例題ではpも普通に入れているMVSでもそれについて通知がなかった
+                    </li>
+                </ul>
+                <hgroup>
+                    <h2 data-target="jump-title">hgroup h2</h2>
+                    <p>hgroup p</p>
+                </hgroup>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">meter</h2>
+                <section>
+                    <ul>
+                        <li>
+                            min: 最小
+                        </li>
+                        <li>
+                            max: 最大
+                        </li>
+                        <li>
+                            low: 低いとみなす
+                        </li>
+                        <li>
+                            high: 高いとみなす
+                        </li>
+                        <li>
+                            optimum: 理想的な値
+                        </li>
+                        <li>
+                            min=0 max=100 low=20 high=80 value=10 optimum=90 <br>
+                            の場合0~100の棒の中10に位置している<br>
+                            optimumが90で大きな差があって赤色に見える
+                            もしlow highの間に位置していれば黄色
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <label for="meterTest1">Meter: </label>
+                    <meter id="meterTest1" min="0" max="100" low="20" high="80" value="10" optimum="90">
+                        10/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest2">Meter: </label>
+                    <meter id="meterTest2" min="0" max="100" low="20" high="80" value="30" optimum="90">
+                        30/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest3">Meter: </label>
+                    <meter id="meterTest3" min="0" max="100" low="20" high="80" value="50" optimum="90">
+                        50/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest4">Meter: </label>
+                    <meter id="meterTest4" min="0" max="100" low="20" high="80" value="80" optimum="90">
+                        70/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest5">Meter: </label>
+                    <meter id="meterTest5" min="0" max="100" low="20" high="80" value="100" optimum="90">
+                        90/100
+                    </meter>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">noscript</h2>
+                <ul>
+                    <li>
+                        ブラウザがscriptを許容しているときはnoscriptタグの中身は画面に表示されない（chrome検証ではみれた）
+                    </li>
+                </ul>
+                <noscript>
+                    現在ブラウザの設定でjavascriptが無効になっています。<br>
+                    下記のリンクをクリックし、javascriptを有効に変更してください。<br>
+                    <a href="https://www.enablejavascript.io/">javascriptを有効に変更する</a>
+                    <p>chrome設定(アドレスバーにコピー): chrome://settings/content/javascript/</p>
+                </noscript>
+                <p>Rocks!</p>
+                <p>chrome設定(アドレスバーにコピー): chrome://settings/content/javascript/</p>
         </article>
     </main>
     <footer>
