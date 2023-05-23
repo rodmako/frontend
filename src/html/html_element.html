@@ -120,7 +120,7 @@
                     </ul>
                 </section>
                 <section data-type="html-code">
-                    <base target="_blank" href="https://example.com">
+                    <base target="_blank" href="/">
                     <a href="#こんな感じで動く">謎のリンク</a>
                     <p>押してページのアドレスを見る</p>
                     <pre class="code-pre" data-type="html-outer-text"></pre>
@@ -138,6 +138,57 @@
                         <span>اَلأَعْشَى</span> - 1st place（数字とハイフンが前に移っている）</p>
                     <p>bdiタグで外国語を囲んだ時<br>
                         <bdi>اَلأَعْشَى</bdi> - 1st place（正しい）</p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">bdo</h2>
+                <p>「始まる」の部分をそれぞれbdoタグで囲んでdir属性をltr,rtlにし検証</p>
+                <section>
+                    <h3>bdo dir="ltr"</h3>
+                    <p>梅雨が<bdo dir="ltr">始まる</bdo></p>
+                </section>
+                <section>
+                    <h3>bdo dir="rtl"</h3>
+                    <p>梅雨が<bdo dir="rtl">始まる</bdo></p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">button</h2>
+                <section>
+                    <h3>button autofocus</h3>
+                    <button autofocus>button</button>
+                    <button autofocus>button</button>
+                    <p>autofocus属性はページ内１個使える<br>
+                    2個以上使った場合、最初のautofocus要素にfocusが当たる</p>
+                </section>
+                <section>
+                    <h3>button form</h3>
+                    <form action="" method="get" id="form-test">
+                        <input type="text">
+                    </form>
+                    <button form="form-test">button</button>
+                    <p>input - submitではないボタン<br>
+                    上記のformのidをボタンのform属性で使っている</p>
+                </section>
+                <section>
+                    <h3>button formaction</h3>
+                    <form action="/formのactionで来た" method="get" id="form-formaction-test">
+                        <input type="text">
+                    </form>
+                    <ul>
+                        <li>
+                            <p>formaction<em>適応</em>ボタン</p>
+                            <button form="form-formaction-test" formaction="/buttonのformaction属性で来た">button</button>
+                        </li>
+                        <li>
+                            <p>formaction<em>非適応</em>ボタン</p>
+                            <button form="form-formaction-test">button</button>
+                        </li>
+                    </ul>
+                    <p>formのidを使っているボタンは同様<br>
+                    ボタンの属性にformactionを追加すればformのactionより優先される<br>
+                    ※ページアドレスの変化を見ること<br>
+                    ボタンにformmethod="post"or"get"を追加すればformactionと同じくformのmethodより優先される</p>
                 </section>
             </article>
         </article>
