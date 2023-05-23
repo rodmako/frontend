@@ -7,6 +7,12 @@
     <title>HTML Element</title>
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/index.js"></script>
+    <style>
+        data:hover::after {
+            content: ' (ID ' attr(value) ')';
+            font-size: 0.7em;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -170,6 +176,33 @@
                     ボタンの属性にformactionを追加すればformのactionより優先される<br>
                     ※ページアドレスの変化を見ること<br>
                     ボタンにformmethod="post"or"get"を追加すればformactionと同じくformのmethodより優先される</p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">data</h2>
+                <section>
+                    <ul>
+                        <li>
+                            機械が読み取れる解釈本とつなぐ
+                        </li>
+                        <li>
+                            時間・日付に関連した情報はtimeタグを使うこと
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li>
+                            <data value="日本語">日本語</data>
+                        </li>
+                        <li>
+                            <data value="100145">数字</data>
+                        </li>
+                        <li>
+                            <data value="english">英語</data>
+                        </li>
+                    </ul>
+                    <p>ただvalueを指定するタグかもしれない</p>
                 </section>
             </article>
         </article>
