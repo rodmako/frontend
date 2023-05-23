@@ -12,6 +12,20 @@
             content: ' (ID ' attr(value) ')';
             font-size: 0.7em;
         }
+        hgroup {
+            text-align: right;
+            padding-right: 16px;
+            border-right: 10px solid #00c8d7;
+        }
+
+        hgroup h1 {
+            margin-bottom: 0;
+        }
+
+        hgroup p {
+            margin: 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -298,7 +312,7 @@
                     <form action="/src/html/html_element.html" method="get" id="fieldsetTestForm">
                         <fieldset>
                             <legend>動物</legend>
-                            <label for="animal-name">名前：</label>
+                            <label for="animalName">名前：</label>
                             <input type="text" name="animalName" id="animalName" placeholder="動物の名前をつけてください。"><br>
                             <input type="radio" name="animal" id="monkey" value="monkey">
                             <label for="monkey">猿</label><br>
@@ -326,6 +340,20 @@
                         <figcaption>crazy fox rolling</figcaption>
                     </figure>
                 </section>
+            </article>
+            <article class="card" data-target="jump">
+                <ul>
+                    <li>
+                        複数のh1~h6をグループ化
+                    </li>
+                    <li>
+                        MDNの例題ではpも普通に入れているMVSでもそれについて通知がなかった
+                    </li>
+                </ul>
+                <hgroup data-target="jump-title">
+                    <h2>hgroup h2</h2>
+                    <p>hgroup p</p>
+                </hgroup>
             </article>
         </article>
     </main>
