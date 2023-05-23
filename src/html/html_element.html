@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -124,6 +124,20 @@
                     <a href="#こんな感じで動く">謎のリンク</a>
                     <p>押してページのアドレスを見る</p>
                     <pre class="code-pre" data-type="html-outer-text"></pre>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">bdi</h2>
+                <section>
+                    <ul>
+                        <li>どんな言語が入るかわからない範囲で使う（ある外国語から周りのテキストへの影響力を切る）</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>spanタグで外国語を囲んだ時<br>
+                        <span>اَلأَعْشَى</span> - 1st place（数字とハイフンが前に移っている）</p>
+                    <p>bdiタグで外国語を囲んだ時<br>
+                        <bdi>اَلأَعْشَى</bdi> - 1st place（正しい）</p>
                 </section>
             </article>
         </article>
