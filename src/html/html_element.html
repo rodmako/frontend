@@ -456,6 +456,24 @@
                     </select>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">output</h2>
+                <section>
+                    <ul>
+                        <li>
+                            output　名前通り計算や利用者の行動の結果を示すタグ
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <form oninput="output.value=parseInt(a.value)%parseInt(b.value)">
+                        <input id="a" name="a" type="number" step="1" max="255"> % <br>
+                        <input id="b" name="b" type="range" min="0" max="100" value="50" onchange="labelB.innerHTML=this.value">
+                        (<label id="labelB" for="b">50</label>) <br>
+                        = <output name="output" for="a b">0</output>
+                    </form>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
