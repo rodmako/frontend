@@ -350,13 +350,13 @@
                         MDNの例題ではpも普通に入れているMVSでもそれについて通知がなかった
                     </li>
                 </ul>
-                <hgroup data-target="jump-title">
-                    <h2>hgroup h2</h2>
+                <hgroup>
+                    <h2 data-target="jump-title">hgroup h2</h2>
                     <p>hgroup p</p>
                 </hgroup>
             </article>
             <article class="card" data-target="jump">
-                <h2 data-target="title">meter</h2>
+                <h2 data-target="jump-title">meter</h2>
                 <section>
                     <ul>
                         <li>
@@ -413,6 +413,21 @@
                     </meter>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">noscript</h2>
+                <ul>
+                    <li>
+                        ブラウザがscriptを許容しているときはnoscriptタグの中身は画面に表示されない（chrome検証ではみれた）
+                    </li>
+                </ul>
+                <noscript>
+                    現在ブラウザの設定でjavascriptが無効になっています。<br>
+                    下記のリンクをクリックし、javascriptを有効に変更してください。<br>
+                    <a href="https://www.enablejavascript.io/">javascriptを有効に変更する</a>
+                    <p>chrome設定(アドレスバーにコピー): chrome://settings/content/javascript/</p>
+                </noscript>
+                <p>Rocks!</p>
+                <p>chrome設定(アドレスバーにコピー): chrome://settings/content/javascript/</p>
         </article>
     </main>
     <footer>
