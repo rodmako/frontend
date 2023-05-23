@@ -355,6 +355,64 @@
                     <p>hgroup p</p>
                 </hgroup>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="title">meter</h2>
+                <section>
+                    <ul>
+                        <li>
+                            min: 最小
+                        </li>
+                        <li>
+                            max: 最大
+                        </li>
+                        <li>
+                            low: 低いとみなす
+                        </li>
+                        <li>
+                            high: 高いとみなす
+                        </li>
+                        <li>
+                            optimum: 理想的な値
+                        </li>
+                        <li>
+                            min=0 max=100 low=20 high=80 value=10 optimum=90 <br>
+                            の場合0~100の棒の中10に位置している<br>
+                            optimumが90で大きな差があって赤色に見える
+                            もしlow highの間に位置していれば黄色
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <label for="meterTest1">Meter: </label>
+                    <meter id="meterTest1" min="0" max="100" low="20" high="80" value="10" optimum="90">
+                        10/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest2">Meter: </label>
+                    <meter id="meterTest2" min="0" max="100" low="20" high="80" value="30" optimum="90">
+                        30/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest3">Meter: </label>
+                    <meter id="meterTest3" min="0" max="100" low="20" high="80" value="50" optimum="90">
+                        50/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest4">Meter: </label>
+                    <meter id="meterTest4" min="0" max="100" low="20" high="80" value="80" optimum="90">
+                        70/100
+                    </meter>
+                </section>
+                <section>
+                    <label for="meterTest5">Meter: </label>
+                    <meter id="meterTest5" min="0" max="100" low="20" high="80" value="100" optimum="90">
+                        90/100
+                    </meter>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
