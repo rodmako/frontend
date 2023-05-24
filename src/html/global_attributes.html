@@ -102,6 +102,134 @@
                     <p contenteditable="true">クリックして試してみよう　本文</p>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">draggable</h2>
+                <section>
+                    <figure>
+                        <img 
+                        draggable="false"
+                        srcset="/assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-120w.png 120w,
+                        /assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-400w.png 400w"
+                        sizes="(max-width: 1000px) 120px, 400px"
+                        src="/assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-400w.png"
+                        alt="">
+                        <figcaption>draggable="false"</figcaption>
+                    </figure>
+                    <figure>
+                        <img 
+                        draggable="true"
+                        srcset="/assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-120w.png 120w,
+                        /assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-400w.png 400w"
+                        sizes="(max-width: 1000px) 120px, 400px"
+                        src="/assets/images/mozilla_splash_page_image/mozilla-dinosaur-head-400w.png"
+                        alt="">
+                        <figcaption>draggable="true"</figcaption>
+                    </figure>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">enterkeyhint</h2>
+                <section>
+                    <ul>
+                        <li>
+                            Gboard(モバイルキーボード)で確認できた
+                        </li>
+                        <li>
+                            enterkeyhint属性の値によってenterキーの模様が変わるらしい
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <img src="https://www.tagindex.com/html/attribute/image/enterkeyhint.png" alt="">
+                    <br>
+                    <cite>
+                        <a target="_blank" href="https://www.tagindex.com/html/attribute/enterkeyhint.html">--TAGindex</a>
+                    </cite>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">hidden, inert, disabled</h2>
+                <section>
+                    <ul>
+                        <li>
+                            hidden→
+                            <button onclick="alert('クリックされた')" hidden>hiddenされている</button>
+                            ←ここにボタンがあるはずだけどhiddenでレンダリングされない
+                        </li>
+                        <li>
+                            inert
+                            <button onclick="alert('クリックされた')" inert>hiddenされている</button>
+                        </li>
+                        <li>
+                            disabled
+                            <button onclick="alert('クリックされた')" disabled>hiddenされている</button>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">inputmode</h2>
+                <section>
+                    <ul>
+                        <li>
+                            input typeと一緒に使えばいい
+                        </li>
+                        <li>
+                            モバイルで確認できた（仮想キーボード）
+                        </li>
+                        <li>
+                            none: キーボードが出ない
+                        </li>
+                        <li>
+                            text: 普通
+                        </li>
+                        <li>
+                            tel: 電話の時のキーボード
+                        </li>
+                        <li>
+                            url: textの,が/に変わる。enterkeyhintも（enterキーの模様）変わる
+                        </li>
+                        <li>
+                            email: textの,が＠に変わる。enterkeyhintはurlと一緒の模様になる
+                        </li>
+                        <li>
+                            numeric: telは数字の後ろにアルファベットが一緒にあったが、これは数字だけでスッキリ
+                        </li>
+                        <li>
+                            decimal: numericと見た目一緒
+                        </li>
+                        <li>
+                            search: textと見た目一緒
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">is</h2>
+                <section>
+                    <ul>
+                        <li>
+                            カスタムタグ作った時名前指定してその名前をタグに使うじゃ<br>
+                            名前変えずにis属性にjs側でdefineしたキーワード入れれば同じ動きする
+                        </li>
+                    </ul>
+                </section>
+                <section data-type="html-code">
+                    <script>
+                        class ExampleButton extends HTMLInputElement {
+                           constructor() {
+                              super();
+                              this.addEventListener('click', () => {
+                                 alert('テストOK');
+                              });
+                           }
+                        }
+                        customElements.define('example-button', ExampleButton, { extends: 'input' });
+                     </script>
+                     <p><input is="example-button" value="テストボタン1"></p>
+                     <pre class="code-pre" data-type="html-outer-text"></pre>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
