@@ -204,6 +204,32 @@
                     </ul>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">is</h2>
+                <section>
+                    <ul>
+                        <li>
+                            カスタムタグ作った時名前指定してその名前をタグに使うじゃ<br>
+                            名前変えずにis属性にjs側でdefineしたキーワード入れれば同じ動きする
+                        </li>
+                    </ul>
+                </section>
+                <section data-type="html-code">
+                    <script>
+                        class ExampleButton extends HTMLInputElement {
+                           constructor() {
+                              super();
+                              this.addEventListener('click', () => {
+                                 alert('テストOK');
+                              });
+                           }
+                        }
+                        customElements.define('example-button', ExampleButton, { extends: 'input' });
+                     </script>
+                     <p><input is="example-button" value="テストボタン1"></p>
+                     <pre class="code-pre" data-type="html-outer-text"></pre>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
