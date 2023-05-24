@@ -147,6 +147,26 @@
                     </cite>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">hidden, inert, disabled</h2>
+                <section>
+                    <ul>
+                        <li>
+                            hidden→
+                            <button onclick="alert('クリックされた')" hidden>hiddenされている</button>
+                            ←ここにボタンがあるはずだけどhiddenでレンダリングされない
+                        </li>
+                        <li>
+                            inert
+                            <button onclick="alert('クリックされた')" inert>hiddenされている</button>
+                        </li>
+                        <li>
+                            disabled
+                            <button onclick="alert('クリックされた')" disabled>hiddenされている</button>
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
