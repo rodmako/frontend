@@ -24,8 +24,8 @@
     </header>
     <main>
         <article class="container">
-            <article class="card">
-                <h1>グローバル属性</h1>
+            <article class="card" data-target="jump">
+                <h1 data-target="jump-title">グローバル属性</h1>
                 <section>
                     <ul>
                         <li>
@@ -35,6 +35,24 @@
                             タグによって効果がないこともある
                         </li>
                     </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">accesskey</h2>
+                <section>
+                    <ul>
+                        <li>
+                            accesskey属性はショットカットキーを指定する属性
+                        </li>
+                        <li>
+                            ブラウザとOSの組み合わせによってショットカットキーの起動の仕方は異なる<br>
+                            <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Global_attributes/accesskey">accesskey--MDN</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <button onclick="alert('accesskey');" accesskey="s"><kbd>control</kbd> + <kbd>option</kbd> + <kbd>s(accesskey)</kbd></button>
+                    <p>このボタンタグにはaccesskey="s"を指定している</p>
                 </section>
             </article>
         </article>
