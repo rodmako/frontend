@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global attributes</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <script src="/src/js/index.js"></script>
+</head>
+<body>
+    <header>
+        <article class="header-container">
+            <button class="header-button-logo" onclick="logoTextClickToIndexPage();">
+                <span class="header-title">Global attributes</span>
+            </button>
+            <button class="header-nav-button" onclick="listOnOff(this);">List show</button>
+        </article>
+        <article>
+            <nav>
+                <ul class="header-nav" data-type="nav-menu"></ul>
+            </nav>
+        </article>
+    </header>
+    <main>
+        <article class="container">
+            <article class="card" data-target="jump">
+                <h1 data-target="jump-title">グローバル属性</h1>
+                <section>
+                    <ul>
+                        <li>
+                            全てのHTML要素に使用可能
+                        </li>
+                        <li>
+                            タグによって効果がないこともある
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">accesskey</h2>
+                <section>
+                    <ul>
+                        <li>
+                            accesskey属性はショットカットキーを指定する属性
+                        </li>
+                        <li>
+                            ブラウザとOSの組み合わせによってショットカットキーの起動の仕方は異なる<br>
+                            <a href="https://developer.mozilla.org/ja/docs/Web/HTML/Global_attributes/accesskey">accesskey--MDN</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <button onclick="alert('accesskey');" accesskey="s"><kbd>control</kbd> + <kbd>option</kbd> + <kbd>s(accesskey)</kbd></button>
+                    <p>このボタンタグにはaccesskey="s"を指定している</p>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">autocapitalize</h2>
+                <section>
+                    <ul>
+                        <li>
+                            物理的なキーボード（パソコンの）では影響がない。<br>
+                            音声入力・モバイル・仮想キーボードの時だけ動く
+                        </li>
+                        <li>
+                            typeがurl, email, passwordのinputタグにautocapitalize属性を追加しても動かない
+                        </li>
+                        <li>
+                            入力・修正するテキストの英文字の大文字・小文字を制御する
+                        </li>
+                        <li>
+                            off or none 全ての文字小文字に
+                        </li>
+                        <li>
+                            on or sentence 文の頭文字だけ大文字、他の文字小文字
+                        </li>
+                        <li>
+                            words 単語ごと頭文字を大文字に
+                        </li>
+                        <li>
+                            characters 全ての文字を大文字に
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">contenteditable</h2>
+                <section>
+                    <ul>
+                        <li>
+                            ユーザーによる編集が可能であることを指定できる属性
+                        </li>
+                        <li>
+                            true or false
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <p contenteditable="false">このテキストはcontenteditable属性がfalseである</p>
+                    <h3 contenteditable="true">クリックして試してみよう　タイトル</h3>
+                    <p contenteditable="true">クリックして試してみよう　本文</p>
+                </section>
+            </article>
+        </article>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
