@@ -85,6 +85,48 @@
                     </form>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">readonly</h2>
+                <section>
+                    <h3>例</h3>
+                    <label for="readonly-hidden">hidden</label>
+                    <input id="readonly-hidden" type="text" value="Text" hidden>
+                    <br>
+                    <label for="readonly-disabled">disabled</label>
+                    <input id="readonly-disabled" type="text" value="Text" disabled>
+                    <br>
+                    <label for="readonly-inert">inert</label>
+                    <input id="readonly-inert" type="text" value="Text" inert>
+                    <br>
+                    <label for="readonly-readonly">readonly</label>
+                    <input id="readonly-readonly" type="text" value="Text" readonly>
+                </section>
+                <section>
+                    <h3><kbd>tab</kbd>キーで選択できない</h3>
+                    <ul>
+                        <li>
+                            hidden
+                        </li>
+                        <li>
+                            disabled
+                        </li>
+                        <li>
+                            inert
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>select(マウス)で中身選択できない(もちろんブラウザの検証ではできる)</h3>
+                    <ul>
+                        <li>
+                            hidden
+                        </li>
+                        <li>
+                            inert
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
