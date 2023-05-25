@@ -7,6 +7,11 @@
     <title>Attributes</title>
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/index.js"></script>
+    <style>
+        .input-text:valid {
+            background-color: greenyellow;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -55,6 +60,29 @@
                             accept属性にはimage/* または video/*
                         </li>
                     </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">pattern</h2>
+                <section>
+                    <ul>
+                        <li>
+                            いつもjsで長い行で作っていたのがこんなに正規式だけで作れるなんって。。。
+                        </li>
+                        <li>
+                            パスワード入力inputとパスワード再入力inputの比較をしてくれるのはhtmlの中でないかな
+                        </li>
+                        <li>
+                            android, safariでは効かないらしい
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <form action="#" method="get">
+                        <label for="user-password">パスワード</label>
+                        <input class="input-text" type="password" id="user-password" name="user-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="最小8文字以上（数字、小文字、大文字それぞれ１個以上）" autocomplete="new-password" required>
+                        <input type="submit" value="送る">
+                    </form>
                 </section>
             </article>
         </article>
