@@ -7,6 +7,7 @@
     <title>Global attributes</title>
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/index.js"></script>
+    <base target="_blank">
 </head>
 <body>
     <header>
@@ -228,6 +229,25 @@
                      </script>
                      <p><input is="example-button" value="テストボタン1"></p>
                      <pre class="code-pre" data-type="html-outer-text"></pre>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">tabindex</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <kbd>tab</kbd>キーを押して移動・focusする順番
+                        </li>
+                        <li>
+                            -1で<kbd>tab</kbd>キーではfocusできず、マウスのみfocus可能
+                        </li>
+                        <li>
+                            tabindexはあまり使わないほうがいい。その代わり順番に合わせて正しい順番にマークアップしたほうがいい。
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <a href="./tabindex.html">tabindex.html</a>
                 </section>
             </article>
         </article>
