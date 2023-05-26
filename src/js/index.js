@@ -67,5 +67,5 @@ function htmlCodeToString(){
 }
 
 function logoTextClickToIndexPage(){
-    window.location.href = "./index.html";
+    window.location.href = "/src/html/index.html";
 }
