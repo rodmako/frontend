@@ -7,6 +7,11 @@
     <title>Attributes</title>
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/index.js"></script>
+    <style>
+        .input-text:valid {
+            background-color: greenyellow;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,7 +29,104 @@
     </header>
     <main>
         <article class="container">
-
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">accept</h2>
+                <section>
+                    <ul>
+                        <li>
+                            許容するファイル形式を制御
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <label for="file">画像を選択（jpg, jpeg, png）複数可</label>
+                    <input type="file" id="file" accept=".jpg, .jpeg, .png" multiple>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">capture</h2>
+                <section>
+                    <ul>
+                        <li>
+                            モバイルでしか動かない（パソコンの場合ファイル選択が開く）
+                        </li>
+                        <li>
+                            environment: 背面カメラ
+                        </li>
+                        <li>
+                            user: インカメラ
+                        </li>
+                        <li>
+                            accept属性にはimage/* または video/*
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">pattern</h2>
+                <section>
+                    <ul>
+                        <li>
+                            いつもjsで長い行で作っていたのがこんなに正規式だけで作れるなんって。。。
+                        </li>
+                        <li>
+                            パスワード入力inputとパスワード再入力inputの比較をしてくれるのはhtmlの中でないかな
+                        </li>
+                        <li>
+                            android, safariでは効かないらしい
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <form action="#" method="get">
+                        <label for="user-password">パスワード</label>
+                        <input class="input-text" type="password" id="user-password" name="user-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="最小8文字以上（数字、小文字、大文字それぞれ１個以上）" autocomplete="new-password" required>
+                        <input type="submit" value="送る">
+                    </form>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">readonly</h2>
+                <section>
+                    <h3>例</h3>
+                    <label for="readonly-hidden">hidden</label>
+                    <input id="readonly-hidden" type="text" value="Text" hidden>
+                    <br>
+                    <label for="readonly-disabled">disabled</label>
+                    <input id="readonly-disabled" type="text" value="Text" disabled>
+                    <br>
+                    <label for="readonly-inert">inert</label>
+                    <input id="readonly-inert" type="text" value="Text" inert>
+                    <br>
+                    <label for="readonly-readonly">readonly</label>
+                    <input id="readonly-readonly" type="text" value="Text" readonly>
+                </section>
+                <section>
+                    <h3><kbd>tab</kbd>キーで選択できない</h3>
+                    <ul>
+                        <li>
+                            hidden
+                        </li>
+                        <li>
+                            disabled
+                        </li>
+                        <li>
+                            inert
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>select(マウス)で中身選択できない(もちろんブラウザの検証ではできる)</h3>
+                    <ul>
+                        <li>
+                            hidden
+                        </li>
+                        <li>
+                            inert
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
