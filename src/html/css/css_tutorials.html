@@ -32,6 +32,71 @@
                     <a href="./biog.html">biog.html</a>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">selector</h2>
+                <section>
+                    <h3>優先順位</h3>
+                    <ol>
+                        <li>
+                            color: red !important;
+                        </li>
+                        <li>
+                            &lt;someTag style="color: red; back..."
+                        </li>
+                        <li>
+                            #idName { ... }
+                        </li>
+                        <li>
+                            .className { ... }, selector[attr="value"] { ... }
+                        </li>
+                        <li>
+                            h1::first-letter { ... }
+                        </li>
+                        <li>
+                            body, h1, p { ... }
+                        </li>
+                        <li>
+                            *, +, >, ~, :not()は優先順位に影響がない。
+                        </li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>属性セレクター</h3>
+                    <ul>
+                        <li>
+                            a[title] title属性があるaタグ
+                        </li>
+                        <li>
+                            a[title="value"] valueと完全一致のみ
+                        </li>
+                        <li>
+                            a[title~="value"] valueと完全一致 or 空白の区切りでvalueと一致している<br>
+                            &lt;a title="valueX value" OK<br>
+                            &lt;a title="value valueX" OK<br>
+                            &lt;a title="value/valueX" NG<br>
+                        </li>
+                        <li>
+                            a[title|="value"] valueと完全一致 or valueの<strong>後ろ</strong>にハイフン（-）がつくもの<br>
+                            &lt;a title="value-valueX" OK<br>
+                            &lt;a title="valueX-value" NG<br>
+                            &lt;a title="valueY-value-valueX" NG<br>
+                        </li>
+                        <li>
+                            a[title^="va"] titleがvaで始まるaタグ
+                        </li>
+                        <li>
+                            a[title$="ue"] titleがueで終わるaタグ
+                        </li>
+                        <li>
+                            a[title*="xyz"] titleの中にxyzを含んでいるaタグ
+                        </li>
+                        <li>
+                            セレクターの最後に「i」を入れたら大文字小文字の関係なく選択できる<br>
+                            a[title*="abc" i]
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
