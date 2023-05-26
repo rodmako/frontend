@@ -97,6 +97,29 @@
                     </ul>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">combinator</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <ul>
+                                <li>
+                                    .className div = .classNameの中にあるpタグの全部
+                                </li>
+                                <li>
+                                    .className > div = .classNameのすぐ下にあるpタグだけ (そのdivタグの中にdivタグがあったとしてもそれは反映されない)(1段階見る)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            h1 + p = h1タグのすぐ後にくるpタグ１個(1段階見る)。中・前にあっても無効。h1タグとpタグの間他の要素があったら適応されない
+                        </li>
+                        <li>
+                            h1 ~ p h1タグの後ろにあるpタグ(1段階見る)
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
