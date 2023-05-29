@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Box Model Task 1: Standard and Alternate Box Models</title>
+    <link rel="stylesheet" href="../styles.css"/>
+
+    <style>
+      body {
+        background-color: #fff;
+        color: #333;
+        font: 1.2em / 1.5 Helvetica Neue, Helvetica, Arial, sans-serif;
+        padding: 1em;
+        margin: 0;
+      }
+      
+      .box {
+        border: 5px solid rebeccapurple;
+        background-color: lightgray;
+        padding: 40px;
+        margin: 40px;
+        width: 300px;
+        height: 150px;
+      }
+
+      .alternate1 {
+        box-sizing: content-box;
+      }
+
+      .alternate2 {
+        box-sizing: border-box;
+        width: 390px;
+        height: 240px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">none box sizing</div>
+    <div class="box alternate1">border-box <br> border-boxをcontent-boxに変えた</div>
+    <div class="box alternate2">border-box <br> border-boxを残したままpadding,margin,borderを顧慮した計算で幅と高さの指定を追加した</div>
+  </body>
+</html>
