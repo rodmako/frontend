@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cascade_test</title>
+    <style>
+        @layer one, two , three;
+
+        p { /*0-0-1*/
+            background-color: red;
+            color:pink;
+        }
+
+        p{ /*0-0-1*/
+            background-color: blue;
+        }
+
+        p.p#p { /*1-1-1　１位のimportantがなかったらこれが１位*/
+            background-color: green;
+        }
+
+        p#p { /*1-0-1*/
+            background-color: antiquewhite;
+        }
+
+        p.p { /*0-1-0*/
+            background-color: green;
+        }
+
+        p { /*1-0-0-1 １位*/
+            background-color: yellow;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        @layer one {
+            .p {
+                color: red;
+            }
+        }
+
+        @layer two {
+            p.p#p {
+                color: yellow;
+            }
+        }
+
+        @layer three {
+            p {
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            cascade_test
+        </h1>
+    </header>
+    <main>
+        <article>
+            <h2>優先順位</h2>
+            <p class="p" id="p">text</p>
+        </article>
+        <article>
+            <section>
+                <ol>
+                    <li>
+                        階段式ー書いてある順番
+                    </li>
+                    <li>
+                        詳細度ーtag, class/selectors, id, important(同じ点数であれば古い記述が反映)
+                    </li>
+                    <li>
+                        cascade layers - 詳細度が低くてもlayerの中にあるものが勝つ<br>
+                        layer同士ではより後に定義したものが勝つ(layer同士で詳細度は関係ない, 同じlayerの中では詳細度関係ある)<br>
+                        layerの前にlayerじゃないスタイルを宣言したら、そのスタイルはlayerの後に適応される<br>
+                        importantがあれば全部無視される
+                    </li>
+                    <li>
+                        インラインスタイル
+                    </li>
+                    <li>
+                        !important
+                    </li>
+                </ol>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
