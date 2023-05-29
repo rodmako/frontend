@@ -120,6 +120,48 @@
                     </ul>
                 </section>
             </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">特性・点数・優先順位</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <p>
+                                <code>
+                                    /* specificity: 0-3-3 */<br>
+                                    div div .nav:nth-child(2) a:hover {<br>
+                                        border: 10px double black;<br>
+                                    }<br>
+                                </code>
+                            </p>
+                        </li>
+                        <li>
+                            div, div, aで0-0-3点
+                        </li>
+                        <li>
+                            .nav :nth-child() :hover　で0-３-0点
+                        </li>
+                        <li>
+                            .navがliタグの場合<br>
+                            <p>
+                                <code>
+                                    /* specificity: 0-2-4 */<br>
+                                    div div li:nth-child(2) a:hover {<br>
+                                        border: 5px solid red;<br>
+                                    }<br>
+                                </code>
+                                <br>
+                                これはliを使っているために0-3-3より後ろに書いたとしても負けて適応されない
+                            </p>
+                        </li>
+                        <li>
+                            id-class, pseudo-tag　の点数構成（0-0-0）だけどインラインスタイルには勝てない(0-0-0-0)
+                        </li>
+                        <li>
+                            全部勝てるのが!important　必要な時じゃなければ絶対使わないほうがいい　cascadeの作動方法を変更させる
+                        </li>
+                    </ul>
+                </section>
+            </article>
         </article>
     </main>
     <footer>
