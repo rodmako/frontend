@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cascade test2</title>
+    <style>
+        @media (min-width: 1000px) {
+            @layer site;
+        }
+            
+        @layer page {
+            h1 {
+                text-decoration: overline; 
+                color: red;
+            }
+        }
+
+        @layer site {
+            h1 {
+                text-decoration: underline; 
+                color: green;
+            }
+        }
+
+        h2 { 
+            color: orange;
+            background-color: green; 
+            text-decoration: overline #ffc0cb !important; 
+            box-shadow: 5px 5px red !important;
+        }
+        @layer B,A;
+
+        @layer A {
+            h2 {
+            color: grey; 
+            background-color: black !important;
+            text-decoration: line-through grey; 
+            box-shadow: -5px -5px yellow !important;
+            font-style: normal;
+            font-weight: normal !important;
+            }
+        }
+
+        @layer B {
+            h2 { 
+            color: aqua;
+            background-color: maroon !important;
+            text-decoration: underline aqua;
+            box-shadow: -5px 5px red !important;
+            font-style: italic;
+            font-weight: bold !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            cascade test2
+        </h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <h2>Inline styles</h2>
+            </div>            
+        </section>
+        <section>
+            <ul>
+                <li>
+                    layer同士のimportantの戦いではより上に制限したimportantが強いらしい
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
