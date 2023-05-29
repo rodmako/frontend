@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+        .a {
+            width: 350px;
+            height: 150px;
+            background-image: linear-gradient(105deg, rgba(0,249,255,1) 39%, rgba(51,56,57,1) 96%);
+            background-size: contain;
+        }
+
+        .b {
+            width: 350px;
+            height: 150px;
+            background: radial-gradient(rgba(0,249,255,1) 10%, rgba(51,56,57,1) 90%);
+            background-size: contain;
+        }
+
+        .c {
+            width: 350px;
+            height: 150px;
+            background-image: repeating-radial-gradient(powderblue, black 8px, red 1px, white 16px);
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            background
+        </h1>
+    </header>
+    <main>
+        <article>
+            <div class="wrapper">
+                <div class="box a"></div>
+                <div class="box b"></div>
+                <div class="box c"></div>
+                <div class="box d"></div>
+                <div class="box e"></div>
+                <div class="box f"></div>
+            </div>              
+        </article>
+        <article>
+            <ul>
+                <li>
+                    background-image: url(image.png) or linear-gradient() or radial-gradient()　画像複数可能
+                </li>
+                <li>
+                    background-repeat: no-repeat, repeat-x, repeat-y, repeat
+                </li>
+                <li>
+                    background-size: cover, contain, any unit
+                </li>
+                <li>
+                    background-position: any unit x any unit y, top center, top 20px right 10px
+                </li>
+                <li>
+                    background-attachment: fixed scroll local
+                </li>
+            </ul>
+        </article>
+    </main>
+</body>
+</html>
