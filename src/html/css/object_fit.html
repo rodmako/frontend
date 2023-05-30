@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object_fit</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 8px solid black;
+            background-color: burlywood;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .contain {
+            object-fit: contain;
+        }
+
+        .cover {
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            object_fit
+        </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+                <ul>
+                    <li>
+                        background-sizeと一緒の動きをする
+                    </li>
+                    <li>
+                        違いはbackground-imageでの画像ではなくimgタグでの画像をコントロールしているところ
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <caption>
+                    枠の部分はwidth:200px; height:200pxを指定している
+                </caption>
+                <div class="box">
+                    <img src="/assets/images/mozilla_splash_page_image/red-panda-1600w.jpg" alt="" class="contain">
+                </div>
+                <p>contain</p>
+                <div class="box">
+                    <img src="/assets/images/mozilla_splash_page_image/red-panda-1600w.jpg" alt="" class="cover">
+                </div>
+                <p>cover</p>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
