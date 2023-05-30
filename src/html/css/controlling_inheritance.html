@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlling inheritance</title>
+    <style>
+        .mom {
+            color: red;
+        }
+
+        blockquote {
+            background-color: aqua;
+            border: 2px solid blue;
+        }
+
+        .bq1 {
+            all: revert;
+        }
+
+        .bq2 {
+            all: unset;
+        }
+
+        .bq3 {
+            all: initial;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            initial, unset, revert
+        </h1>
+    </header>
+    <main>
+        <article>
+            <h2>unset, initial, revert</h2>
+            <section class="mom">
+                <blockquote>
+                    blockquote セレクタでスタイリング
+                </blockquote>
+                <blockquote class="bq1">
+                    blockquote セレクタでスタイリング revert
+                </blockquote>
+                <blockquote class="bq2">
+                    blockquote セレクタでスタイリング unset
+                </blockquote>
+                <blockquote class="bq3">
+                    blockquote セレクタでスタイリング initial
+                </blockquote>
+            </section>
+            <section>
+                <ul>
+                    <li>
+                        継承があるスタイル残して・タグのもとスタイルに戻したいーrevert
+                    </li>
+                    <li>
+                        継承がスタイル残して・タグのスタイルを消したいーunset
+                    </li>
+                    <li>
+                        継承・タグのスタイルを0にしたいーinitial
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </main>
+</body>
+</html>

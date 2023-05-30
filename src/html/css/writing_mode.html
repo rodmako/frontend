@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>writing mode</title>
+    <style>
+        .ol {
+            position: relative;
+            background-color: lightblue;
+            block-size: 200px;
+            margin: 50px;
+            writing-mode: vertical-lr;
+            padding: 50px 5px 15px 5px;
+        }
+
+        .ol::before {
+            content: 'block-size';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            top: -20px;
+            width: 100%;
+            height: 20px;
+            background-color: black;
+            writing-mode: horizontal-tb;
+            color: white;
+        }
+        
+        .ol::after {
+            content: 'inline-size';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: -20px;
+            top: 0;
+            width: 20px;
+            height: 100%;
+            background-color: black;
+            writing-mode: vertical-lr;
+            color: white;
+        }
+
+        .ol--active {
+            writing-mode: vertical-rl;
+        }
+
+        .wrapper {
+            display: flex;
+            width: fit-content;
+            height: fit-content;
+            background-color: lightcoral;
+            padding: 15px;
+        }
+
+        .box {
+            width: 300px;
+            height: 100px;
+            inline-size: none;
+            block-size: none;
+            border: 3px solid black;
+            overflow: hidden;
+        }
+
+        .box--inline {
+            width: none;
+            height: none;
+            inline-size: 300px;
+            block-size: 100px;
+        }
+
+        .horizontal {
+            writing-mode: horizontal-tb;
+        }
+
+        .vertical {
+            writing-mode: vertical-lr;
+        }
+    </style>
+    <script>
+        const changeTextDirection = () => {
+            const ul = document.querySelector("ol");
+            const state = document.getElementById("state");
+            if(ul.classList.contains("ol--active")){
+                state.innerHTML = "下記のulはvertical-lr状態";
+                ul.classList.remove("ol--active");
+            }else {
+                state.innerHTML = "下記のulはvertical-rl状態";
+                ul.classList.add("ol--active");
+            }
+        }
+        
+        const changeSizeFormat = () => {
+            const box = document.querySelectorAll(".box");
+            const state = document.getElementById("state2");
+            const btn = document.getElementById("changeSizeFormatButton");
+            box.forEach(target => {
+                if(target.classList.contains("box--inline")){
+                    target.classList.remove("box--inline");
+                    state.innerHTML = "現在width、height";
+                    btn.innerHTML = "inline-size, block-sizeに変更"
+                }else {
+                    target.classList.add("box--inline");
+                    state.innerHTML = "現在inline-size, block-size";
+                    btn.innerHTML = "width、heightに変更"
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            writing mode
+        </h1>
+    </header>
+    <main>
+        <article>
+            <p id="state">下記のulはvertical-lr状態</p>
+            <button onclick="changeTextDirection()">click</button>
+            <ol class="ol">
+                <li class="a">
+                    horizontal-tb 横になる
+                </li>
+                <li class="b">
+                    vertical-rl 盾になる（右から左）
+                </li>
+                <li class="c">
+                    vertical-lr 盾になる（左から右）
+                </li>
+                <li>
+                    盾になったらwidth, heightも回転する
+                </li>
+                <li>
+                    <a href="https://www.w3.org/International/questions/qa-scripts#which">RTLの言語</a>
+                </li>
+            </ol>
+        </article>
+        <article>
+            <section>
+                <p id="state2">現在width、height</p>
+                <button id="changeSizeFormatButton" onclick="changeSizeFormat()">inline-size, block-sizeに変更</button>
+            </section>
+            <section class="wrapper">
+                <div class="box horizontal">
+                    <h2>horizontal-tb</h2>
+                    <p>horizontal-tb</p>
+                </div>
+                <div class="box vertical">
+                    <h2>vertical-lr</h2>
+                    <p>vertical-lr</p>
+                </div>
+            </section>
+            <section>
+                <ul>
+                    <li>
+                        horizontal, verticalに関わらず、<br>
+                        幅と高さをwidth, heightで指定すれば一般的に知っている幅と高さの方向を基準に幅と高さになる。<br>
+                        幅と高さをinline-size, block-sizeで指定すればコンテンツが回転されたため幅と高さも回転されて反映される。
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </main>
+</body>
+</html>

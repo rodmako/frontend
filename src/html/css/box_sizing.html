@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box sizing</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box1 {
+            inline-size: 350px;
+            block-size: 150px;
+            margin: 10px;
+            padding: 100px;
+            border: 5px solid black;
+            background-color: red;
+        }
+        .box2 {
+            box-sizing: border-box;
+            inline-size: 350px;
+            block-size: 150px;
+            margin: 10px;
+            padding: 100px;
+            border: 5px solid black;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>box-sizing</h1>
+    </header>
+    <main>
+        <article class="box1">
+            box1 box-sizingなし
+        </article>
+        <article class="box2">
+            box2 box-sizing: border-box
+        </article>
+        <article>
+            <section>
+                <ul>
+                    <li>
+                        width inline-size
+                    </li>
+                    <li>
+                        height block-size
+                    </li>
+                    <li>
+                        box-sizing: content-boxはpadding margin borderがwidth, heightと別に足される
+                    </li>
+                    <li>
+                        box-sizing: border-boxはpadding margin border全部合わせてwidth, heightの値になる
+                    </li>
+                </ul>
+            </section>
+        </article>
+    </main>
+</body>
+</html>

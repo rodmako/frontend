@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS_Tutorials</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="/src/css/css_tutorilas.css">
+    <script src="/src/js/index.js"></script>
+    <base target="_blank">
+</head>
+<body>
+    <header>
+        <article class="header-container">
+            <button class="header-button-logo" onclick="logoTextClickToIndexPage();">
+                <span class="header-title">CSS Tutorials</span>
+            </button>
+            <button class="header-nav-button" onclick="listOnOff(this);">List show</button>
+        </article>
+        <article>
+            <nav>
+                <ul class="header-nav" data-type="nav-menu"></ul>
+            </nav>
+        </article>
+    </header>
+    <main>
+        <article class="container">
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">Tutorials</h2>
+                <section>
+                    <a href="./biog.html">biog.html</a>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">selector</h2>
+                <section>
+                    <h3>優先順位</h3>
+                    <ol>
+                        <li>
+                            color: red !important;
+                        </li>
+                        <li>
+                            &lt;someTag style="color: red; back..."
+                        </li>
+                        <li>
+                            #idName { ... }
+                        </li>
+                        <li>
+                            .className { ... }, selector[attr="value"] { ... }
+                        </li>
+                        <li>
+                            h1::first-letter { ... }
+                        </li>
+                        <li>
+                            body, h1, p { ... }
+                        </li>
+                        <li>
+                            *, +, >, ~, :not()は優先順位に影響がない。
+                        </li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>属性セレクター</h3>
+                    <ul>
+                        <li>
+                            a[title] title属性があるaタグ
+                        </li>
+                        <li>
+                            a[title="value"] valueと完全一致のみ
+                        </li>
+                        <li>
+                            a[title~="value"] valueと完全一致 or 空白の区切りでvalueと一致している<br>
+                            &lt;a title="valueX value" OK<br>
+                            &lt;a title="value valueX" OK<br>
+                            &lt;a title="value/valueX" NG<br>
+                        </li>
+                        <li>
+                            a[title|="value"] valueと完全一致 or valueの<strong>後ろ</strong>にハイフン（-）がつくもの<br>
+                            &lt;a title="value-valueX" OK<br>
+                            &lt;a title="valueX-value" NG<br>
+                            &lt;a title="valueY-value-valueX" NG<br>
+                        </li>
+                        <li>
+                            a[title^="va"] titleがvaで始まるaタグ
+                        </li>
+                        <li>
+                            a[title$="ue"] titleがueで終わるaタグ
+                        </li>
+                        <li>
+                            a[title*="xyz"] titleの中にxyzを含んでいるaタグ
+                        </li>
+                        <li>
+                            セレクターの最後に「i」を入れたら大文字小文字の関係なく選択できる<br>
+                            a[title*="abc" i]
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">combinator</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <ul>
+                                <li>
+                                    .className div = .classNameの中にあるpタグの全部
+                                </li>
+                                <li>
+                                    .className > div = .classNameのすぐ下にあるpタグだけ (そのdivタグの中にdivタグがあったとしてもそれは反映されない)(1段階見る)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            h1 + p = h1タグのすぐ後にくるpタグ１個(1段階見る)。中・前にあっても無効。h1タグとpタグの間他の要素があったら適応されない
+                        </li>
+                        <li>
+                            h1 ~ p h1タグの後ろにあるpタグ(1段階見る)
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">特性・点数・優先順位</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <p>
+                                <code>
+                                    /* specificity: 0-3-3 */<br>
+                                    div div .nav:nth-child(2) a:hover {<br>
+                                        border: 10px double black;<br>
+                                    }<br>
+                                </code>
+                            </p>
+                        </li>
+                        <li>
+                            div, div, aで0-0-3点
+                        </li>
+                        <li>
+                            .nav :nth-child() :hover　で0-３-0点
+                        </li>
+                        <li>
+                            .navがliタグの場合<br>
+                            <p>
+                                <code>
+                                    /* specificity: 0-2-4 */<br>
+                                    div div li:nth-child(2) a:hover {<br>
+                                        border: 5px solid red;<br>
+                                    }<br>
+                                </code>
+                                <br>
+                                これはliを使っているために0-3-3より後ろに書いたとしても負けて適応されない
+                            </p>
+                        </li>
+                        <li>
+                            id-class, pseudo-tag　の点数構成（0-0-0）だけどインラインスタイルには勝てない(0-0-0-0)
+                        </li>
+                        <li>
+                            全部勝てるのが!important　必要な時じゃなければ絶対使わないほうがいい　cascadeの作動方法を変更させる
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">order, specificity, cascade layers</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./cascade_test.html">cascade_test.html</a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">order, specificity, cascade layers2</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./cascade_test2.html">cascade_test2.html</a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">initial, unset, revert</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./controlling_inheritance.html">controlling_inheritance.html</a>
+                        </li>
+                    </ul>
+                </section>       
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">box-sizing</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./box_sizing.html">box-sizing.html</a>
+                        </li>
+                    </ul>
+                </section>       
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">box model例題１</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./box_model1.html">box_model1.html</a>
+                            <cite>
+                                <a href="https://github.com/mdn/css-examples/blob/main/learn/tasks/box-model/box-models-download.html">
+                                    --github rachelandrew
+                                </a>
+                            </cite>
+                        </li>
+                    </ul>
+                </section>       
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">background</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./background.html">background.html</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="./background_border.html">background_border.html</a>
+                        </li>
+                    </ul>
+                </section>       
+            </article>
+            <article class="card" data-target="jump">
+                <h2 data-target="jump-title">writing-mode</h2>
+                <section>
+                    <ul>
+                        <li>
+                            <a href="./writing_mode.html">writing_mode.html</a>
+                        </li>
+                    </ul>
+                </section>       
+            </article>
+        </article>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
