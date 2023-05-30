@@ -165,6 +165,54 @@
                 </ul>
             </section>
         </article>
+        <style>
+            .margin-test {
+                display: flex;
+                background-color: lightpink;
+            }
+
+            .margin-box {
+                border: 5px dashed black;
+            }
+
+            .margin {
+                margin-left: 50px;
+            }
+
+            .margin-inline {
+                margin-inline-start: 50px;
+            }
+            
+
+        </style>
+        <article>
+            <section class="margin-test">
+                <div class="margin-box horizontal margin-inline">
+                    <h2>margin</h2>
+                    <p>margin-inline-start</p>
+                </div>
+                <div class="margin-box vertical margin-inline">
+                    <h2>margin</h2>
+                    <p>margin-inline-start（値は一緒）</p>
+                </div>
+
+                <div class="margin-box horizontal margin">
+                    <h2>margin</h2>
+                    <p>margin-left</p>
+                </div>
+                <div class="margin-box vertical margin">
+                    <h2>margin</h2>
+                    <p>margin-left（値は一緒）</p>
+                </div>
+            </section>
+            <section>
+                <ul>
+                    <li>
+                        width, heightと同じくコンテンツの開始がどこ向きかを顧慮しながら使い分ける
+                    </li>
+                </ul>
+            </section>
+        </article>
     </main>
 </body>
 </html>
