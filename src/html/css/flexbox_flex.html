@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox 0 — starting code</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      header {
+        background: purple;
+        height: 100px;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        line-height: 100px;
+        margin: 0;
+      }
+
+      article {
+        padding: 10px;
+        margin: 10px;
+        background: aqua;
+      }
+
+      /* Add your flexbox CSS below here */
+
+      section {
+        display: flex;
+        gap: 50px;
+        padding: 10px;
+        flex-flow: row wrap;
+      }
+
+      article {
+        flex: 1 200px;
+        margin: 0;
+      }
+
+      article:nth-of-type(3) {
+        flex: 2 200px;
+      }
+
+      .section {
+        display: block;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sample flexbox example</h1>
+    </header>
+    <section class="section">
+        <ul>
+            <li>
+                flex-grow - flex: 2; 割り当てられる空間の割合
+            </li>
+            <li>
+                flex-basis - flex: 30%;
+            </li>
+            <li>
+                flex-grow | flex-basis - flex: 1 200px; flex itemsの最小大きさ
+            </li>
+            <li>
+                flex-grow | flex-shrink - flex: 2 2; shrinkはflex-containerからはみ出るようになった時縮小させる
+            </li>
+            <li>
+                flex: 2 2 10%;
+            </li>
+            <li>
+                単位がついていたらflex-basis,<br> shrinkは　flex: 2 2;のようにflex-growの次に書くかflex-shrinkで書くしかない
+            </li>
+            <li>
+                flex だけの話ではないけど正式名称（flex-grow, flex-sh...)は以前の定義を再定義する場面以外は使わない方がいい（複雑になる）
+            </li>
+        </ul>
+    </section>
+
+    <section>
+      <article>
+        <h2>flex: 1 200px</h2>
+
+        <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health goth gastropub hammock.</p>
+      </article>
+
+      <article>
+        <h2>flex: 1 200px</h2>
+
+        <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health goth gastropub hammock.</p>
+      </article>
+
+      <article>
+        <h2>flex: 2 200px</h2>
+
+        <p>Tacos actually microdosing, pour-over semiotics banjo chicharrones retro fanny pack portland everyday carry vinyl typewriter. Tacos PBR&B pork belly, everyday carry ennui pickled sriracha normcore hashtag polaroid single-origin coffee cold-pressed. PBR&B tattooed trust fund twee, leggings salvia iPhone photo booth health goth gastropub hammock.</p>
+
+        <p>Cray food truck brunch, XOXO +1 keffiyeh pickled chambray waistcoat ennui. Organic small batch paleo 8-bit. Intelligentsia umami wayfarers pickled, asymmetrical kombucha letterpress kitsch leggings cold-pressed squid chartreuse put a bird on it. Listicle pickled man bun cornhole heirloom art party.</p>
+      </article>
+    </section>
+  </body>
+</html>
