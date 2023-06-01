@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox align 0 — starting code</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+
+        body {
+            width: 70%;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        button {
+            font-size: 18px;
+            line-height: 1.5;
+            width: 15%;
+        }
+
+        div {
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        /* Add your flexbox CSS below here */
+
+        .test {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .test button:first-child {
+            align-self: flex-end;
+            order: 1;
+        }
+
+        .test button:nth-child(4) {
+            align-self: flex-start;
+            order: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <ul>
+            <li>
+                align-selfで１個１個の調整 
+            </li>
+            <li>
+                justify-content
+                <ul>
+                    <li>
+                        space-between - 要素の間空間を設ける
+                    </li>
+                    <li>
+                        space-around - 様相の間はもちろん、最初・最後の要素の右左にも空間を設ける
+                    </li>
+                </ul>
+            </li>
+            <li>
+                order
+                <ul>
+                    <li>
+                        order: 0が初期値
+                    </li>
+                    <li>
+                        orderの値が大きい要素が後にくる、同じorderの値を持っている要素同士ではソース上順番通りになる
+                    </li>
+                    <li>
+                        order: -1でさらに前に来ることもできる
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h2>
+            もとデータ
+        </h2>
+        <div>
+            <button>Smile</button>
+            <button>Laugh</button>
+            <button>Wink</button>
+            <button>Shrug</button>
+            <button>Blush</button>
+        </div>
+    </section>
+    
+    <section>
+        <h2>
+            テスト
+        </h2>
+        <div class="test">
+            <button>Smile</button>
+            <button>Laugh</button>
+            <button>Wink</button>
+            <button>Shrug</button>
+            <button>Blush</button>
+        </div>
+    </section>
+</body>
+
+</html>

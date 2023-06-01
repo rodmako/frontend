@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox 0 — starting code</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      header {
+        background: purple;
+        height: 100px;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        line-height: 100px;
+        margin: 0;
+      }
+
+      button {
+        inline-size: 150px;
+        block-size: 50px;
+      }
+      /* Add your flexbox CSS below here */
+
+      .main {
+        background-color: blueviolet;
+        margin: 10px;
+        padding: 15px;
+      }
+
+      .flex-container {
+        list-style-type: none;
+        background-color: antiquewhite;
+      }
+
+      .row {
+        flex-direction: row;
+      }
+
+      .col {
+        flex-direction: column;
+      }
+
+      .flex-container--flex {
+        display: flex;
+      }
+
+      .flex-container--inline-flex {
+        display: inline-flex;
+      }
+
+      .flex-container li {
+        width: 100px;
+        height: 50px;
+      }
+    </style>
+    <script>
+        const changeDisplayMode = () => {
+            const btn = document.querySelector("#cdbtn");
+            const flexbox = document.querySelectorAll(".flex-container");
+            flexbox.forEach(target=>{
+                if(target.classList.contains("flex-container--flex")){
+                    target.classList.remove("flex-container--flex");
+                    target.classList.add("flex-container--inline-flex");
+                    btn.innerHTML = "flexに変更";
+                }else {
+                    target.classList.remove("flex-container--inline-flex");
+                    target.classList.add("flex-container--flex");
+                    btn.innerHTML = "inline-flexに変更";
+                }
+            });
+        }
+
+        const changeDirection = () => {
+            const btn = document.querySelector("#crbtn");
+            const flexbox = document.querySelectorAll(".flex-container");
+            flexbox.forEach(target=>{
+                if(target.classList.contains("row")){
+                    target.classList.remove("row");
+                    target.classList.add("col");
+                    btn.innerHTML = "rowに変更";
+                }else {
+                    target.classList.remove("col");
+                    target.classList.add("row");
+                    btn.innerHTML = "colに変更";
+                }
+            });
+        }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Sample flexbox example</h1>
+    </header>
+
+    <main>
+        <section>
+            <ul>
+                <li>
+                    flexをつけたflex-containerの子要素（flex-items）にはwidth効かない・flex container(display指定した要素)自体はblockのように盾に並ぶ
+                </li>
+                <li>
+                    inline-flexをつけたflex-containerの子要素（flex-items）にはwidthきく・flex containerはinlineのように横に並ぶ
+                </li>
+                <li>
+                    flex-itemsのheightはflex-containerのflex, inline-flexどちらもきく
+                </li>
+                <li>
+                    flex itemsがflexになることは同じだけど、flex container がblockになるかinlineになるかが違う
+                </li>
+                <li>
+                    下記はwidth: 100px, height: 50px固定
+                </li>
+                <li>
+                    <button id="cdbtn" onclick="changeDisplayMode()">inline-flexに変更</button>
+                    <button id="crbtn" onclick="changeDirection()">columnに変更</button>
+                </li>
+            </ul>
+        </section>
+        <section class="main">
+            <ul class="flex-container flex-container--flex row">
+                <li>
+                    A-1
+                </li>
+                <li>
+                    A-2
+                </li>
+                <li>
+                    A-3
+                </li>
+            </ul>
+            <ul class="flex-container flex-container--flex row">
+                <li>
+                    B-1
+                </li>
+                <li>
+                    B-2
+                </li>
+                <li>
+                    B-3
+                </li>
+            </ul>
+        </section>
+    </main>
+  </body>
+</html>

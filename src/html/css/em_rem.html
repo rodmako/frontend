@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>em rem</title>
+    <style>
+        html {
+            font-size: 12px;
+        }
+        .em li {
+            font-size: 1.3em;
+        }
+        .rem li {
+            font-size: 1.3rem;
+        }
+        .percent li {
+            font-size: 130%;
+        }
+        .hsl {
+            position: relative;
+            font-size: 16px;
+            color: blue;
+            
+        }
+        .hsl::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 30px;
+            background-color: hsl(256 77% 89% /0.7);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            em rem
+        </h1>
+    </header>
+    <main>
+        <article>
+            <h2>em</h2>
+            <section>
+                <ul>
+                    <li>
+                        emは親要素のフォントサイズを基準にする
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <ul class="em">
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                12px * 1.3 * 1.3
+                            </li>
+                            <li>
+                                12px * 1.3 * 1.3
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        12px * 1.3 * 1.3 * 1.3
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                </ul>
+            </section>
+        </article>
+        <article>
+            <h2>rem</h2>
+            <section>
+                <ul>
+                    <li>
+                        remはrootのフォントサイズを基準にする
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <ul class="rem">
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                12px * 1.3
+                            </li>
+                            <li>
+                                12px * 1.3
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        12px * 1.3
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                </ul>
+            </section>
+        </article>
+        <article>
+            <h2>rem</h2>
+            <section>
+                <ul>
+                    <li>
+                        percentもemと同様(font-size: 130%)
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <ul class="percent">
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                    <li>
+                        <ul>
+                            <li>
+                                12px * 1.3 * 1.3
+                            </li>
+                            <li>
+                                12px * 1.3 * 1.3
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        12px * 1.3 * 1.3 * 1.3
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        12px * 1.3
+                    </li>
+                </ul>
+            </section>
+        </article>
+        <article>
+            <section>
+                <h2>hsl()</h2>
+                <ul>
+                    <li>
+                        色0~360、彩度0~100%、明度0~100%、/.0~1.0
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <div class="hsl">hsl(256 77% 89% /.7)</div>
+            </section>
+        </article>
+    </main>
+</body>
+</html>
