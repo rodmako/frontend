@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CSS Grid starting point</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 2em auto;
+            font: .9em/1.2 Arial, Helvetica, sans-serif;
+        }
+
+        .container > div {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgb(207,232,220);
+            border: 2px solid rgb(79,185,227);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: minmax(50px, auto);
+            gap: 15px 5px;
+        }
+    </style>
+  </head>
+
+<body>
+    <h1>Simple grid example</h1>
+    <section>
+        <ul>
+            <li>
+                grid-gap はもうgapでいい
+            </li>
+            <li>
+                1fr 1fr 2fr は　１行に要素が3つ入ることができて割合がflex-growのように　1 1 2の割合を持っていること
+            </li>
+            <li>
+                grid-template-columns　には　repeat(4, 1fr)　のように繰り返すこともできる<br>
+                （おな幅を持った４つの要素が１行になる）<br>
+                （1frを100frにしても有意味な動きはない）<br>
+                （frではない単位例えば、pxの場合要素がその値の分伸びて画面の外までいく）
+            </li>
+            <li>
+                grid-template-rowsを使えばなぜか1番目の行の高さしか影響がない<br>
+                grid-auto-rowsは全ての行の高さに影響がある
+            </li>
+            <li>
+                grid-auto-rows: minmax(50px, auto) - 最初50pxは保って欲しい・同時に内容が増えたら合わせて高さが伸びる（min-heightみたいな動き）
+            </li>
+        </ul>
+    </section>
+    <div class="container">
+        <div>Onel Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione eaque distinctio a accusantium expedita ullam soluta. Debitis nobis magnam excepturi deserunt deleniti, fugiat est nulla distinctio porro optio, ducimus nesciunt?</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+        <div>Six</div>
+        <div>Seven</div>
+    </div>
+
+</body>
+
+</html>
