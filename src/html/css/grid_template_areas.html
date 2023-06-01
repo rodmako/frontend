@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CSS Grid - line-based placement starting point</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 2em auto;
+            font: 0.9em/1.2 Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+        }
+
+        header,
+        footer {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: rgb(207, 232, 220);
+            border: 2px solid rgb(79, 185, 227);
+        }
+
+        aside {
+            border-right: 1px solid #999;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas:
+                "a b b c"
+                "d d d c"
+                "e e e e";
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+        }
+        
+        .box {
+            border: 5px solid black;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .boxA{
+            grid-area: a;
+            background-color: lightblue;
+        }
+
+        .boxB{
+            grid-area: b;
+            background-color: lightcoral;
+        }
+
+        .boxC{
+            grid-area: c;
+            background-color: lightcyan;
+        }
+        
+        .boxD{
+            grid-area: d;
+            background-color: lightgreen;
+        }
+
+        .boxE{
+            grid-area: e;
+            background-color: lightslategray;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <pre>
+                .container {
+                    display: grid;
+                    grid-template-areas:
+                        "a b b c"
+                        "d d d c"
+                        "e e e e";
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 20px;
+                }
+                
+                .box {
+                    border: 5px solid black;
+                    padding: 20px;
+                    text-align: left;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+        
+                .boxA{
+                    grid-area: a;
+                    background-color: lightblue;
+                }
+        
+                .boxB{
+                    grid-area: b;
+                    background-color: lightcoral;
+                }
+        
+                .boxC{
+                    grid-area: c;
+                    background-color: lightcyan;
+                }
+                
+                .boxD{
+                    grid-area: d;
+                    background-color: lightgreen;
+                }
+        
+                .boxE{
+                    grid-area: e;
+                    background-color: lightslategray;
+                }
+            </pre>
+        </li>
+        <li>
+            部品をパズルみたい配置する・直観的で個人的にわかりやすい
+        </li>
+    </ul>
+    <div class="container">
+        <div class="box boxA">A</div>
+        <div class="box boxB">B</div>
+        <div class="box boxC">C</div>
+        <div class="box boxD">D</div>
+        <div class="box boxE">E</div>
+    </div>
+</body>
+
+</html>
