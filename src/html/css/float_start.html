@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>My test page</title>
+    <style>
+        body {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            font: .9em/1.2 Arial, Helvetica, sans-serif
+        }
+
+        .box {
+            float: left;
+            margin-right: 15px;
+            width: 150px;
+            height: 100px;
+            border: 3px solid black;
+            border-radius: 5px;
+            background-color: rgb(207, 232, 220);
+            padding: 1em;
+        }
+
+        .box2 {
+            float: right;
+        }
+
+        .box~p {
+            background-color: lightskyblue;
+            margin-left: 100px;
+        }
+
+        p.avoid {
+            clear: none;
+            background-color: red;
+        }
+
+        
+
+    </style>
+    <script>
+        let index = 0;
+        const changeClear = (element) => {
+            const clear_values = ["left", "right", "both", "none"];
+            const target = document.querySelector(".avoid");
+            target.style.clear = clear_values[index];
+            element.innerHTML = "clear: " + clear_values[index] + ";";
+            index ++;
+            if(index >= clear_values.length){
+                index = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>シンプルな float 例題</h1>
+
+    <ul>
+        <li>
+            下記の水色の要素にmargin-left: 100px;を指定したが、floatBoxを基準にしていない<br>
+            （float:leftを指定した要素を基準にテキストだけが押し出されただけ）
+        </li>
+        <li>
+            下記の赤色の要素にclear: left;を指定してfloatの影響を避けた
+        </li>
+        <li>
+            <button onclick="changeClear(this);">clear: none;</button>
+        </li>
+    </ul>
+    <div>
+        <div class="box">float</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat
+            vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at
+            ultricies tellus laoreet sit amet. </p>
+        <div class="box box2">float</div>
+        <p class="avoid">Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra
+            egestas ligula.
+            Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat.
+            Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut
+            luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+    
+        <p>Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada ultrices. Phasellus turpis est, posuere
+            sit amet dapibus ut, facilisis sed est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+            tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus sed lobortis finibus. Vivamus eu
+            urna eget velit cursus viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>    
+
+    </div>
+</body>
+
+</html>
