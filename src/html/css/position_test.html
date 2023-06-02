@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position_test</title>
+    <style>
+        section:nth-child(2) {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            gap: 30px;
+        }
+
+        .container1 {
+            background-color:coral;
+        }
+
+        .container2 {
+            position: relative;
+            background-color:aquamarine;
+        }
+
+        .container3 {
+            position: relative;
+        }
+
+        .container1, .container2, .container3 {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+
+        .container4 {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            overflow: scroll;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+
+        .relative, .absolute, .fixed {
+            color: blue;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 1px solid black;
+        }
+
+        .relative {
+            position: relative;
+            top: 65px;
+            left: 100px;
+            border-width: 5px;
+            border-color: red;
+            z-index: 1;
+        }
+
+        .absolute {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            right: 50px;
+            bottom: 70px;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 10px;
+            right: 30px;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 10px;
+            left: 100px;
+            text-align: center;
+            background-color: red;
+        }
+
+        .static {
+            position: static;
+        }
+
+        section > ul {
+            list-style-type: none;
+        }
+        
+
+        summary {
+            font-weight: bold;
+            list-style-type: bengali;
+            line-height: 3;
+            padding: 5px 15px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(0, 0, 0, .1));
+            border: 1px solid black;
+        }
+
+        details > ul {
+            line-height: 2;
+            font-size: 1.5rem;
+            border: 1px solid black;
+            padding: 30px 50px;
+        }
+        
+        details > ul li {
+            position: relative;
+        }
+
+        details > ul li:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            position test
+        </h1>
+    </header>
+    <main>
+        <section>
+            <ul>
+                <li>
+                    <details>
+                        <summary>position: relative</summary>
+                        <ul>
+                            <li>
+                                relativeの要素はblockのような幅になる
+                            </li>
+                            <li>
+                                元々その要素が存在していた位置を基準にしている
+                            </li>
+                            <li>
+                                relativeは「元々その要素があった場所」を基準に移動するからbottom: 0をしても元々あった場所からbottom: 0だからもうなっているため、移動しない
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>position: absolute</summary>
+                        <ul>
+                            <li>
+                                absoluteの要素はinline-blockのような幅になる
+                            </li>
+                            <li>
+                                絶対positionとして画面全体を基準にする(親要素のpositionがstatic・なしの初期値の場合のみ)<br>
+                                親要素にrelative absolute fixed stickyが指定されていたらそのその親を基準にする
+                            </li>
+                            <li>
+                                absoluteを指定した要素は top, bottom / left, right の組み合わせで大きさまで変えられる<br>
+                                が、あまり使わなさそう
+                            </li>
+                            <li>
+                                absoluteは親要素の中でstaticではない要素(階層関係ない)を基準に動くからbottom: 0をしたらその親要素のbottomの０のところに移動する<br>
+                                div relative<br>
+                                ->div static<br>
+                                ->div absoluteの構造でもrelativeの要素を基準に動いていた
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>position: fixed</summary>
+                        <ul>
+                            <li>
+                                fixed　は親要素にstatic以外の値が指定されていてもviewportを基準に移動して固定する
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>position: sticky</summary>
+                        <ul>
+                            <li>
+                                sticky top, bottomだけ効いていた
+                            </li>
+                            <li>
+                                stickyが指定されている要素はソースコード上の位置にレンダリングされて指定したtopまで上がって固定される
+                            </li>
+                            <li>
+                                bottom指定すれば最初からソースコード上の位置ではなく親要素を基準にしたbottomに位置する
+                            </li>
+                            <li>
+                                親要素のposition有無・種類問わず、親要素を基準にしていた
+                            </li>
+                        </ul>
+                    </details>
+                </li> 
+                <li>
+                    z-indexも効いている
+                </li>
+            </ul>
+        </section>
+        <section>
+            <article>
+                <h2>relative</h2>
+                <div class="container1">
+                    <div class="relative">ABC</div>
+                </div>
+            </article>
+            <article>
+                <h2>absolute</h2>
+                <div class="container2">
+                    <div class="static">
+                        <div class="absolute">DEF</div>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h2>fixed</h2>
+                <div class="container3">
+                    <div class="fixed">GHI</div>
+                </div>
+            </article>
+            <article>
+                <h2>sticky</h2>
+                <div class="container4">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, quae dicta impedit dolor,  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim illo ex neque labore porro numquam fuga quas, ullam unde vitae dolores ut blanditiis Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam fugit<div class="sticky">sticky</div> ipsam possimus aperiam temporibus porro illo ab minus eligendi unde reprehenderit accusamus in, ut dicta quidem labore vel sint provident. id nobis ducimus quos, voluptates illum quia? rem error natus atque saepe eveniet at fuga assumenda? Quas mollitia commodi neque omnis quaerat voluptate minus.
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
