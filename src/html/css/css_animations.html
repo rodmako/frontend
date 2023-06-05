@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css animations</title>
+    <style>
+        .middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .list {
+            list-style-type: none;
+            padding: 0;
+            gap: 10px;
+        }
+
+        a {
+            position: relative;
+            float: left;
+        }
+
+        a,
+        a:link,
+        a:visited,
+        a:active,
+        a:focus {
+            padding: 1.8em 1rem;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        @keyframes background-shiny {
+            0% {
+                background-image: linear-gradient(-45deg, rgb(233, 233, 233, .1) 100%, white 100%);
+            }
+
+            25% {
+                background-image: linear-gradient(-45deg,  rgba(233, 233, 233, .4) 80%, white 100%);
+            }
+
+            50% {
+                background-image: linear-gradient(-45deg, rgba(233, 233, 233, .7) 49%, white 60%);
+            }
+
+            75% {
+                background-image: linear-gradient(-45deg, rgba(233, 233, 233, .9) 42%, white 10%);
+            }
+
+            100% {
+                background-image: linear-gradient(-45deg, rgba(233, 233, 233, 1) 40%, white 0%);
+            }
+        }
+
+        @keyframes border-shiny-horizontal {
+            0% {
+                background-image: linear-gradient(to right, black 0%, white 0%);
+            }
+
+            25% {
+                background-image: linear-gradient(to right, black 10%, white 30%);
+            }
+
+            50% {
+                background-image: linear-gradient(to right, black 10%, white 50%);
+            }
+
+            75% {
+                background-image: linear-gradient(to right, black 10%, white 85%);
+            }
+
+            100% {
+                background-image: linear-gradient(to right, black 10%, white 100%);
+            }
+        }
+
+        @keyframes border-shiny-vertical {
+            0% {
+                background-image: linear-gradient(to bottom, black 0%, white 0%);
+            }
+
+            25% {
+                background-image: linear-gradient(to bottom, black 10%, white 30%);
+            }
+
+            50% {
+                background-image: linear-gradient(to bottom, black 10%, white 50%);
+            }
+
+            75% {
+                background-image: linear-gradient(to bottom, black 10%, white 85%);
+            }
+
+            100% {
+                background-image: linear-gradient(to bottom, black 10%, white 100%);
+            }
+        }
+
+        .btn {
+            flex: 1;
+            background-color: black;
+            color: white;
+        }
+
+        .btn--hover-in {
+            position: relative;
+            color: black;
+            animation: background-shiny 0.2s ease-in-out 1 forwards;
+        }
+
+        .btn--hover-in::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            animation: border-shiny-horizontal 0.3s ease-in-out 1 forwards;
+        }
+
+        .btn--hover-in::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            animation: border-shiny-vertical 0.3s ease-in-out 1 forwards;
+        }
+
+        @keyframes rolling-clock {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rolling-clockwise {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(-270deg);
+            }
+        }
+
+        @keyframes change-horizontal {
+            0% {
+                background-color: rgba(0, 0, 0, .0);
+                border-radius: 5px;
+                width: 100px;
+                left: 0;
+            }
+
+            100% {
+                content: "";
+                background-color: rgba(0, 0, 0, 1);
+                border-radius: 100px;
+                width: 15px;
+                left: calc(50% - 15px/2);
+            }
+        }
+
+        .roll::before {
+            content: "追加";
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 1px;
+        }
+
+        .roll::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 1px;
+        }
+
+        .roll-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 5px solid rgba(0, 0, 0, .1);
+            background-image: linear-gradient(to top, rgba(0, 0, 0, .1), rgba(255, 255, 255, 0.9));
+        }
+
+
+        .roll--active::before {
+            animation: rolling-clock 0.8s 1 forwards, change-horizontal 1s 1 forwards;
+        }
+
+        .roll--active::after {
+            animation: rolling-clockwise 1s 1 forwards, change-horizontal 1.2s 1 forwards;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", ()=>{
+            const buttons = document.querySelectorAll(".btn");
+            buttons.forEach(button => {
+                button.addEventListener("mouseenter", () => {
+                    button.classList.add("btn--hover-in");
+                });
+                button.addEventListener("mouseleave", () => {
+                    button.classList.remove("btn--hover-in");
+                });
+            });
+
+            const roll = document.querySelector(".roll-container");
+            const target = roll.querySelector(".roll");
+            roll.addEventListener("mouseenter", () => {
+                target.classList.add("roll--active");
+            });
+            roll.addEventListener("mouseleave", () => {
+                target.classList.remove("roll--active");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>css animations</h1>
+    </header>
+    <main>
+        <section>
+            <nav>
+                <ul class="list middle">
+                    <li>
+                        <a href="" class="btn">Cool button</a>
+                    </li>
+                    <li>
+                        <a href="" class="btn">Cool button</a>
+                    </li>
+                    <li>
+                        <a href="" class="btn">Cool button</a>
+                    </li>
+                    <li>
+                        <a href="" class="btn">Cool button</a>
+                    </li>
+                    <li>
+                        <a href="" class="btn">Cool button</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section>
+            <ul>
+                <li>
+                    aタグの::before, ::afterでborderを作ったが、liにpadding: 2px;を指定してliにgradientアニメーションを付けるのもありかも
+                </li>
+            </ul>
+        </section>
+        <section class="middle">
+            <div class="roll-container">
+                <div class="roll"></div>
+            </div>
+        </section>
+        <section>
+            <ol>
+                <li>
+                    @keyframes animation名前を作成する<br>
+                    （@-webkit-keyframes, @-moz-keyframes）
+                </li>
+                <li>
+                    使いたいところに animation: animation名前 １回終了まで時間 animation進行方式　開始までdelay 反復回数　方向　完了後状態　現在状態　
+                </li>
+            </ol>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
