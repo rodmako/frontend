@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo_classes</title>
+    <style>
+        main {
+            padding: 0 30px;
+        }
+
+        section {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid black;
+        }
+
+        li {
+            color: gray;
+            border-bottom: 1px solid gray;
+            padding: 5px;
+        }
+
+        li:hover,
+        li:focus {
+            color: black;
+            border-bottom: 2px solid black;
+            font-size: 1.2rem;
+        }
+
+        summary {
+            margin: 20px 0;
+        }
+
+        :fullscreen {
+            color: #afa;
+        }
+
+        input:default,
+        option:default,
+        button:default {
+            accent-color: red;
+            outline: 2px dashed red;
+        }
+
+        input:default+label {
+            color: red;
+        }
+
+        .section__empty {
+            display: flex;
+            gap: 30px;
+        }
+
+        .section__empty>div,
+        .section__empty input:not([hidden]) {
+            flex: 1;
+            min-height: 100px;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        .section__empty button {
+            width: 100%;
+            height: 100%;
+        }
+
+        .section__empty :empty {
+            background-color: lightblue;
+        }
+
+        .section__empty :disabled {
+            background-color: lightpink;
+        }
+
+        .section__empty :enabled:not(:empty) {
+            background-color: lightgreen;
+        }
+
+        .section__empty [readonly] {
+            background-color: aqua;
+        }
+
+        .section__empty [inert] {
+            background-color: beige;
+        }
+
+        #contenteditable [readonly="false"] {
+            background-color: red;
+        }
+
+        #contenteditable:not(:read-only) {
+            background-color: blue;
+        }
+
+        #pseudo-test-1 p:first-child {
+            background-color: red;
+        }
+
+        #pseudo-test-2 p:first-of-type {
+            background-color: red;
+        }
+
+        #input--focus-visible:focus-within {
+            outline: 3px solid red;
+        }
+
+        #input--focus-visible:focus-visible {
+            outline: 5px dashed blue;
+        }
+
+        #has-test1>h3:has(+ ul) {
+            background-color: red;
+        }
+
+        #has-test2>p:has(> span > span) {
+            background-color: red;
+        }
+    </style>
+    <script>
+        var elem = document.documentElement;
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        }
+
+        customElements.define(
+            "simple-custom",
+            class extends HTMLElement {
+                constructor() {
+                    super();
+
+                    let divElem = document.createElement("div");
+                    divElem.textContent = this.getAttribute("text");
+
+                    let shadowRoot = this.attachShadow({ mode: "open" }).appendChild(divElem);
+                }
+            }
+        );
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            pseudo_classes
+        </h1>
+    </header>
+    <main>
+        <section>
+            <h2>:fullscreen</h2>
+            <button onclick="openFullscreen();">Open Fullscreen</button>
+            <button onclick="closeFullscreen();">Close Fullscreen</button>
+            <details>
+                <summary>説明</summary>
+                <p>macのブラウザの左上の緑ボタンと<kbd>control</kbd>+<kbd>command</kbd>+<kbd>f</kbd>で全画面にしても適応されない。scriptが必要</p>
+            </details>
+        </section>
+        <section>
+            <h2>:default</h2>
+            <section>
+                <h3>radio</h3>
+                <fieldset>
+                    <legend>season</legend>
+                    <input type="radio" name="season" id="spring" value="spring" />
+                    <label for="spring">春</label>
+                    <input type="radio" name="season" id="summer" value="summer" checked />
+                    <label for="summer">夏</label>
+                    <input type="radio" name="season" id="fall" value="fall" />
+                    <label for="fall">秋</label>
+                    <input type="radio" name="season" id="winter" value="winter" />
+                    <label for="winter">冬</label>
+                </fieldset>
+            </section>
+            <section>
+                <h3>checkbox</h3>
+                <fieldset>
+                    <legend>season</legend>
+                    <input type="checkbox" name="season" id="spring" value="spring" />
+                    <label for="spring">春</label>
+                    <input type="checkbox" name="season" id="summer" value="summer" checked />
+                    <label for="summer">夏</label>
+                    <input type="checkbox" name="season" id="fall" value="fall" />
+                    <label for="fall">秋</label>
+                    <input type="checkbox" name="season" id="winter" value="winter" />
+                    <label for="winter">冬</label>
+                </fieldset>
+            </section>
+            <section>
+                <h3>button/submit, option</h3>
+                <form action="">
+                    <input type="submit" value="123">
+                    <button>123</button>
+                    <select name="" id="" multiple>
+                        <option value="" selected>1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                    </select>
+                </form>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        radio, checkboxはレンダリング時にchecked属性がついているものに適応される（他のものをチェックしても変わらない）
+                    </li>
+                    <li>
+                        input type="submit"とbuttonは<b>formの中に</b>いる時だけ:defaultでのスタイルが適応されていた<br>
+                        buttonタグinput submitタグ合わせて、<b>最初に登場する１個目のタグ</b>だけにスタイル適応される<br>
+                        buttonタグにform属性をつけてsubmitのように使う場合はスタイル記述をbutton:defaultにすること
+                    </li>
+                    <li>
+                        optionはその親要素(selectタグ)にmultiple属性がついている時だけoptionにスタイルが適応されていた（checkedではなくselected属性）
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section class="section__empty">
+            <div>
+                <label for="empty">empty</label>
+                <button id="empty"></button>
+            </div>
+            <div>
+                <label for="enabled">normal</label>
+                <button id="enabled">normal</button>
+            </div>
+        </section>
+        <section>
+            <section class="section__empty">
+                <div>
+                    <label for="disabled">disabled</label>
+                    <button id="disabled" disabled>disabled</button>
+                </div>
+                <div>
+                    <label for="enabled">enabled</label>
+                    <button id="enabled">enabled</button>
+                </div>
+                <div>
+                    <label for="readonly">[readonly]</label>
+                    <input id="readonly" value="readonly" readonly>
+                </div>
+                <div id="contenteditable">
+                    <label for="readonly2">:read-only</label>
+                    <p id="readonly2" value="readonly2" readonly="false" contenteditable="true">contenteditableがついている
+                    </p>
+                </div>
+                <div>
+                    <label for="inert">inert</label>
+                    <input id="inert" value="inert" inert>
+                </div>
+                <div>
+                    <label for="hidden">hidden</label>
+                    <input id="hidden" value="hidden" hidden>
+                </div>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :enabledは値が入っていなくても(empty)enabledなので値が入っているタグだけを選択したい場合は :enabled:not(:empty)
+                    </li>
+                    <li>
+                        :read-onlyはreadonly属性がついているタグではなく、pタグやbuttonタグのように編集できない要素すべてが当てはまる<br>
+                        readonly属性がついているものを選択したければ [readonly]属性セレクターを使う<br>
+                        pタグにcontenteditable属性がついていてもread-onlyにかかる<br>
+                        pタグにreadonly="false"
+                        を指定して:read-onlyを回避できるがその場合セレクタも[readonly="false"]に指定しなければならない（:not(:read-only)でreadonly="false"がついているpタグは選択できない）
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:first-child, :first-of-type</h2>
+            <section>
+                <h3>:first-child</h3>
+                <div id="pseudo-test-1">
+                    <h4>123</h4>
+                    <p>pタグ</p>
+                    <div>divタグ
+                        <p>a</p>
+                        <h5>asd</h5>
+                        <p>123</p>
+                    </div>
+                    <ul>
+                        ulタグ
+                        <li>
+                            liタグ
+                            <p>pタグ</p>
+                            <p>pタグ</p>
+                        </li>
+                    </ul>
+                    <p>pタグ</p>
+                    <button>buttonタグ</button>
+                </div>
+            </section>
+            <section>
+                <h3>:first-of-type</h3>
+                <div id="pseudo-test-2">
+                    <h4>123</h4>
+                    <p>pタグ</p>
+                    <div>divタグ
+                        <p>a</p>
+                        <h5>asd</h5>
+                        <p>123</p>
+                    </div>
+                    <ul>
+                        ulタグ
+                        <li>
+                            liタグ
+                            <p>pタグ</p>
+                            <p>pタグ</p>
+                        </li>
+                    </ul>
+                    <p>pタグ</p>
+                    <button>buttonタグ</button>
+                </div>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li tabindex="0">
+                        :first-childを
+                        p:first-childのように使用しているとき、意味は各階層の初めて登場する要素がpタグの時だけスタイルを適応する（他のタグがはじめに出ても次のpタグにスタイルは適応されない）
+                    </li>
+                    <li tabindex="0">
+                        :first-of-type
+                        p:first-of-typeのように使用している時、意味は各階層の初めて登場するpタグを選択する（他のタグがはじめに出ても次に出るpタグがpタグのはじめとしてスタイル適応される）
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:focus-visible, :focus-within</h2>
+            <section>
+                <p>tabキーでfocus, マウスでfocus両方試す</p>
+                <input id="input--focus-visible" type="text" value=":focus-visible">
+                <button id="input--focus-visible">ad</button>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li tabindex="0">
+                        focus-visibleはtabキーでのfocusスタイルを指定するための擬似クラス
+                    </li>
+                    <li tabindex="0">
+                        buttonタグでは確認できたけど、inputはfocus, focus-visible, focus-within一緒
+                    </li>
+                    <li tabindex="0">
+                        focus-visibleはfocus, focus-withinの後に定義しなければ上書きされるらしい
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:has()</h2>
+            <section>
+                <div id="has-test1">
+                    <h3>h3タグ</h3>
+                    <ul>
+                        ulタグ
+                        <li>
+                            liタグ
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <div id="has-test2">
+                    <p>pタグを使って<span>&lt;spanタグを使っている&gt;</span>いる</p>
+                </div>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :has()　は()の中のものを持っているか判断し:の前の要素にスタイルを適応させるセレクだー
+                    </li>
+                    <li>
+                        h3:has(+ ul)の場合, h3次に来る要素がulである時だけh3にスタイルが適応される
+                    </li>
+                    <li>
+                        p:has(span > span)の場合、pタグの中にspanがあったとしてもその中にまたすぐspanタグがなければpタグにはスタイルが適応されない
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:is(), :where()</h2>
+            <a href="./is_where_test.html">is_where_test.html</a>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
