@@ -279,10 +279,7 @@
                     </li>
                     <li>
                         :read-onlyはreadonly属性がついているタグではなく、pタグやbuttonタグのように編集できない要素すべてが当てはまる<br>
-                        readonly属性がついているものを選択したければ [readonly]属性セレクターを使う<br>
-                        pタグにcontenteditable属性がついていてもread-onlyにかかる<br>
-                        pタグにreadonly="false"
-                        を指定して:read-onlyを回避できるがその場合セレクタも[readonly="false"]に指定しなければならない（:not(:read-only)でreadonly="false"がついているpタグは選択できない）
+                        pタグにcontenteditable属性をつければread-only回避できた
                     </li>
                 </ul>
             </details>
