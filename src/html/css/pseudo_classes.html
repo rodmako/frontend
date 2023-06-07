@@ -102,6 +102,14 @@
         #pseudo-test-2 p:first-of-type {
             background-color: red;
         }
+
+        #input--focus-visible:focus-within {
+            outline: 3px solid red;
+        }
+
+        #input--focus-visible:focus-visible {
+            outline: 5px dashed blue;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -325,6 +333,28 @@
                     </li>
                     <li tabindex="0">
                         :first-of-type p:first-of-typeのように使用している時、意味は各階層の初めて登場するpタグを選択する（他のタグがはじめに出ても次に出るpタグがpタグのはじめとしてスタイル適応される）
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:focus-visible, :focus-within</h2>
+            <section>
+                <p>tabキーでfocus, マウスでfocus両方試す</p>
+                <input id="input--focus-visible" type="text" value=":focus-visible">
+                <button id="input--focus-visible">ad</button>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li tabindex="0">
+                        focus-visibleはtabキーでのfocusスタイルを指定するための擬似クラス
+                    </li>
+                    <li tabindex="0">
+                        buttonタグでは確認できたけど、inputはfocus, focus-visible, focus-within一緒
+                    </li>
+                    <li tabindex="0">
+                        focus-visibleはfocus, focus-withinの後に定義しなければ上書きされるらしい
                     </li>
                 </ul>
             </details>
