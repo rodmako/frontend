@@ -6,8 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pseudo_classes</title>
     <style>
+        main {
+            padding: 0 30px;
+        }
+
+        section {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid black;
+        }
+
+        li {
+            color: gray;
+            border-bottom: 1px solid gray;   
+            padding: 5px; 
+        }
+
+        li:hover {
+            color: black;
+            border-bottom: 2px solid black;
+            font-size: 1.2rem;
+        }
+
+        summary {
+            margin: 20px 0;
+        }        
+
         :fullscreen {
             color: #afa;
+        }
+
+        input:default, option:default, button:default{
+            accent-color: red;
+            outline: 2px dashed red;
+        }
+
+        input:default + label {
+            color: red;
         }
     </style>
     <script>
@@ -31,6 +66,20 @@
             document.msExitFullscreen();
         }
         }
+
+        customElements.define(
+        "simple-custom",
+        class extends HTMLElement {
+            constructor() {
+            super();
+
+            let divElem = document.createElement("div");
+            divElem.textContent = this.getAttribute("text");
+
+            let shadowRoot = this.attachShadow({ mode: "open" }).appendChild(divElem);
+            }
+        }
+        );
     </script>
 </head>
 <body>
@@ -42,16 +91,71 @@
     <main>
         <section>
             <h2>:fullscreen</h2>
-            <p>
-            This demo uses the <code>:fullscreen</code> pseudo-class to automatically
-            change the style of a button used to toggle fullscreen mode on and off,
-            entirely using CSS.
-            </p>
             <button onclick="openFullscreen();">Open Fullscreen</button>
             <button onclick="closeFullscreen();">Close Fullscreen</button>
             <details>
                 <summary>説明</summary>
                 <p>macのブラウザの左上の緑ボタンと<kbd>control</kbd>+<kbd>command</kbd>+<kbd>f</kbd>で全画面にしても適応されない。scriptが必要</p>
+            </details>
+        </section>
+        <section>
+            <h2>:default</h2>
+            <section>
+                <h3>radio</h3>
+                <fieldset>
+                    <legend>season</legend>
+                    <input type="radio" name="season" id="spring" value="spring" />
+                    <label for="spring">春</label>
+                    <input type="radio" name="season" id="summer" value="summer" checked />
+                    <label for="summer">夏</label>
+                    <input type="radio" name="season" id="fall" value="fall" />
+                    <label for="fall">秋</label>
+                    <input type="radio" name="season" id="winter" value="winter" />
+                    <label for="winter">冬</label>
+                </fieldset>
+            </section>
+            <section>
+                <h3>checkbox</h3>
+                <fieldset>
+                    <legend>season</legend>
+                    <input type="checkbox" name="season" id="spring" value="spring" />
+                    <label for="spring">春</label>
+                    <input type="checkbox" name="season" id="summer" value="summer" checked />
+                    <label for="summer">夏</label>
+                    <input type="checkbox" name="season" id="fall" value="fall" />
+                    <label for="fall">秋</label>
+                    <input type="checkbox" name="season" id="winter" value="winter" />
+                    <label for="winter">冬</label>
+                </fieldset>
+            </section>
+            <section>
+                <h3>button/submit, option</h3>
+                <form action="">
+                    <input type="submit" value="123">
+                    <button>123</button>              
+                    <select name="" id="" multiple>
+                        <option value="" selected>1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                    </select>
+                </form>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        radio, checkboxはレンダリング時にchecked属性がついているものに適応される（他のものをチェックしても変わらない）
+                    </li>
+                    <li>
+                        input type="submit"とbuttonは<b>formの中に</b>いる時だけ:defaultでのスタイルが適応されていた<br>
+                        buttonタグinput submitタグ合わせて、<b>最初に登場する１個目のタグ</b>だけにスタイル適応される<br>
+                        buttonタグにform属性をつけてsubmitのように使う場合はスタイル記述をbutton:defaultにすること
+                    </li>
+                    <li>
+                        optionはその親要素(selectタグ)にmultiple属性がついている時だけoptionにスタイルが適応されていた（checkedではなくselected属性）
+                    </li>
+                </ul>
             </details>
         </section>
     </main>
