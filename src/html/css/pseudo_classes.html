@@ -110,6 +110,14 @@
         #input--focus-visible:focus-visible {
             outline: 5px dashed blue;
         }
+
+        #has-test1 > h3:has(+ ul) {
+            background-color: red;
+        }
+
+        #has-test2 > p:has(> span > span) {
+            background-color: red;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -355,6 +363,39 @@
                     </li>
                     <li tabindex="0">
                         focus-visibleはfocus, focus-withinの後に定義しなければ上書きされるらしい
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:has()</h2>
+            <section>
+                <div id="has-test1">
+                    <h3>h3タグ</h3>
+                    <ul>
+                        ulタグ
+                        <li>
+                            liタグ
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <div id="has-test2">
+                    <p>pタグを使って<span>&lt;spanタグを使っている&gt;</span>いる</p>
+                </div>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :has()　は()の中のものを持っているか判断し:の前の要素にスタイルを適応させるセレクだー
+                    </li>
+                    <li>
+                        h3:has(+ ul)の場合, h3次に来る要素がulである時だけh3にスタイルが適応される
+                    </li>
+                    <li>
+                        p:has(span > span)の場合、pタグの中にspanがあったとしてもその中にまたすぐspanタグがなければpタグにはスタイルが適応されない
                     </li>
                 </ul>
             </details>
