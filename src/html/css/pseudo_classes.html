@@ -23,7 +23,8 @@
             padding: 5px;
         }
 
-        li:hover {
+        li:hover,
+        li:focus {
             color: black;
             border-bottom: 2px solid black;
             font-size: 1.2rem;
@@ -92,6 +93,14 @@
 
         #contenteditable:not(:read-only) {
             background-color: blue;
+        }
+
+        #pseudo-test-1 p:first-child {
+            background-color: red;
+        }
+
+        #pseudo-test-2 p:first-of-type {
+            background-color: red;
         }
     </style>
     <script>
@@ -258,6 +267,64 @@
                         pタグにcontenteditable属性がついていてもread-onlyにかかる<br>
                         pタグにreadonly="false"
                         を指定して:read-onlyを回避できるがその場合セレクタも[readonly="false"]に指定しなければならない（:not(:read-only)でreadonly="false"がついているpタグは選択できない）
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:first-child, :first-of-type</h2>
+            <section>
+                <h3>:first-child</h3>
+                <div id="pseudo-test-1">
+                    <h4>123</h4>
+                    <p>pタグ</p>
+                    <div>divタグ
+                        <p>a</p>
+                        <h5>asd</h5>
+                        <p>123</p>
+                    </div>
+                    <ul>
+                        ulタグ
+                        <li>
+                            liタグ
+                            <p>pタグ</p>
+                            <p>pタグ</p>
+                        </li>
+                    </ul>
+                    <p>pタグ</p>
+                    <button>buttonタグ</button>
+                </div>
+            </section>
+            <section>
+                <h3>:first-of-type</h3>
+                <div id="pseudo-test-2">
+                    <h4>123</h4>
+                    <p>pタグ</p>
+                    <div>divタグ
+                        <p>a</p>
+                        <h5>asd</h5>
+                        <p>123</p>
+                    </div>
+                    <ul>
+                        ulタグ
+                        <li>
+                            liタグ
+                            <p>pタグ</p>
+                            <p>pタグ</p>
+                        </li>
+                    </ul>
+                    <p>pタグ</p>
+                    <button>buttonタグ</button>
+                </div>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li tabindex="0">
+                        :first-childを p:first-childのように使用しているとき、意味は各階層の初めて登場する要素がpタグの時だけスタイルを適応する（他のタグがはじめに出ても次のpタグにスタイルは適応されない）
+                    </li>
+                    <li tabindex="0">
+                        :first-of-type p:first-of-typeのように使用している時、意味は各階層の初めて登場するpタグを選択する（他のタグがはじめに出ても次に出るpタグがpタグのはじめとしてスタイル適応される）
                     </li>
                 </ul>
             </details>
