@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +19,8 @@
 
         li {
             color: gray;
-            border-bottom: 1px solid gray;   
-            padding: 5px; 
+            border-bottom: 1px solid gray;
+            padding: 5px;
         }
 
         li:hover {
@@ -30,58 +31,107 @@
 
         summary {
             margin: 20px 0;
-        }        
+        }
 
         :fullscreen {
             color: #afa;
         }
 
-        input:default, option:default, button:default{
+        input:default,
+        option:default,
+        button:default {
             accent-color: red;
             outline: 2px dashed red;
         }
 
-        input:default + label {
+        input:default+label {
             color: red;
+        }
+
+        .section__empty {
+            display: flex;
+            gap: 30px;
+        }
+
+        .section__empty>div,
+        .section__empty input:not([hidden]) {
+            flex: 1;
+            min-height: 100px;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+
+        .section__empty button {
+            width: 100%;
+            height: 100%;
+        }
+
+        .section__empty :empty {
+            background-color: lightblue;
+        }
+
+        .section__empty :disabled {
+            background-color: lightpink;
+        }
+
+        .section__empty :enabled:not(:empty) {
+            background-color: lightgreen;
+        }
+
+        .section__empty [readonly] {
+            background-color: aqua;
+        }
+
+        .section__empty [inert] {
+            background-color: beige;
+        }
+
+        #contenteditable [readonly="false"] {
+            background-color: red;
+        }
+
+        #contenteditable:not(:read-only) {
+            background-color: blue;
         }
     </style>
     <script>
         var elem = document.documentElement;
         function openFullscreen() {
-        if (elem.requestFullscreen) {
-            elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) { /* Safari */
-            elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE11 */
-            elem.msRequestFullscreen();
-        }
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
         }
 
         function closeFullscreen() {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { /* Safari */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE11 */
-            document.msExitFullscreen();
-        }
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
         }
 
         customElements.define(
-        "simple-custom",
-        class extends HTMLElement {
-            constructor() {
-            super();
+            "simple-custom",
+            class extends HTMLElement {
+                constructor() {
+                    super();
 
-            let divElem = document.createElement("div");
-            divElem.textContent = this.getAttribute("text");
+                    let divElem = document.createElement("div");
+                    divElem.textContent = this.getAttribute("text");
 
-            let shadowRoot = this.attachShadow({ mode: "open" }).appendChild(divElem);
+                    let shadowRoot = this.attachShadow({ mode: "open" }).appendChild(divElem);
+                }
             }
-        }
         );
     </script>
 </head>
+
 <body>
     <header>
         <h1>
@@ -132,7 +182,7 @@
                 <h3>button/submit, option</h3>
                 <form action="">
                     <input type="submit" value="123">
-                    <button>123</button>              
+                    <button>123</button>
                     <select name="" id="" multiple>
                         <option value="" selected>1</option>
                         <option value="">1</option>
@@ -158,8 +208,63 @@
                 </ul>
             </details>
         </section>
+        <section class="section__empty">
+            <div>
+                <label for="empty">empty</label>
+                <button id="empty"></button>
+            </div>
+            <div>
+                <label for="enabled">normal</label>
+                <button id="enabled">normal</button>
+            </div>
+        </section>
+        <section>
+            <section class="section__empty">
+                <div>
+                    <label for="disabled">disabled</label>
+                    <button id="disabled" disabled>disabled</button>
+                </div>
+                <div>
+                    <label for="enabled">enabled</label>
+                    <button id="enabled">enabled</button>
+                </div>
+                <div>
+                    <label for="readonly">[readonly]</label>
+                    <input id="readonly" value="readonly" readonly>
+                </div>
+                <div id="contenteditable">
+                    <label for="readonly2">:read-only</label>
+                    <p id="readonly2" value="readonly2" readonly="false" contenteditable="true">contenteditableがついている
+                    </p>
+                </div>
+                <div>
+                    <label for="inert">inert</label>
+                    <input id="inert" value="inert" inert>
+                </div>
+                <div>
+                    <label for="hidden">hidden</label>
+                    <input id="hidden" value="hidden" hidden>
+                </div>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :enabledは値が入っていなくても(empty)enabledなので値が入っているタグだけを選択したい場合は :enabled:not(:empty)
+                    </li>
+                    <li>
+                        :read-onlyはreadonly属性がついているタグではなく、pタグやbuttonタグのように編集できない要素すべてが当てはまる<br>
+                        readonly属性がついているものを選択したければ [readonly]属性セレクターを使う<br>
+                        pタグにcontenteditable属性がついていてもread-onlyにかかる<br>
+                        pタグにreadonly="false"
+                        を指定して:read-onlyを回避できるがその場合セレクタも[readonly="false"]に指定しなければならない（:not(:read-only)でreadonly="false"がついているpタグは選択できない）
+                    </li>
+                </ul>
+            </details>
+        </section>
     </main>
     <footer>
     </footer>
 </body>
+
 </html>
