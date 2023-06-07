@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo_classes</title>
+    <style>
+        :fullscreen {
+            color: #afa;
+        }
+    </style>
+    <script>
+        var elem = document.documentElement;
+        function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+        }
+
+        function closeFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            pseudo_classes
+        </h1>
+    </header>
+    <main>
+        <section>
+            <h2>:fullscreen</h2>
+            <p>
+            This demo uses the <code>:fullscreen</code> pseudo-class to automatically
+            change the style of a button used to toggle fullscreen mode on and off,
+            entirely using CSS.
+            </p>
+            <button onclick="openFullscreen();">Open Fullscreen</button>
+            <button onclick="closeFullscreen();">Close Fullscreen</button>
+            <details>
+                <summary>説明</summary>
+                <p>macのブラウザの左上の緑ボタンと<kbd>control</kbd>+<kbd>command</kbd>+<kbd>f</kbd>で全画面にしても適応されない。scriptが必要</p>
+            </details>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
