@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>is where test</title>
+    <style>
+        html {
+            font-family: sans-serif;
+            font-size: 150%;
+        }
+
+        #is :is(#is-styling, #is-styling, #is-styling) a {
+            color: red;
+        }
+
+        #where :where(#where-styling, #where-styling, #where-styling) a {
+            color: orange;
+        }
+
+        #where footer a {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            is where test
+        </h1>
+    </header>
+    <main>
+        <article id="is">
+            <h2>:is()-styled links</h2>
+            <section id="is-styling">
+                <p>
+                    Here is my main content. This
+                    <a href="https://mozilla.org">contains a link</a>.
+                </p>
+            </section>
+
+            <aside id="is-styling">
+                <p>
+                    Here is my aside content. This
+                    <a href="https://developer.mozilla.org">also contains a link</a>.
+                </p>
+            </aside>
+
+            <footer id="is-styling">
+                <p>
+                    This is my footer, also containing
+                    <a href="https://github.com/mdn">a link</a>.
+                </p>
+            </footer>
+        </article>
+
+        <article id="where">
+            <h2>:where()-styled links</h2>
+            <section id="where-styling">
+                <p>
+                    Here is my main content. This
+                    <a href="https://mozilla.org">contains a link</a>.
+                </p>
+            </section>
+
+            <aside id="where-styling">
+                <p>
+                    Here is my aside content. This
+                    <a href="https://developer.mozilla.org">also contains a link</a>.
+                </p>
+            </aside>
+
+            <footer id="where-styling">
+                <p>
+                    This is my footer, also containing
+                    <a href="https://github.com/mdn">a link</a>.
+                </p>
+            </footer>
+        </article>
+
+        <article>
+            <ul>
+                <li>
+                    :is(), :where()両方の目的は複数の要素を同時に選択するため（その中の要素を同時にスタイリングするため）
+                </li>
+                <li>
+                    scssではネスト　.someClass1, .someClass2, .someClass3 { a {...} }のような書き方ができる
+                </li>
+                <li>
+                    cssではそれができないため:is()と:where()が存在する
+                </li>
+                <li>
+                    もし:is(), :where()がなかったら .someClass1 a, .someClass2 a, .someClass3 a { ... } のようになる。もしaのようにしエレメントセレクターではなく長い名前のクラスだとしたら...
+                </li>
+                <li>
+                    :is()　は10点
+                </li>
+                <li>
+                    :where()　は0点
+                </li>
+                <li>
+                    どちらも詳細度は関係あるただ擬似クラスそのものに点数があるかどうかだけ異なる
+                </li>
+            </ul>
+        </article>
+    </main>
+    <footer>
+    </footer>
+</body>
+
+</html>
