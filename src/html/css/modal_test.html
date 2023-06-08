@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal test</title>
+    <style>
+        @keyframes dialog-open-width {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes dialog-open-height {
+            0% {
+                height: 1vh;
+            }
+
+            100% {
+                height: 100%;
+            }
+        }
+
+        @keyframes dialog-container-open {
+            0% {
+                width: 0;
+                min-height: 10%;
+            }
+
+            100% {
+                width: 100%;
+                min-height: 60vh;
+            }
+        }
+
+        @keyframes dialog-visible {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 100%;
+            }
+        }
+
+        section:first-child {
+            display: flex;
+            justify-content: center;
+        }
+
+        #dialog-button-open {
+            flex: 1;
+            max-width: 80vw;
+            min-height: 50px;
+            background-color: rgb(135, 206, 250);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: clamp(0.8rem, 1.8vw, 10vw);
+            font-weight: normal;
+            box-shadow: 5px 8px 15px rgba(200, 200, 200, 0.5);
+            box-sizing: border-box;
+        }
+
+        #dialog-button-open:hover,
+        #dialog-button-open:focus {
+            cursor: pointer;
+            background-color: rgb(120, 180, 255);
+            font-weight: bold;
+            box-shadow: 5px 8px 15px rgba(200, 200, 200, 0.7);
+        }
+
+        #dialog-button-open:focus-visible {
+            outline: 1vw dotted purple;
+            outline-style:double;
+        }
+
+        #dialog {
+            opacity: 0;
+            max-width: 30vw;
+        }
+
+        #dialog-container {
+           display: none;
+           opacity: 0;
+           
+        }
+
+        .dialog-visible #dialog-container {
+            display: block;
+            animation: dialog-visible 0.5s 0s 1 forwards;            
+        }
+
+        #dialog::backdrop {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 1vh;
+            background-color: rgba(35, 20, 20, 0.6);
+        }
+
+        #dialog[open]::backdrop {
+            animation: dialog-open-width 0.3s 0s ease-in-out 1 forwards, dialog-open-height 0.3s 0.3s ease-in-out 1 forwards;
+        }
+
+        .dialog-opened {
+            animation: dialog-visible 0.5s 1 forwards, dialog-container-open 0.5s 0s ease-in-out 1 forwards;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            const dialog_button_open = document.getElementById("dialog-button-open");
+            const dialog = document.getElementById("dialog");
+            const dialog_button_close = document.getElementById("dialog-button-close");
+            dialog_button_open.addEventListener("click", () => {
+                dialog.showModal();
+                setTimeout(() => {
+                    dialog.classList.add("dialog-opened");
+                }, 720);
+                setTimeout(() => {
+                    dialog.classList.add("dialog-visible");
+                }, 1000);
+            });
+            dialog_button_close.addEventListener("click", () => {
+                dialog.classList.remove("dialog-opened");
+                dialog.classList.remove("dialog-visible");
+                dialog.close();
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            modal test
+        </h1>
+    </header>
+    <main>
+        <section>
+            <button id="dialog-button-open">モーダルウィンドウを開く</button>
+            <dialog id="dialog">
+                <section id="dialog-container">
+                    <button id="dialog-button-close">123</button>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsa id veritatis quasi explicabo totam perspiciatis impedit necessitatibus, consequuntur officia eaque laudantium illo ad libero nihil. Eos obcaecati illo voluptas.</p>
+                </section>
+            </dialog>
+        </section>
+        <section>
+            <ul>
+                <li>
+
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
