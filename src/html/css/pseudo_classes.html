@@ -656,40 +656,42 @@
                 </ul>
             </details>
         </section>
-        <section id="section-lang">
-            <h2>:lang()</h2>
-            <div lang="en-US">lang="en-US"</div>
-            <div lang="ja">lang="ja"</div>
+        <section>
+            <section id="section-lang">
+                <h2>:lang()</h2>
+                <div lang="en-US">lang="en-US"</div>
+                <div lang="ja">lang="ja"</div>
+            </section>
+            <section id="section-lang2">
+                <h2>[lang="en-US"]</h2>
+                <div lang="en-US">lang="en-US"</div>
+                <div lang="ja">lang="ja"</div>
+            </section>
+            <section id="section-lang3">
+                <h2>:lang(1, 2), :lang(wildcard)</h2>
+                <p lang="nl">Dit is een Nederlandse paragraaf.</p>
+                <p lang="de">Dies ist ein deutscher Satz.</p>
+                <p lang="en">This is an English sentence.</p>
+                <p lang="en-GB">Matching the language range of English.</p>
+                <p lang="fr">Ceci est un paragraphe français.</p>
+                <p lang="fr-Latn-FR">Ceci est un paragraphe français en latin.</p>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :lang(ja) をつけたらlang属性がjaである要素を選択する(html lang="ja")も
+                    </li>
+                    <li>
+                        [lang="ja"]と同じ動きかのように見えるが違う（:lang()を支援しているブラウザが少ないため一緒だと思ってもいい）
+                    </li>
+                    <li>
+                        :langは　:lang(EN, FR)、:lang("*-Latn")のようなこともできるが、<br>
+                        支援していないブラウザがほとんど
+                    </li>
+                </ul>
+            </details>
         </section>
-        <section id="section-lang2">
-            <h2>[lang="en-US"]</h2>
-            <div lang="en-US">lang="en-US"</div>
-            <div lang="ja">lang="ja"</div>
-        </section>
-        <section id="section-lang3">
-            <h2>:lang(1, 2), :lang(wildcard)</h2>
-            <p lang="nl">Dit is een Nederlandse paragraaf.</p>
-            <p lang="de">Dies ist ein deutscher Satz.</p>
-            <p lang="en">This is an English sentence.</p>
-            <p lang="en-GB">Matching the language range of English.</p>
-            <p lang="fr">Ceci est un paragraphe français.</p>
-            <p lang="fr-Latn-FR">Ceci est un paragraphe français en latin.</p>
-        </section>
-        <details>
-            <summary>説明</summary>
-            <ul>
-                <li>
-                    :lang(ja) をつけたらlang属性がjaである要素を選択する(html lang="ja")も
-                </li>
-                <li>
-                    [lang="ja"]と同じ動きかのように見えるが違う（:lang()を支援しているブラウザが少ないため一緒だと思ってもいい）
-                </li>
-                <li>
-                    :langは　:lang(EN, FR)、:lang("*-Latn")のようなこともできるが、<br>
-                    支援していないブラウザがほとんど
-                </li>
-            </ul>
-        </details>
     </main>
     <footer>
     </footer>
