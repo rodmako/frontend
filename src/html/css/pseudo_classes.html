@@ -149,6 +149,51 @@
         #section-indeterminate progress:indeterminate {
             accent-color: red;
         }
+
+        #section-invalid label {
+            display: block;
+            margin-top: 1em;
+        }
+
+        #section-invalid input:invalid {
+            background-color: ivory;
+            border: none;
+            outline: 2px solid red;
+            border-radius: 5px;
+        }
+
+        #section-invalid2 form{
+            padding: 10px;
+        }
+
+        #section-invalid2 fieldset{
+            padding: 5px 15px;
+        }
+
+        #section-invalid2 label {
+            display: block;
+        }
+
+        #section-invalid2 input {
+            width: 100%;
+        }
+
+        #section-invalid2 input[type="submit"] {
+            outline: none;
+        }
+
+        #section-invalid2 form:invalid input[type="submit"] {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        #section-invalid2 fieldset:invalid ~ fieldset {
+            display: none;
+        }
+
+        #section-invalid2 fieldset:valid input {
+            background-color: greenyellow;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -507,6 +552,51 @@
                     </li>
                 </ul>
               </details>
+        </section>
+        <section>
+            <h2>:invalid</h2>
+            <section id="section-invalid">
+                <form>
+                    <label for="email">Email Address:</label>
+                    <input name="email" type="email" value="na@me@example.com" required>
+                
+                    <label for="secret">Secret Code: (lower case letters)</label>
+                    <input name="secret" type="text" value="test" pattern="[a-z]+" required>
+                
+                    <label for="age">Your age: (18+)</label>
+                    <input name="age" type="number" value="5" min="18" required>
+                
+                    <label><input name="tos" type="checkbox" required> - Do you agree to ToS?</label>
+                </form>
+            </section>
+            <section id="section-invalid2">
+                <form>
+                    <fieldset>
+                        <label for="name">Name</label>
+                        <input type="text" minlength="2" maxlength="20" oninvalid="this.setCustomValidity('カタカナ')" pattern="^[ァ-ンヴー]+$" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="age">Age</label>
+                        <input type="number" min="18" max="99" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <input type="email" required>
+                    </fieldset>
+                    <input type="submit" value="submit">
+                </form>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :invalid 有効ではない要素を選択する
+                    </li>
+                    <li>
+                        required属性があるのに未記入、patternの内容と異なる入力、rangeから離れた値入力 checkし忘れ
+                    </li>
+                </ul>
+            </details>
         </section>
     </main>
     <footer>
