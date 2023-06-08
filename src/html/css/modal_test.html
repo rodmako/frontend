@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,7 +78,7 @@
 
         #dialog-button-open:focus-visible {
             outline: 1vw dotted purple;
-            outline-style:double;
+            outline-style: double;
         }
 
         :modal {
@@ -90,13 +91,13 @@
         }
 
         #dialog-container {
-           display: none;
-           opacity: 0;
+            display: none;
+            opacity: 0;
         }
 
         .dialog-visible #dialog-container {
             display: block;
-            animation: dialog-visible 0.5s 0s 1 forwards;            
+            animation: dialog-visible 0.5s 0s 1 forwards;
         }
 
         #dialog::backdrop {
@@ -126,7 +127,7 @@
             top: 15px;
             right: 15px;
         }
-        
+
         #dialog-button-close::before {
             content: "";
             position: absolute;
@@ -171,6 +172,7 @@
         });
     </script>
 </head>
+
 <body>
     <header>
         <h1>
@@ -183,7 +185,9 @@
             <dialog id="dialog">
                 <section id="dialog-container">
                     <button id="dialog-button-close"></button>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsa id veritatis quasi explicabo totam perspiciatis impedit necessitatibus, consequuntur officia eaque laudantium illo ad libero nihil. Eos obcaecati illo voluptas.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsa id veritatis quasi
+                        explicabo totam perspiciatis impedit necessitatibus, consequuntur officia eaque laudantium illo
+                        ad libero nihil. Eos obcaecati illo voluptas.</p>
                 </section>
             </dialog>
         </section>
@@ -193,10 +197,15 @@
                     dialog自体が:modalである
                 </li>
                 <li>
+                    ↑補足：jsでshowModal()で表示されたものとrequestFullscreen()によって全画面表示された要素は:modalで引っかかるらしい
+                </li>
+
+                <li>
                     #dialogで選択していたものを:modalでも選択できる
                 </li>
             </ul>
         </section>
     </main>
 </body>
+
 </html>
