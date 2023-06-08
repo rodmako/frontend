@@ -137,6 +137,18 @@
         #in-range-section form input:in-range {
             background-color: rgb(225, 255, 180);
         }
+
+        #section-indeterminate input:indeterminate + label {
+            background: yellow;
+        }
+
+        #section-indeterminate progress{
+            margin: 10px;
+        }
+
+        #section-indeterminate progress:indeterminate {
+            accent-color: red;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -173,6 +185,14 @@
                 }
             }
         );
+
+        window.addEventListener("load", () => {
+            const section_indeterminate = document.getElementById("section-indeterminate");
+            const inputs = section_indeterminate.querySelectorAll("input");
+            inputs.forEach(input => {
+                input.indeterminate = true;
+            });
+        });
     </script>
 </head>
 
@@ -447,6 +467,46 @@
                     </li>
                 </ul>
             </details>
+        </section>
+        <section id="section-indeterminate">
+            <fieldset>
+                <legend>Checkbox</legend>
+                <div>
+                  <input type="checkbox" id="checkbox"/>
+                  <label for="checkbox">This checkbox label starts out lime.</label>
+                </div>
+              </fieldset>
+              
+              <fieldset>
+                <legend>Radio</legend>
+                <div>
+                  <input type="radio" id="radio1" name="radioButton" value="val1" />
+                  <label for="radio1">First radio label starts out lime.</label>
+                </div>
+                <div>
+                  <input type="radio" id="radio2" name="radioButton" value="val2" />
+                  <label for="radio2">Second radio label also starts out lime.</label>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>progress</legend>
+                <progress max="100" value="60"></progress>
+                <progress></progress>
+              </fieldset>
+              <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :indeterminate不確定の要素に対してスタイルを適応
+                    </li>
+                    <li>
+                        jsでinputタグのnodeに対してnode.indeterminate = true のような記述が必要
+                    </li>
+                    <li>
+                        progressはvalueが設定されていなかったらindeterminate状態とみなす
+                    </li>
+                </ul>
+              </details>
         </section>
     </main>
     <footer>
