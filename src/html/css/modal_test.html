@@ -80,15 +80,18 @@
             outline-style:double;
         }
 
-        #dialog {
+        :modal {
             opacity: 0;
             max-width: 30vw;
+            border-radius: 8px;
+            padding: 28px 1rem;
+            box-sizing: border-box;
+            border: none;
         }
 
         #dialog-container {
            display: none;
            opacity: 0;
-           
         }
 
         .dialog-visible #dialog-container {
@@ -112,6 +115,38 @@
 
         .dialog-opened {
             animation: dialog-visible 0.5s 1 forwards, dialog-container-open 0.5s 0s ease-in-out 1 forwards;
+        }
+
+        #dialog-button-close {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: none;
+            border: none;
+            top: 15px;
+            right: 15px;
+        }
+        
+        #dialog-button-close::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background-color: black;
+        }
+
+        #dialog-button-close::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            background-color: black;
         }
     </style>
     <script>
@@ -147,7 +182,7 @@
             <button id="dialog-button-open">モーダルウィンドウを開く</button>
             <dialog id="dialog">
                 <section id="dialog-container">
-                    <button id="dialog-button-close">123</button>
+                    <button id="dialog-button-close"></button>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ipsa id veritatis quasi explicabo totam perspiciatis impedit necessitatibus, consequuntur officia eaque laudantium illo ad libero nihil. Eos obcaecati illo voluptas.</p>
                 </section>
             </dialog>
@@ -155,7 +190,10 @@
         <section>
             <ul>
                 <li>
-
+                    dialog自体が:modalである
+                </li>
+                <li>
+                    #dialogで選択していたものを:modalでも選択できる
                 </li>
             </ul>
         </section>
