@@ -194,6 +194,64 @@
         #section-invalid2 fieldset:valid input {
             background-color: greenyellow;
         }
+
+        :is(#section-lang, #section-lang2) div {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        #section-lang :is(div:lang(ja))::before{
+            content:"";
+            width: 100px;
+            height: 100px;
+            background-image: linear-gradient(red, red);
+            border-radius: 100px;
+            background-position: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        #section-lang div:lang(en-US)::before{
+            content: "";
+            background-image: url("/assets/images/star.png");
+            background-color: blue;
+            background-size: 15px;
+            width: 150px;
+            height: 75px;
+            background-repeat: repeat;
+            background-position: left;
+            border: 5px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        #section-lang div:lang(en-US) {
+            background-image: repeating-linear-gradient(red, red 10px, white 10px, white 20px);
+            z-index: -2;
+        }
+
+        #section-lang2 div[lang="en-US"]::before {
+            content: "";
+            background-image: url("/assets/images/star.png");
+            background-color: blue;
+            background-size: 15px;
+            width: 150px;
+            height: 75px;
+            background-repeat: repeat;
+            background-position: left;
+            border: 5px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -598,6 +656,40 @@
                 </ul>
             </details>
         </section>
+        <section id="section-lang">
+            <h2>:lang()</h2>
+            <div lang="en-US">lang="en-US"</div>
+            <div lang="ja">lang="ja"</div>
+        </section>
+        <section id="section-lang2">
+            <h2>[lang="en-US"]</h2>
+            <div lang="en-US">lang="en-US"</div>
+            <div lang="ja">lang="ja"</div>
+        </section>
+        <section id="section-lang3">
+            <h2>:lang(1, 2), :lang(wildcard)</h2>
+            <p lang="nl">Dit is een Nederlandse paragraaf.</p>
+            <p lang="de">Dies ist ein deutscher Satz.</p>
+            <p lang="en">This is an English sentence.</p>
+            <p lang="en-GB">Matching the language range of English.</p>
+            <p lang="fr">Ceci est un paragraphe français.</p>
+            <p lang="fr-Latn-FR">Ceci est un paragraphe français en latin.</p>
+        </section>
+        <details>
+            <summary>説明</summary>
+            <ul>
+                <li>
+                    :lang(ja) をつけたらlang属性がjaである要素を選択する(html lang="ja")も
+                </li>
+                <li>
+                    [lang="ja"]と同じ動きかのように見えるが違う（:lang()を支援しているブラウザが少ないため一緒だと思ってもいい）
+                </li>
+                <li>
+                    :langは　:lang(EN, FR)、:lang("*-Latn")のようなこともできるが、<br>
+                    支援していないブラウザがほとんど
+                </li>
+            </ul>
+        </details>
     </main>
     <footer>
     </footer>
