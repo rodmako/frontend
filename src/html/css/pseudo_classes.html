@@ -118,6 +118,140 @@
         #has-test2>p:has(> span > span) {
             background-color: red;
         }
+
+        #in-range-section > form {
+            display: flex;
+            flex-flow: column;
+            gap: 8px;
+        }
+
+        #in-range-section form input {
+            flex: 50px;
+            outline: none;
+        }
+
+        #in-range-section form input:out-of-range {
+            background-color: rgb(255, 171, 132);
+        }
+
+        #in-range-section form input:in-range {
+            background-color: rgb(225, 255, 180);
+        }
+
+        #section-indeterminate input:indeterminate + label {
+            background: yellow;
+        }
+
+        #section-indeterminate progress{
+            margin: 10px;
+        }
+
+        #section-indeterminate progress:indeterminate {
+            accent-color: red;
+        }
+
+        #section-invalid label {
+            display: block;
+            margin-top: 1em;
+        }
+
+        #section-invalid input:invalid {
+            background-color: ivory;
+            border: none;
+            outline: 2px solid red;
+            border-radius: 5px;
+        }
+
+        #section-invalid2 form{
+            padding: 10px;
+        }
+
+        #section-invalid2 fieldset{
+            padding: 5px 15px;
+        }
+
+        #section-invalid2 label {
+            display: block;
+        }
+
+        #section-invalid2 input {
+            width: 100%;
+        }
+
+        #section-invalid2 input[type="submit"] {
+            outline: none;
+        }
+
+        #section-invalid2 form:invalid input[type="submit"] {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        #section-invalid2 fieldset:invalid ~ fieldset {
+            display: none;
+        }
+
+        #section-invalid2 fieldset:valid input {
+            background-color: greenyellow;
+        }
+
+        :is(#section-lang, #section-lang2) div {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        #section-lang :is(div:lang(ja))::before{
+            content:"";
+            width: 100px;
+            height: 100px;
+            background-image: linear-gradient(red, red);
+            border-radius: 100px;
+            background-position: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        #section-lang div:lang(en-US)::before{
+            content: "";
+            background-image: url("/assets/images/star.png");
+            background-color: blue;
+            background-size: 15px;
+            width: 150px;
+            height: 75px;
+            background-repeat: repeat;
+            background-position: left;
+            border: 5px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
+
+        #section-lang div:lang(en-US) {
+            background-image: repeating-linear-gradient(red, red 10px, white 10px, white 20px);
+            z-index: -2;
+        }
+
+        #section-lang2 div[lang="en-US"]::before {
+            content: "";
+            background-image: url("/assets/images/star.png");
+            background-color: blue;
+            background-size: 15px;
+            width: 150px;
+            height: 75px;
+            background-repeat: repeat;
+            background-position: left;
+            border: 5px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -154,6 +288,14 @@
                 }
             }
         );
+
+        window.addEventListener("load", () => {
+            const section_indeterminate = document.getElementById("section-indeterminate");
+            const inputs = section_indeterminate.querySelectorAll("input");
+            inputs.forEach(input => {
+                input.indeterminate = true;
+            });
+        });
     </script>
 </head>
 
@@ -402,6 +544,158 @@
         <section>
             <h2>:is(), :where()</h2>
             <a href="./is_where_test.html">is_where_test.html</a>
+        </section>
+        <section id="in-range-section">
+            <h2>:in-range, :out-of-range</h2>
+            <form>
+                <label for="in-range-text">Text 6 ~ 12</label>
+                <input id="in-range-text" name="text" type="text" minlength="6" maxlength="12" required>
+                <label for="in-range-number">Number 3 ~ 5</label>
+                <input id="in-range-number" name="number" type="number" min="3" max="5" step="1" required>
+                <label for="in-range-date">Date 2023-06-06 ~ 2023-06-10</label>
+                <input id="in-range-date" name="date" type="date" min="2023-06-06" max="2023-06-10" required>
+                <input type="submit" value="send">
+            </form>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        inputの中でminとmax属性が使えるものだけが対象
+                    </li>
+                    <li>
+                        type="text"のminlengthは対象外
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section id="section-indeterminate">
+            <fieldset>
+                <legend>Checkbox</legend>
+                <div>
+                  <input type="checkbox" id="checkbox"/>
+                  <label for="checkbox">This checkbox label starts out lime.</label>
+                </div>
+              </fieldset>
+              
+              <fieldset>
+                <legend>Radio</legend>
+                <div>
+                  <input type="radio" id="radio1" name="radioButton" value="val1" />
+                  <label for="radio1">First radio label starts out lime.</label>
+                </div>
+                <div>
+                  <input type="radio" id="radio2" name="radioButton" value="val2" />
+                  <label for="radio2">Second radio label also starts out lime.</label>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>progress</legend>
+                <progress max="100" value="60"></progress>
+                <progress></progress>
+              </fieldset>
+              <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :indeterminate不確定の要素に対してスタイルを適応
+                    </li>
+                    <li>
+                        jsでinputタグのnodeに対してnode.indeterminate = true のような記述が必要
+                    </li>
+                    <li>
+                        progressはvalueが設定されていなかったらindeterminate状態とみなす
+                    </li>
+                </ul>
+              </details>
+        </section>
+        <section>
+            <h2>:invalid</h2>
+            <section id="section-invalid">
+                <form>
+                    <label for="email">Email Address:</label>
+                    <input name="email" type="email" value="na@me@example.com" required>
+                
+                    <label for="secret">Secret Code: (lower case letters)</label>
+                    <input name="secret" type="text" value="test" pattern="[a-z]+" required>
+                
+                    <label for="age">Your age: (18+)</label>
+                    <input name="age" type="number" value="5" min="18" required>
+                
+                    <label><input name="tos" type="checkbox" required> - Do you agree to ToS?</label>
+                </form>
+            </section>
+            <section id="section-invalid2">
+                <form>
+                    <fieldset>
+                        <label for="name">Name</label>
+                        <input type="text" minlength="2" maxlength="20" oninvalid="this.setCustomValidity('カタカナ')" pattern="^[ァ-ンヴー]+$" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="age">Age</label>
+                        <input type="number" min="18" max="99" required>
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <input type="email" required>
+                    </fieldset>
+                    <input type="submit" value="submit">
+                </form>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :invalid 有効ではない要素を選択する
+                    </li>
+                    <li>
+                        required属性があるのに未記入、patternの内容と異なる入力、rangeから離れた値入力 checkし忘れ
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <section id="section-lang">
+                <h2>:lang()</h2>
+                <div lang="en-US">lang="en-US"</div>
+                <div lang="ja">lang="ja"</div>
+            </section>
+            <section id="section-lang2">
+                <h2>[lang="en-US"]</h2>
+                <div lang="en-US">lang="en-US"</div>
+                <div lang="ja">lang="ja"</div>
+            </section>
+            <section id="section-lang3">
+                <h2>:lang(1, 2), :lang(wildcard)</h2>
+                <p lang="nl">Dit is een Nederlandse paragraaf.</p>
+                <p lang="de">Dies ist ein deutscher Satz.</p>
+                <p lang="en">This is an English sentence.</p>
+                <p lang="en-GB">Matching the language range of English.</p>
+                <p lang="fr">Ceci est un paragraphe français.</p>
+                <p lang="fr-Latn-FR">Ceci est un paragraphe français en latin.</p>
+            </section>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        :lang(ja) をつけたらlang属性がjaである要素を選択する(html lang="ja")も
+                    </li>
+                    <li>
+                        [lang="ja"]と同じ動きかのように見えるが違う（:lang()を支援しているブラウザが少ないため一緒だと思ってもいい）
+                    </li>
+                    <li>
+                        :langは　:lang(EN, FR)、:lang("*-Latn")のようなこともできるが、<br>
+                        支援していないブラウザがほとんど
+                    </li>
+                </ul>
+            </details>
+        </section>
+        <section>
+            <h2>:last-child, :last-of-type</h2>
+            <a href="./last_child.html">last_child.html</a>
+        </section>
+        <section>
+            <h2>:modal</h2>
+            <a href="./modal_test.html">modal_test.html</a>
         </section>
     </main>
     <footer>

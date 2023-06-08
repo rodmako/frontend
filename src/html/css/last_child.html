@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>last_child</title>
+    <style>
+        #section-last-child div:last-child{
+            background-color: red;
+        }
+
+        #section-last-of-type div:last-of-type{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>last_child</h1>
+    </header>
+    <main>
+        <section id="section-last-child">
+            <h2>:last-child</h2>
+            <ul>
+                ulタグ
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+            </ul>
+            <p>pタグ</p>
+            <div>divタグ<div>divタグ</div></div>
+            <p>pタグ<span>spanタグ</span><div>divタグ</div><span>spanタグ</span></p>
+        </section>
+        <section id="section-last-of-type">
+            <h2>:last-of-type</h2>
+            <ul>
+                ulタグ
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+            </ul>
+            <p>pタグ</p>
+            <div>divタグ<div>divタグ</div></div>
+            <p>pタグ<span>spanタグ</span><div>divタグ</div><span>spanタグ</span></p>
+        </section>
+        <details>
+            <summary>説明</summary>
+            <ul>
+                <li>
+                    :first-child, :first-of-typeと同様
+                </li>
+                <li>
+                    last-childは各階層の最後の要素が「:」前の要素でなければスタイル適応されない（最後に登場しなければ選択できない）
+                </li>
+                <li>
+                    last-of-typeは各階層の最後に登場する（その要素より後ろに他の要素があっても「:」前の要素が選択される）要素を選択してくれる（最後に登場しなくてもいい、同じ要素のうち最後の意味）
+                </li>
+            </ul>
+        </details>
+    </main>
+</body>
+</html>
