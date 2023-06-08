@@ -118,6 +118,25 @@
         #has-test2>p:has(> span > span) {
             background-color: red;
         }
+
+        #in-range-section > form {
+            display: flex;
+            flex-flow: column;
+            gap: 8px;
+        }
+
+        #in-range-section form input {
+            flex: 50px;
+            outline: none;
+        }
+
+        #in-range-section form input:out-of-range {
+            background-color: rgb(255, 171, 132);
+        }
+
+        #in-range-section form input:in-range {
+            background-color: rgb(225, 255, 180);
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -405,6 +424,29 @@
         <section>
             <h2>:is(), :where()</h2>
             <a href="./is_where_test.html">is_where_test.html</a>
+        </section>
+        <section id="in-range-section">
+            <h2>:in-range, :out-of-range</h2>
+            <form>
+                <label for="in-range-text">Text 6 ~ 12</label>
+                <input id="in-range-text" name="text" type="text" minlength="6" maxlength="12" required>
+                <label for="in-range-number">Number 3 ~ 5</label>
+                <input id="in-range-number" name="number" type="number" min="3" max="5" step="1" required>
+                <label for="in-range-date">Date 2023-06-06 ~ 2023-06-10</label>
+                <input id="in-range-date" name="date" type="date" min="2023-06-06" max="2023-06-10" required>
+                <input type="submit" value="send">
+            </form>
+            <details>
+                <summary>説明</summary>
+                <ul>
+                    <li>
+                        inputの中でminとmax属性が使えるものだけが対象
+                    </li>
+                    <li>
+                        type="text"のminlengthは対象外
+                    </li>
+                </ul>
+            </details>
         </section>
     </main>
     <footer>
