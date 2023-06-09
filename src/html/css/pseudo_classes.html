@@ -260,6 +260,14 @@
         .section__optional :required{
             background-color: lightsalmon;
         }
+
+        .section__placeholder :placeholder-shown {
+            background-color: lightblue;
+        }
+
+        .section__placeholder ::placeholder {
+            color: red;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -719,6 +727,19 @@
                 <input type="text" value="no-required">
                 <input type="text" value="no-required">
             </form>
+        </section>
+        <section class="section__placeholder">
+            <h2>:placeholder-shown</h2>
+            <form action="">
+                <input type="text">
+                <input type="text" placeholder="placeholder">
+                <input type="text" value="placeholder and value" placeholder="placeholder">
+            </form>
+            <ul>
+                <li>
+                    placeholderが見えている状況だけ（valueあったら消える）
+                </li>
+            </ul>
         </section>
     </main>
     <footer>
