@@ -252,6 +252,14 @@
             top: 0;
             z-index: -1;
         }
+
+        .section__optional :optional{
+            background-color: lightblue;
+        }
+
+        .section__optional :required{
+            background-color: lightsalmon;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -703,6 +711,14 @@
                     <a href="./modal_test2.html">modal_test2.html</a>
                 </li>
             </ul>
+        </section>
+        <section class="section__optional">
+            <h2>:optional</h2>
+            <form action="">
+                <input type="text" value="required" required>
+                <input type="text" value="no-required">
+                <input type="text" value="no-required">
+            </form>
         </section>
     </main>
     <footer>
