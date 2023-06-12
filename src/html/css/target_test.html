@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>target test</title>
+    <style>
+        :target {
+            background-color: gold;
+        }        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            target test
+        </h1>
+    </header>
+    <main>
+        <section>
+            <h2>links</h2>
+            <nav id="nav">
+                <ol>
+                    <li>
+                        <a href="#sunt">sunt</a>
+                    </li>
+                    <li>
+                        <a href="#amet">amet</a>
+                    </li>
+                    <li>
+                        <a href="#ac">ac</a>
+                    </li>
+                </ol>
+            </nav>
+        </section>
+        <section>
+            <p>
+                Lorem ipsum dolor sit <span id="amet">amet</span> consectetur, adipisicing elit. Officiis excepturi sed praesentium iure vel repudiandae magnam, totam unde consectetur inventore ullam quibusdam, <span id="sunt">sunt</span>, fuga laboriosam ipsa quasi qui iste. In.
+            </p>
+        </section>
+        <section>
+            <ul>
+                <li>
+                    :targetはURLの #oooに反応する(idではなくclassを指定していたら:targetで選択できない#)
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
