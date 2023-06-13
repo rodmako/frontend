@@ -6,6 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pseudo elements</title>
     <style>
+        main {
+            display: flex;
+            justify-content: center;
+            flex-flow: column;
+        }
+
+        section {
+            flex: 1;
+            padding: 20px;
+            margin: 20px 22px;
+            border: 5px solid black;
+            box-sizing: border-box;
+        }
+
+        ul {
+            background-color: rgb(223, 248, 255);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 3px dotted black;
+        }
+
         label {
             display: block;
             margin: 5px 0;
@@ -59,6 +80,10 @@
 
         #first-letter h2 {
             flex: 100%;
+        }
+
+        #first-line ::first-line {
+            color: red;
         }
     </style>
     <script>
@@ -142,6 +167,37 @@
                 ulタグ
                 <li>
                     &lt;br&gt;、block要素の中に入れたinline要素の最初もじには効かない（block - blockは効く）
+                </li>
+            </ul>
+        </section>
+        <section id="first-line">
+            <h2>::first-line</h2>
+            <div>
+                divタグ
+                <div>
+                    divタグ - divタグ
+                    <div>
+                        divタグ - divタグ 内容
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, iure deleniti tempora, sed error sit reprehenderit aliquam eveniet, tenetur recusandae inventore? Modi, veritatis culpa deserunt commodi autem officia consequatur mollitia? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, tenetur cum. Totam tempora rerum sequi similique modi quam assumenda asperiores placeat vero sit eum voluptate, dicta accusantium ipsam earum iusto. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, iusto? Tempore ipsam eum autem ab cumque nam, modi molestias reiciendis error, praesentium accusantium veritatis saepe, quae voluptates maiores earum accusamus.
+                    </div>
+                </div>
+            </div>
+            <span>
+                divタグ
+                <span>
+                    divタグ - divタグ
+                    <div>
+                        divタグ - divタグ 内容
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, iure deleniti tempora, sed error sit reprehenderit aliquam eveniet, tenetur recusandae inventore? Modi, veritatis culpa deserunt commodi autem officia consequatur mollitia? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, tenetur cum. Totam tempora rerum sequi similique modi quam assumenda asperiores placeat vero sit eum voluptate, dicta accusantium ipsam earum iusto. Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, iusto? Tempore ipsam eum autem ab cumque nam, modi molestias reiciendis error, praesentium accusantium veritatis saepe, quae voluptates maiores earum accusamus.
+                    </div>
+                </span>
+            </span>
+            <ul>
+                <li>
+                    ::first-line 各階層の最初の列（画面が小さくなっても1列だけ（固定じゃない））
+                </li>
+                <li>
+                    最初の列とみなすのはblock要素だけinline要素の最初の列は効かない
                 </li>
             </ul>
         </section>
