@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>focus within test</title>
+    <style>
+        section {
+            background-color: lightblue;
+            padding: 1.5rem;
+            margin: 15px;
+        }
+
+        section > div {
+            box-sizing: border-box;
+            border-collapse: collapse;
+            background-color: lightcoral;
+            padding: 1.5rem;
+        }
+
+        section > div p {
+            background-color: lightgreen;
+            padding: 1.5rem;
+        }
+
+        :focus-visible {
+            outline: 10px solid black;
+        }
+
+        section:nth-of-type(2) > div:focus {
+            background-color: red;
+        }
+
+        section:nth-of-type(3) > div:focus-within {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            focus within test
+        </h1>
+    </header>
+    <main>
+        <section>
+            <p>
+                tabキーで試す
+            </p>
+        </section>
+        <section>
+            <h2>focus</h2>
+            <div tabindex="0">
+                Divタグ
+                <p tabindex="0">pタグ</p>
+            </div>
+        </section>
+        <section>
+            <h2>focus-within</h2>
+            <div tabindex="0">
+                Divタグ
+                <p tabindex="0">pタグ</p>
+            </div>
+        </section>
+        <section>
+            <ul>
+                <li>
+                    :focus　自分にfocus当たった時だけ
+                </li>
+                <li>
+                    :focus-within 自分と自分の子要素にfocusが当たった時
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,3 +1,6 @@
+import PopUpInfo from "./shadowDOM/PopUpInfo";
+import ExpandingList from "./shadowDOM/ExpandingList";
+
 window.onload = function(){
     nav_list_make();
     code_pre_className_addRemove();

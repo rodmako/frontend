@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope_test</title>
+    <style>
+        div {
+            background-color: lightblue;
+        }
+
+        :root {
+            background-color: blue;
+        }
+
+        :scope {
+            background-color: lightcoral;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            const root_scope = document.querySelector("html");
+            const root_scope_result = root_scope.querySelector("#root-scope-result");
+            if(root_scope.matches(":scope") === true && root_scope.matches(":root") === false) {
+                root_scope_result.textContent = "It is scope.";
+            }else if(root_scope.matches(":scope") === false && root_scope.matches(":root")  === true) {
+                root_scope_result.textContent = "It is root.";
+            }else if(root_scope.matches(":scope") === true && root_scope.matches(":root")  === true) {
+                root_scope_result.textContent = "It is root and scope as well.";
+            }else {
+                root_scope_result.textContent = "It is not root and scope.";
+            }
+
+            const context1 = document.getElementById("context1");
+            const selected1 = context1.querySelectorAll("div");
+
+            document.getElementById("results1").innerHTML = Array.prototype.map
+                .call(selected1, (element) => `#${element.getAttribute("id")}`)
+                .join(", ");
+
+            const context2 = document.getElementById("context2");
+            const selected2 = context2.querySelectorAll(":scope > div");
+
+            document.getElementById("results2").innerHTML = Array.prototype.map
+                .call(selected2, (element) => `#${element.getAttribute("id")}`)
+                .join(", ");
+
+            //const context3 = document.querySelectorAll("context3");
+            const selected3 = document.querySelectorAll("#context3 > div");
+
+            document.getElementById("results3").innerHTML = Array.prototype.map
+                .call(selected3, (element) => `#${element.getAttribute("id")}`)
+                .join(", ");
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            :scope
+        </h1>
+    </header>
+    <main>
+        <div id="root-scope">
+            <p>:rootと:scope試し</p>
+            <p id="root-scope-result"></p>
+        </div>
+        <div id="context1">
+            <div id="element-1">
+                <div id="element-1.1"></div>
+                <div id="element-1.2"></div>
+            </div>
+            <div id="element-2">
+                <div id="element-2.1"></div>
+            </div>
+        </div>
+        <p>
+            Selected elements ids :
+            <span id="results1"></span>
+        </p>
+        <div id="context2">
+            <div id="element-3">
+                <div id="element-1.1"></div>
+                <div id="element-1.2"></div>
+            </div>
+            <div id="element-4">
+                <div id="element-2.1"></div>
+            </div>
+        </div>
+        <p>
+            Selected elements ids :
+            <span id="results2"></span>
+        </p>
+        <div id="context3">
+            <div id="element-5">
+                <div id="element-1.1"></div>
+                <div id="element-1.2"></div>
+            </div>
+            <div id="element-6">
+                <div id="element-2.1"></div>
+            </div>
+        </div>
+        <p>
+            Selected elements ids :
+            <span id="results3"></span>
+        </p>
+        <section>
+            <ul>
+                <li>
+                    「getElementByIdで探した結果のconst target」がある場合、target.querySelectorAll(":scope >
+                    div");は　document.querySelectorAll("#target > div");　と一緒(scopeはtargetのこと)
+                </li>
+                <li>
+                    id名が長かったりする場合、先にscopeになる要素を変数として作っておいて後で:scopeすれば楽かも
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

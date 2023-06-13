@@ -252,6 +252,22 @@
             top: 0;
             z-index: -1;
         }
+
+        .section__optional :optional{
+            background-color: lightblue;
+        }
+
+        .section__optional :required{
+            background-color: lightsalmon;
+        }
+
+        .section__placeholder :placeholder-shown {
+            background-color: lightblue;
+        }
+
+        .section__placeholder ::placeholder {
+            color: red;
+        }
     </style>
     <script>
         var elem = document.documentElement;
@@ -703,6 +719,43 @@
                     <a href="./modal_test2.html">modal_test2.html</a>
                 </li>
             </ul>
+        </section>
+        <section class="section__optional">
+            <h2>:optional</h2>
+            <form action="">
+                <input type="text" value="required" required>
+                <input type="text" value="no-required">
+                <input type="text" value="no-required">
+            </form>
+        </section>
+        <section class="section__placeholder">
+            <h2>:placeholder-shown</h2>
+            <form action="">
+                <input type="text">
+                <input type="text" placeholder="placeholder">
+                <input type="text" value="placeholder and value" placeholder="placeholder">
+            </form>
+            <ul>
+                <li>
+                    placeholderが見えている状況だけ（valueあったら消える）
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>:root</h2>
+            <a href="./root_test.html">root_test.html</a>
+        </section>
+        <section>
+            <h2>:scope</h2>
+            <a href="./scope_test.html">scope_test.html</a>
+        </section>
+        <section>
+            <h2>:target</h2>
+            <a href="./target_test.html">target_test.html</a>
+        </section>
+        <section>
+            <h2>:focus-within</h2>
+            <a href="./focus_within_test.html">focus_within_test.html</a>
         </section>
     </main>
     <footer>
