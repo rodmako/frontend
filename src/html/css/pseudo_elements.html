@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo elements</title>
+    <style>
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        #backdrop video::backdrop {
+            background-color: red;
+            z-index: 99999;
+        }
+
+        #backdrop ::cue {
+            color: yellow;
+            font-style: italic;
+            font-size: 3rem;
+        }
+
+        #file-selector-button #file-selector-button-input {
+            color: red;
+        }
+
+        #file-selector-button #file-selector-button-input2::file-selector-button {
+            color: red;
+        }
+
+        #file-selector-button #file-selector-button-input3 {
+            display: none;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            const button = document.querySelector("#file-selector-button-button");
+            const input = document.querySelector("#file-selector-button-input3");
+
+            button.addEventListener("click", () => {
+                input.click();
+            });
+
+            input.addEventListener("change", () => {
+                const special = ["\\", "¥", "/"];
+                let string = input.value;
+                special.forEach(item => {
+                    string = string.split(item).reverse()[0];
+                });
+                button.textContent = string;
+            })
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            pseudo elements
+        </h1>
+    </header>
+    <main>
+        <section id="backdrop">
+            <h2>::backdrop, :current, ::cue</h2>
+            <video controls width="500">
+                <source src="/assets/video/videoTagVideo.mov" type="video/mp4">
+                <track default kind="subtitles" srclang="english" src="/assets/video/subtitles/subtitle_for_test.vtt">
+            </video>
+            <ul>
+                <li>
+                    ::backdrop dialog、fullscreen videoの背景(showModal(), requestFullscreen())
+                </li>
+                <li>
+                    :current 互換性情報がない
+                </li>
+                <li>
+                    ::cue WebVTT(字幕)関連
+                </li>
+            </ul>
+        </section>
+        <section id="file-selector-button">
+            <h2>::file-selector-button</h2>
+            <label for="file-selector-button-input">inputでセレクトしてcolor</label>
+            <input id="file-selector-button-input" type="file" accept="application/pdf">
+            <label for="file-selector-button-input2">input::file-selector-buttonでセレクトしてcolor</label>
+            <input id="file-selector-button-input2" type="file" accept="application/pdf">
+            <label for="file-selector-button-input3">ボタンの横のテキスト変更</label>
+            <input id="file-selector-button-input3" type="file" accept="application/pdf" multiple>
+            <button id="file-selector-button-button" type="button">ファイルを選択</button>
+            <ul>
+                <li>
+                    ::file-selector-buttonでinput type="file"のボタンのテキストスタイリング可能
+                </li>
+                <li>
+                    input要素のtypeがfileの時,cssでそのinputを選択してcolorのスタイリングしてもボタンのテキスト色は変わらない（ボタンの隣のテキスト色が変わる）
+                </li>
+                <li>
+                    ボタンの隣のテキスト消したければ　type="file"のinputをdisplay:noneして新しいbuttonを作ってそのボタンをclickした時input="file"にclick event投げればいい
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
