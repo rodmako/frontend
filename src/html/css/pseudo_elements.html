@@ -33,6 +33,33 @@
         #file-selector-button #file-selector-button-input3 {
             display: none;
         }
+
+        #first-letter ::first-letter{
+            font-size: 2rem;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: -5px 3px red;
+            padding: 0.5rem;
+            margin-right: 0.2rem;
+            padding-bottom: 0.3rem;
+            background-color: lightslategray;
+            border-radius: 15px;
+            border: 2px dashed white;
+        }
+
+        #first-letter {
+            display: flex;
+            justify-content: center;
+            flex-flow: row wrap;
+        }
+
+        #first-letter * {
+            flex: 1;
+        }
+
+        #first-letter h2 {
+            flex: 100%;
+        }
     </style>
     <script>
         window.addEventListener("load", () => {
@@ -97,6 +124,24 @@
                 </li>
                 <li>
                     ボタンの隣のテキスト消したければ　type="file"のinputをdisplay:noneして新しいbuttonを作ってそのボタンをclickした時input="file"にclick event投げればいい
+                </li>
+            </ul>
+        </section>
+        <section id="first-letter">
+            <h2>::first-letter</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dignissimos iusto harum dolore impedit soluta natus rerum omnis pariatur odit expedita ipsam, velit quibusdam maiores eligendi mollitia deleniti, explicabo eaque.<br>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, voluptatibus ex. Dignissimos, tenetur iste eius autem quo harum, dicta voluptatem perferendis, explicabo assumenda qui nesciunt hic! Esse minus vitae optio!    </span>
+            </p>
+            <div>
+                divタグ
+                <p>div - pタグ</p>
+                <span>div - spanタグ</span>
+            </div>
+            <ul>
+                ulタグ
+                <li>
+                    &lt;br&gt;、block要素の中に入れたinline要素の最初もじには効かない（block - blockは効く）
                 </li>
             </ul>
         </section>
