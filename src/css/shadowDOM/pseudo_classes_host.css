@@ -1,0 +1,45 @@
+.originalText {
+    position: relative;
+    text-decoration-line: underline;
+}
+
+.originalText:hover{
+    cursor: help;
+}
+
+.originalText:hover .wrapper{
+    display: flex;
+}
+
+.wrapper {
+    display: none;
+    flex-flow: column;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: aliceblue;
+    white-space: wrap;
+    width: 50vw;
+}
+
+.wrapper > * {
+    flex: 1;
+    margin: 0;
+}
+
+.wrapTitle {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.text {
+    width: 100%;
+    text-overflow: ellipsis;
+}
+
+:host(hover-link-box) .text{
+    background-color: red;
+}

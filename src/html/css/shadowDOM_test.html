@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shadowDOM test</title>
+    <style>
+        body {
+            font-size: 20px;
+        }
+    </style>
+    <script type="module">
+        import HoverLinkBox from "/src/js/shadowDOM/HoverLinkBox.js";
+        import HoverLinkBox2 from "/src/js/shadowDOM/HoverLinkBox2.js";
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            shadowDOM test
+        </h1>
+    </header>
+    <main>
+        <section>
+            <h2>:host, :host-context, :host()</h2>
+            <ul>
+                <li>
+                    HTML -> CSS -> JS順で学習
+                </li>
+                <li>
+                    shadowDOMの基礎だけ理解してshadowDOM関連CSSを先に集中する
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>:host, :host()</h2>
+            <p>
+                accusantium impedit facere eligendi. Lorem ipsum, dolor sit amet <hover-link-box
+                    text="リンゴ（林檎[5]、学名：Malus domestica, Malus pumila）は、バラ科リンゴ属の落葉高木、またはその果実のこと。"
+                    href="https://ja.wikipedia.org/wiki/">リンゴ</hover-link-box>
+                consectetur adipisicing elit. Deleniti quidem odit laboriosam sequi cumque, illum numquam unde officiis
+                molestias, a ut tempora nam soluta eius voluptatibus totam repellat labore doloremque.
+            
+                <hover-link-box2
+                    text="リンゴ（林檎[5]、学名：Malus domestica, Malus pumila）は、バラ科リンゴ属の落葉高木、またはその果実のこと。"
+                    href="https://ja.wikipedia.org/wiki/">リンゴ</hover-link-box2>
+            </p>
+            <ul>
+                <li>
+                    :host はshadowDOMカスタム要素の全てを意味しているように見える
+                </li>
+                <li>
+                    :host(カスタム要素名) はカスタム要素らのうちでも（）の中にあるカスタム要素だけを選択しているように見える
+                </li>
+                <li>
+                    :host()と:host-context()はなんだろう
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
