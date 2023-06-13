@@ -85,6 +85,21 @@
         #first-line ::first-line {
             color: red;
         }
+
+        #marker ul {
+            list-style-type: none;
+            padding: auto;
+            
+        }
+
+        #marker li {
+            margin-left: 40px;
+        }
+
+        #marker li::marker {
+            content: "aaa";
+            color: green;
+        }
     </style>
     <script>
         window.addEventListener("load", () => {
@@ -198,6 +213,17 @@
                 </li>
                 <li>
                     最初の列とみなすのはblock要素だけinline要素の最初の列は効かない
+                </li>
+            </ul>
+        </section>
+        <section id="marker">
+            <h2>::marker</h2>
+            <ul>
+                <li>
+                    li要素のlist-styleは模様でその模様のスタイルは::markerで触れる
+                </li>
+                <li>
+                    empty
                 </li>
             </ul>
         </section>
