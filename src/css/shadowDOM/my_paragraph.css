@@ -1,0 +1,15 @@
+ul {
+    background-color: none !important;
+}
+
+p {
+    color: white;
+    background-color: #666;
+    padding: 5px;
+}
+
+::slotted(.my-paragraph-ul) {
+    border: 10px solid black;
+    color: red;
+    background-color: red;
+}

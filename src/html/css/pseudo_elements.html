@@ -128,8 +128,41 @@
                     string = string.split(item).reverse()[0];
                 });
                 button.textContent = string;
-            })
+            });
+
+            //my_paragraph();
+            my_paragraph2();
+            const slottedSpan = document.querySelector('my-paragraph span');
+            console.log(slottedSpan.assignedSlot);
+            console.log(slottedSpan.slot);
         });
+
+        const my_paragraph = () => {
+            const field = document.getElementById("slotted");
+            const template = document.getElementById("my-paragraph");
+            const template_content = template.content;
+            field.appendChild(template_content);
+        }
+
+        const my_paragraph2 = () => {
+            customElements.define('my-paragraph',
+                class extends HTMLElement {
+                    constructor() {
+                        super();
+
+                        const template = document.getElementById('my-paragraph');
+                        const templateContent = template.content;
+                        const style = document.createElement("link");
+                        style.setAttribute("rel", "stylesheet");
+                        style.setAttribute("href", "/src/css/shadowDOM/my_paragraph.css");
+
+                        const shadowRoot = this.attachShadow({ mode: 'open' });
+                        shadowRoot.appendChild(style);
+                        shadowRoot.appendChild(templateContent.cloneNode(true));
+                    }
+                }
+            );
+        }
     </script>
 </head>
 
@@ -293,6 +326,68 @@
                 </li>
                 <li>
                     <a href="https://webaim.org/resources/contrastchecker/">WEBAIM Contrast Checker 参考</a>
+                </li>
+            </ul>
+        </section>
+        <section id="slotted">
+            <h2>::slotted(), template</h2>
+            <template id="my-paragraph">
+                <!--<style>
+                    ul {
+                        background-color: none;
+                    }
+
+                    p {
+                        color: white;
+                        background-color: #666;
+                        padding: 5px;
+                    }
+
+                    ::slotted(*) {
+                        border: 10px solid black;
+                    }
+                </style>-->
+                <p>
+                    <slot name="my-text">My default text</slot>
+                </p>
+            </template>
+            <my-paragraph>
+                <span slot="my-text">
+                    ghi
+                </span>
+            </my-paragraph>
+            <my-paragraph>
+                <ul class="my-paragraph-ul" slot="my-text">
+                    <li>
+                        abc
+                    </li>
+                    <li>
+                        def
+                    </li>
+                </ul>
+            </my-paragraph>
+            <ul>
+                <li>
+                    templateの中に記述したstyleはtemplateの中で有効
+                </li>
+                <li>
+                    slot
+                    <ol>
+                        <li>
+                            ::slotted(なんらかのセレクター) slotとして作られた要素の中での意味
+                        </li>
+                        <li>
+                            templateの基盤を作るときslotタグにname="some-slot-name"を指定しておいく
+                        </li>
+                        <li>
+                            shadowDOMを利用するとき各タグに位置したいslotの名前をslot="some-slot-name"のように属性を追加し、そのいちに表示できる
+                        </li>
+                        <li>
+                            templateの外側でulについてのスタイリングがあるとしたら、templateの中でulのスタイルを上書きしようとしてもできない（外側にないプロパティは”追加”できる）<br>
+                            important,　インラインスタイルも上書きできない
+                            templateの中にstyle, shadowDOMの中でstyle, shadowDOM中でstylesheet用linkをappendChildどちらも該当
+                        </li>
+                    </ol>
                 </li>
             </ul>
         </section>
