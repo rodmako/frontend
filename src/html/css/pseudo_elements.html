@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pseudo elements</title>
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            flex-flow: column;
+        }
+
+        section {
+            flex: 1;
+            padding: 20px;
+            margin: 20px 22px;
+            border: 5px solid black;
+            box-sizing: border-box;
+        }
+
+        ul {
+            background-color: rgb(223, 248, 255);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 3px dotted black;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        #backdrop video::backdrop {
+            background-color: red;
+            z-index: 99999;
+        }
+
+        #backdrop ::cue {
+            color: yellow;
+            font-style: italic;
+            font-size: 3rem;
+        }
+
+        #file-selector-button #file-selector-button-input {
+            color: red;
+        }
+
+        #file-selector-button #file-selector-button-input2::file-selector-button {
+            color: red;
+        }
+
+        #file-selector-button #file-selector-button-input3 {
+            display: none;
+        }
+
+        #first-letter ::first-letter {
+            font-size: 2rem;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: -5px 3px red;
+            padding: 0.5rem;
+            margin-right: 0.2rem;
+            padding-bottom: 0.3rem;
+            background-color: lightslategray;
+            border-radius: 15px;
+            border: 2px dashed white;
+        }
+
+        #first-letter {
+            display: flex;
+            justify-content: center;
+            flex-flow: row wrap;
+        }
+
+        #first-letter * {
+            flex: 1;
+        }
+
+        #first-letter h2 {
+            flex: 100%;
+        }
+
+        #first-line ::first-line {
+            color: red;
+        }
+
+        #marker ul {
+            list-style-type: none;
+            padding: auto;
+        }
+
+        #marker li {
+            margin-left: 40px;
+        }
+
+        #marker li::marker {
+            content: "aaa";
+            color: green;
+        }
+
+        part-custom-tag::part(part-head) {
+            background-color: greenyellow;
+            color: red;
+        }
+
+        #selection ::selection {
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+    <script type="module">
+        import PartTest from '/src/js/shadowDOM/PartTest.js'
+        window.addEventListener("load", () => {
+            const button = document.querySelector("#file-selector-button-button");
+            const input = document.querySelector("#file-selector-button-input3");
+
+            button.addEventListener("click", () => {
+                input.click();
+            });
+
+            input.addEventListener("change", () => {
+                const special = ["\\", "¥", "/"];
+                let string = input.value;
+                special.forEach(item => {
+                    string = string.split(item).reverse()[0];
+                });
+                button.textContent = string;
+            });
+
+            //my_paragraph();
+            my_paragraph2();
+            const slottedSpan = document.querySelector('my-paragraph span');
+            console.log(slottedSpan.assignedSlot);
+            console.log(slottedSpan.slot);
+        });
+
+        const my_paragraph = () => {
+            const field = document.getElementById("slotted");
+            const template = document.getElementById("my-paragraph");
+            const template_content = template.content;
+            field.appendChild(template_content);
+        }
+
+        const my_paragraph2 = () => {
+            customElements.define('my-paragraph',
+                class extends HTMLElement {
+                    constructor() {
+                        super();
+
+                        const template = document.getElementById('my-paragraph');
+                        const templateContent = template.content;
+                        const style = document.createElement("link");
+                        style.setAttribute("rel", "stylesheet");
+                        style.setAttribute("href", "/src/css/shadowDOM/my_paragraph.css");
+
+                        const shadowRoot = this.attachShadow({ mode: 'open' });
+                        shadowRoot.appendChild(style);
+                        shadowRoot.appendChild(templateContent.cloneNode(true));
+                    }
+                }
+            );
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            pseudo elements
+        </h1>
+    </header>
+    <main>
+        <section id="backdrop">
+            <h2>::backdrop, :current, ::cue</h2>
+            <video controls width="500">
+                <source src="/assets/video/videoTagVideo.mov" type="video/mp4">
+                <track default kind="subtitles" srclang="english" src="/assets/video/subtitles/subtitle_for_test.vtt">
+            </video>
+            <ul>
+                <li>
+                    ::backdrop dialog、fullscreen videoの背景(showModal(), requestFullscreen())
+                </li>
+                <li>
+                    :current 互換性情報がない
+                </li>
+                <li>
+                    ::cue WebVTT(字幕)関連
+                </li>
+            </ul>
+        </section>
+        <section id="file-selector-button">
+            <h2>::file-selector-button</h2>
+            <label for="file-selector-button-input">inputでセレクトしてcolor</label>
+            <input id="file-selector-button-input" type="file" accept="application/pdf">
+            <label for="file-selector-button-input2">input::file-selector-buttonでセレクトしてcolor</label>
+            <input id="file-selector-button-input2" type="file" accept="application/pdf">
+            <label for="file-selector-button-input3">ボタンの横のテキスト変更</label>
+            <input id="file-selector-button-input3" type="file" accept="application/pdf" multiple>
+            <button id="file-selector-button-button" type="button">ファイルを選択</button>
+            <ul>
+                <li>
+                    ::file-selector-buttonでinput type="file"のボタンのテキストスタイリング可能
+                </li>
+                <li>
+                    input要素のtypeがfileの時,cssでそのinputを選択してcolorのスタイリングしてもボタンのテキスト色は変わらない（ボタンの隣のテキスト色が変わる）
+                </li>
+                <li>
+                    ボタンの隣のテキスト消したければ　type="file"のinputをdisplay:noneして新しいbuttonを作ってそのボタンをclickした時input="file"にclick
+                    event投げればいい
+                </li>
+            </ul>
+        </section>
+        <section id="first-letter">
+            <h2>::first-letter</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dignissimos iusto harum dolore impedit
+                soluta natus rerum omnis pariatur odit expedita ipsam, velit quibusdam maiores eligendi mollitia
+                deleniti, explicabo eaque.<br>
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id, voluptatibus ex. Dignissimos,
+                    tenetur iste eius autem quo harum, dicta voluptatem perferendis, explicabo assumenda qui nesciunt
+                    hic! Esse minus vitae optio! </span>
+            </p>
+            <div>
+                divタグ
+                <p>div - pタグ</p>
+                <span>div - spanタグ</span>
+            </div>
+            <ul>
+                ulタグ
+                <li>
+                    &lt;br&gt;、block要素の中に入れたinline要素の最初もじには効かない（block - blockは効く）
+                </li>
+            </ul>
+        </section>
+        <section id="first-line">
+            <h2>::first-line</h2>
+            <div>
+                divタグ
+                <div>
+                    divタグ - divタグ
+                    <div>
+                        divタグ - divタグ 内容
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, iure deleniti tempora, sed
+                        error sit reprehenderit aliquam eveniet, tenetur recusandae inventore? Modi, veritatis culpa
+                        deserunt commodi autem officia consequatur mollitia? Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Voluptatum, tenetur cum. Totam tempora rerum sequi similique modi quam
+                        assumenda asperiores placeat vero sit eum voluptate, dicta accusantium ipsam earum iusto. Lorem
+                        ipsum dolor sit amet, consectetur adipisicing elit. In, iusto? Tempore ipsam eum autem ab cumque
+                        nam, modi molestias reiciendis error, praesentium accusantium veritatis saepe, quae voluptates
+                        maiores earum accusamus.
+                    </div>
+                </div>
+            </div>
+            <span>
+                divタグ
+                <span>
+                    divタグ - divタグ
+                    <div>
+                        divタグ - divタグ 内容
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, iure deleniti tempora, sed
+                        error sit reprehenderit aliquam eveniet, tenetur recusandae inventore? Modi, veritatis culpa
+                        deserunt commodi autem officia consequatur mollitia? Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Voluptatum, tenetur cum. Totam tempora rerum sequi similique modi quam
+                        assumenda asperiores placeat vero sit eum voluptate, dicta accusantium ipsam earum iusto. Lorem
+                        ipsum dolor sit amet, consectetur adipisicing elit. In, iusto? Tempore ipsam eum autem ab cumque
+                        nam, modi molestias reiciendis error, praesentium accusantium veritatis saepe, quae voluptates
+                        maiores earum accusamus.
+                    </div>
+                </span>
+            </span>
+            <ul>
+                <li>
+                    ::first-line 各階層の最初の列（画面が小さくなっても1列だけ（固定じゃない））
+                </li>
+                <li>
+                    最初の列とみなすのはblock要素だけinline要素の最初の列は効かない
+                </li>
+            </ul>
+        </section>
+        <section id="marker">
+            <h2>::marker</h2>
+            <ul>
+                <li>
+                    li要素のlist-styleは模様でその模様のスタイルは::markerで触れる
+                </li>
+                <li>
+                    empty
+                </li>
+            </ul>
+        </section>
+        <section id="part">
+            <h2>::part</h2>
+            <part-custom-tag data-head="頭">内容</part-custom-tag>
+            <ul>
+                <li>
+                    shadowDOMの中で要素にpart="somename"を追加する必要がある
+                </li>
+                <li>
+                    custom-element::part(partname)
+                </li>
+            </ul>
+        </section>
+        <section id="selection">
+            <h2>::selection</h2>
+            <p>
+                このテキストをドラッグして選択
+            </p>
+            <ul>
+                <li>
+                    見た目を飾るためだけに使ってはいけない
+                </li>
+                <li>
+                    視力が良くない人も読めるようにテキストと背景の対比を十分に
+                </li>
+                <li>
+                    推奨比率 本文4.5:1, タイトル（大きいテキスト）3:1<br>
+                </li>
+                <li>
+                    WCAGには大きい文字（large text）の定義がある<br>
+                    18.66 ~ 24pxのbold<br>
+                    24px<br>
+                    largerをfont-sizeとして指定<br>
+                </li>
+                <li>
+                    <a href="https://webaim.org/resources/contrastchecker/">WEBAIM Contrast Checker 参考</a>
+                </li>
+            </ul>
+        </section>
+        <section id="slotted">
+            <h2>::slotted(), template</h2>
+            <template id="my-paragraph">
+                <!--<style>
+                    ul {
+                        background-color: none;
+                    }
+
+                    p {
+                        color: white;
+                        background-color: #666;
+                        padding: 5px;
+                    }
+
+                    ::slotted(*) {
+                        border: 10px solid black;
+                    }
+                </style>-->
+                <p>
+                    <slot name="my-text">My default text</slot>
+                </p>
+            </template>
+            <my-paragraph>
+                <span slot="my-text">
+                    ghi
+                </span>
+            </my-paragraph>
+            <my-paragraph>
+                <ul class="my-paragraph-ul" slot="my-text">
+                    <li>
+                        abc
+                    </li>
+                    <li>
+                        def
+                    </li>
+                </ul>
+            </my-paragraph>
+            <ul>
+                <li>
+                    templateの中に記述したstyleはtemplateの中で有効
+                </li>
+                <li>
+                    slot
+                    <ol>
+                        <li>
+                            ::slotted(なんらかのセレクター) slotとして作られた要素の中での意味
+                        </li>
+                        <li>
+                            templateの基盤を作るときslotタグにname="some-slot-name"を指定しておいく
+                        </li>
+                        <li>
+                            shadowDOMを利用するとき各タグに位置したいslotの名前をslot="some-slot-name"のように属性を追加し、そのいちに表示できる
+                        </li>
+                        <li>
+                            templateの外側でulについてのスタイリングがあるとしたら、templateの中でulのスタイルを上書きしようとしてもできない（外側にないプロパティは”追加”できる）<br>
+                            important,　インラインスタイルも上書きできない
+                            templateの中にstyle, shadowDOMの中でstyle, shadowDOM中でstylesheet用linkをappendChildどちらも該当
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
