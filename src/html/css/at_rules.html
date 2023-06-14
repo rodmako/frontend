@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>At rules</title>
+    <style>
+        @charset "UTF-8";
+    </style>
 </head>
 <body>
     <header>
@@ -14,7 +17,27 @@
     </header>
     <main>
         <section>
-            
+            <h2>
+                @charset
+            </h2>
+            <ul>
+                <li>
+                    cssシートで利用する文字のインコーディングを決める
+                </li>
+                <li>
+                    必ずcssシートの最初に位置していて＠charsetより前に文字があってはいけない<br>
+                    書き方は @charset "UTF-8";<br>
+                    @charsetの前にスペースや他の文字がない（最初に技術）<br>
+                    @charsetと値の間にスペースは１個<br>
+                    正しいクォーテーション使用（' or "）
+                </li>
+                <li>
+                    @media, @supportなど他のat-rulesの中で使えない（@charsetの前に文字があってはいけないことにも該当するが、ただできない）
+                </li>
+                <li>
+                    ASCIIではない文字を使うとき有効（😀、👺、🎮 ）
+                </li>
+            </ul>
         </section>
     </main>
 </body>
