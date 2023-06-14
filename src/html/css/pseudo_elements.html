@@ -105,6 +105,11 @@
             background-color: greenyellow;
             color: red;
         }
+
+        #selection ::selection {
+            color: red;
+            background-color: yellow;
+        }
     </style>
     <script type="module">
         import PartTest from '/src/js/shadowDOM/PartTest.js'
@@ -262,6 +267,32 @@
                 </li>
                 <li>
                     custom-element::part(partname)
+                </li>
+            </ul>
+        </section>
+        <section id="selection">
+            <h2>::selection</h2>
+            <p>
+                このテキストをドラッグして選択
+            </p>
+            <ul>
+                <li>
+                    見た目を飾るためだけに使ってはいけない
+                </li>
+                <li>
+                    視力が良くない人も読めるようにテキストと背景の対比を十分に
+                </li>
+                <li>
+                    推奨比率 本文4.5:1, タイトル（大きいテキスト）3:1<br>
+                </li>
+                <li>
+                    WCAGには大きい文字（large text）の定義がある<br>
+                    18.66 ~ 24pxのbold<br>
+                    24px<br>
+                    largerをfont-sizeとして指定<br>
+                </li>
+                <li>
+                    <a href="https://webaim.org/resources/contrastchecker/">WEBAIM Contrast Checker 参考</a>
                 </li>
             </ul>
         </section>
