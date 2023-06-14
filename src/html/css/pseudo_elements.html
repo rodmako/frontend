@@ -100,8 +100,13 @@
             content: "aaa";
             color: green;
         }
+        part-custom-tag::part(part-head) {
+            background-color: greenyellow;
+            color: red;
+        }
     </style>
-    <script>
+    <script type="module">
+        import PartTest from '/src/js/shadowDOM/PartTest.js'
         window.addEventListener("load", () => {
             const button = document.querySelector("#file-selector-button-button");
             const input = document.querySelector("#file-selector-button-input3");
@@ -224,6 +229,18 @@
                 </li>
                 <li>
                     empty
+                </li>
+            </ul>
+        </section>
+        <section id="part">
+            <h2>::part</h2>
+            <part-custom-tag data-head="頭">内容</part-custom-tag>
+            <ul>
+                <li>
+                    shadowDOMの中で要素にpart="somename"を追加する必要がある
+                </li>
+                <li>
+                    custom-element::part(partname)
                 </li>
             </ul>
         </section>
