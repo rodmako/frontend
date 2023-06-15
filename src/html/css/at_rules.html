@@ -80,6 +80,27 @@
         #list-test :not(h2) {
             flex: 300px;
         }
+
+        #layer div {
+            color: red;
+        }
+
+        @layer base, special;
+
+        @layer base {
+            div {
+                color: green !important;
+                border: 5px solid green;
+                font-size: 1.3em;
+                padding: 0.5em;
+            }
+        }
+
+        @layer special {
+            div {
+                color: rebeccapurple !important;
+            }
+        }
     </style>
     <script>
         window.addEventListener("load", () => {
@@ -103,7 +124,7 @@
 
                         const listTitle = document.createElement("h3");
                         listTitle.textContent = listClass;
-                        wrapper.appendChild(listTitle); 
+                        wrapper.appendChild(listTitle);
 
                         for (let i = 0; i < 10; i++) {
                             const li = document.createElement("li");
@@ -262,6 +283,28 @@
             <my-list list-type="ol" class="additive" start="12">additive-symbolsに数値 文字の組み合わせで指定しておく5 O, 1
                 Xの場合1から４まではXXXXになるまで追加していて５からあとはOXXXX...のように追加していく(16の場合 (5*3)+1だから　OOOXが表示される)</my-list>
             <my-list class="fixed">symbol終わったらfallbackになる(rangeで循環場所指定してもsymbolが入る場所は順番に固定されている)</my-list>
+        </section>
+        <section id="layer">
+            <h2>@layer</h2>
+            <div class="item">
+                I am displayed in <code>color: rebeccapurple</code> because the
+                <code>special</code> layer comes after the <code>base</code> layer. My green
+                border, font-size, and padding come from the <code>base</code> layer.
+            </div>
+            <ul>
+                <li>
+                    layerはより後に宣言したものが強い
+                </li>
+                <li>
+                    layerの詳細度はそのlayerの中でだけ有効
+                </li>
+                <li>
+                    layerに入っていないスタイルはlayerが呼び出されその後で呼び出される（上書きされる、layerで!importantで回避できる）
+                </li>
+                <li>
+                    layer同士で!important戦いは先に宣言したlayerが勝つ
+                </li>
+            </ul>
         </section>
     </main>
 </body>
