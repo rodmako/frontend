@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>At rules</title>
+    <style>
+        @charset "UTF-8";
+
+        @counter-style my-list-symbol {
+            system: numeric;
+            symbols: "\25A0" "\25A1";
+            suffix: " (suffix) ";
+            negative: "(negative" ")";
+            prefix: "(prefix) ";
+            range: 2 4, 7 9;
+            pad: 4 "X";
+            fallback: upper-alpha;
+        }
+
+        @counter-style my-list-symbolic {
+            system: "symbolic";
+            symbols: "\25A0" "\25A1";
+            range: infinite;
+            fallback: upper-alpha;
+        }
+
+        @counter-style my-list-cyclic {
+            system: cyclic;
+            symbols: "\25A0" "\25A1";
+            range: infinite;
+            fallback: upper-alpha;
+        }
+
+        @counter-style my-list-alphabetic {
+            system: alphabetic;
+            symbols: "\25A0" "\25A1";
+            range: infinite;
+            fallback: upper-alpha;
+        }
+
+        @counter-style my-list-numeric {
+            system: numeric;
+            symbols: "\25A0" "\25A1";
+            range: infinite;
+            fallback: upper-alpha;
+        }
+
+        @counter-style my-list-additive {
+            system: additive;
+            additive-symbols: 5 O, 1 X;
+            range: 1 3999;
+            fallback: upper-alpha;
+        }
+
+        @counter-style my-list-fixed {
+            system: fixed;
+            symbols: "一" "二" "三";
+            range: 2 3;
+            fallback: upper-alpha;
+        }
+
+        #counter-style-ul {
+            padding-left: 14ch;
+            list-style: my-list-symbol;
+        }
+
+        #list-test {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 10px;
+        }
+
+        #list-test h2 {
+            flex: 100%;
+        }
+
+        #list-test :not(h2) {
+            flex: 300px;
+        }
+
+        #layer div {
+            color: red;
+        }
+
+        @layer base, special;
+
+        @layer base {
+            div {
+                color: green !important;
+                border: 5px solid green;
+                font-size: 1.3em;
+                padding: 0.5em;
+            }
+        }
+
+        @layer special {
+            div {
+                color: rebeccapurple !important;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            myList();
+        });
+
+        const myList = () => {
+            customElements.define("my-list",
+                class extends HTMLElement {
+                    constructor() {
+                        super();
+                        const shadowRoot = this.attachShadow({ mode: "open" });
+                        const listType = this.hasAttribute("list-type") ? this.getAttribute("list-type") : "";
+                        const listClass = this.hasAttribute("class") ? this.getAttribute("class") : "";
+                        const listStart = this.hasAttribute("start") ? this.getAttribute("start") : "";
+                        const list = listType == "ol" ? document.createElement("ol") : document.createElement("ul");
+                        const wrapper = document.createElement("span");
+                        wrapper.setAttribute("class", "wrapper");
+                        list.setAttribute("class", listClass);
+                        list.setAttribute("start", listStart);
+
+                        const listTitle = document.createElement("h3");
+                        listTitle.textContent = listClass;
+                        wrapper.appendChild(listTitle);
+
+                        for (let i = 0; i < 10; i++) {
+                            const li = document.createElement("li");
+                            li.textContent = "li tag";
+                            list.appendChild(li);
+                        }
+
+                        const caption = document.createElement("span");
+                        caption.setAttribute("class", "cap");
+                        caption.textContent = this.textContent;
+                        list.appendChild(caption);
+
+                        const style = document.createElement("style");
+                        style.textContent = `
+                        h3 {
+                            background-color: lightskyblue;
+                            margin: 0;
+                            padding: 5px;
+                        }
+                        
+                        ul,
+                        ol {
+                            position: relative;
+                            margin: 0;
+                            padding: 15px;
+                            border: 2px dashed lightskyblue;
+                            border-top: none;
+                            list-style: my-list-${listClass};
+                            list-style-position: inside;
+                        }
+
+                        .cap {
+                            display: none;
+                            position: absolute;
+                            top: 5%;
+                            left: 30%;
+                            right: 5%;
+                            padding: 10px;
+                            background-color: white;
+                            border: 3px solid black;
+                            border-radius: 15px;
+                        }
+                        
+                        ul:hover .cap,
+                        ol:hover .cap {
+                            display: block;
+                        }
+                        `;
+
+                        shadowRoot.appendChild(wrapper);
+                        wrapper.appendChild(list)
+                        shadowRoot.appendChild(style);
+                    }
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            At rules
+        </h1>
+    </header>
+    <main>
+        <section>
+            <h2>
+                @charset
+            </h2>
+            <ul>
+                <li>
+                    cssシートで利用する文字のインコーディングを決める
+                </li>
+                <li>
+                    必ずcssシートの最初に位置していて＠charsetより前に文字があってはいけない<br>
+                    書き方は @charset "UTF-8";<br>
+                    @charsetの前にスペースや他の文字がない（最初に技術）<br>
+                    @charsetと値の間にスペースは１個<br>
+                    正しいクォーテーション使用（' or "）
+                </li>
+                <li>
+                    @media, @supportなど他のat-rulesの中で使えない（@charsetの前に文字があってはいけないことにも該当するが、ただできない）
+                </li>
+                <li>
+                    ASCIIではない文字を使うとき有効（😀、👺、🎮 ）
+                </li>
+            </ul>
+        </section>
+        <section id="counter-style">
+            <h2>@counter-style</h2>
+            <ol id="counter-style-ul" start="-1">
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+                <li>
+                    liタグ
+                </li>
+            </ol>
+            <ul>
+                <li>
+                    system: カウンター進行タイプ
+                </li>
+                <li>
+                    symbols: url(image), "0", A B Cなど記号を選択, "\25A0""\25A1"のように2つを交差して表示することもできる（range: 2 4, 7 9のように技術必要）
+                </li>
+                <li>
+                    negative: olで有効（start="マイナス値"）値が０より小さい値の時追加文字を設定できる(rangeと一緒に使ったら動かないことがある)
+                </li>
+                <li>
+                    prefix: list-styleの前に文字を加える
+                </li>
+                <li>
+                    suffix: list-styleの後ろに文字を加える
+                </li>
+                <li>
+                    range: infinite 2(2から無限大のマイナス値まで繰り返す), 5 infinite(5から無限大の陽数値まで繰り返す), 2 4, 7 9（２から４まで　７から９まで）
+                </li>
+                <li>
+                    pad: symbolの文字を含め表示桁数を決める（pad: 2 "X" 2桁になるようにsymbolの前にXを詰める　pad: 4 "0" ４桁になるまで0を詰める）
+                </li>
+                <li>
+                    fallback: 使用中のカウンタースタイルが特定カウンターに対して表現できない時代わりに表示（symbolの後ろ、ベースにあるもの・なんらかの原因で手こずったら出る）　基本decimal
+                </li>
+            </ul>
+        </section>
+        <section id="list-test">
+            <h2>ちょっと試すセクション</h2>
+            <my-list class="symbolic">symbolsの値が最後まで表示されたら1番目のsymbolに戻って+1した数分表示する</my-list>
+            <my-list class="cyclic">symbolsの値の最後まで表示したらまたsymbolsの1番目に戻る（ただ繰り返す）</my-list>
+            <my-list class="alphabetic">二重for文見たいな感じ</my-list>
+            <my-list class="numeric">始まりはsymbolの2番目から始まる symbolが終わったらまた1番目を後ろに追加していく</my-list>
+            <my-list list-type="ol" class="additive" start="12">additive-symbolsに数値 文字の組み合わせで指定しておく5 O, 1
+                Xの場合1から４まではXXXXになるまで追加していて５からあとはOXXXX...のように追加していく(16の場合 (5*3)+1だから　OOOXが表示される)</my-list>
+            <my-list class="fixed">symbol終わったらfallbackになる(rangeで循環場所指定してもsymbolが入る場所は順番に固定されている)</my-list>
+        </section>
+        <section id="layer">
+            <h2>@layer</h2>
+            <div class="item">
+                I am displayed in <code>color: rebeccapurple</code> because the
+                <code>special</code> layer comes after the <code>base</code> layer. My green
+                border, font-size, and padding come from the <code>base</code> layer.
+            </div>
+            <ul>
+                <li>
+                    layerはより後に宣言したものが強い
+                </li>
+                <li>
+                    layerの詳細度はそのlayerの中でだけ有効
+                </li>
+                <li>
+                    layerに入っていないスタイルはlayerが呼び出されその後で呼び出される（上書きされる、layerで!importantで回避できる）
+                </li>
+                <li>
+                    layer同士で!important戦いは先に宣言したlayerが勝つ
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
