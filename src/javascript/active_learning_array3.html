@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>active_learning_array3</title>
+    <script>
+        window.addEventListener("load", () => {
+            const section = document.querySelector(".output");
+            let myArray = ["Ryu", "Ken", "Chun-Li", "Cammy", "Guile", "Sakura", "Sagat", "Juri"];
+            let para1 = document.createElement('p');
+            para1.textContent = myArray;
+
+            // Add your code here
+            myArray.pop();
+            myArray.push("JY", "Carl");
+            const myString = myArray.map((item, index) => {
+                return `${item}(${index})`
+            }).join("-").toString();
+            // Don't edit the code below here!
+
+            section.innerHTML = ' ';
+
+            let para2 = document.createElement('p');
+            para2.textContent = myString;
+
+            section.appendChild(para1);
+            section.appendChild(para2);
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            active_learning_array3
+        </h1>
+    </header>
+    <main>
+        <section>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Test_your_skills:_Arrays">MDN
+                問題</a>
+        </section>
+        <section class="output">
+
+        </section>
+    </main>
+</body>
+
+</html>

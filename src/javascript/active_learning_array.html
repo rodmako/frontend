@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>active_learning_array</title>
+    <script>
+        window.addEventListener("load", () => {
+            const list = document.querySelector('.output ul');
+            const totalBox = document.querySelector('.output p');
+            let total = 0;
+            list.innerHTML = '';
+            totalBox.textContent = '';
+
+            const products = [
+                'Underpants:6.99',
+                'Socks:5.99',
+                'T-shirt:14.99',
+                'Trousers:31.99',
+                'Shoes:23.99'
+            ];
+
+            for(product of products){
+                const colonIndex = product.indexOf(":");
+                const productName = product.slice(0, colonIndex);
+                const productPrice = Number(product.slice(colonIndex+1));
+
+                let itemText = `${productName} : ${productPrice}`;
+                const listItem = document.createElement('li');
+                listItem.textContent = itemText;
+                list.appendChild(listItem);
+                total += productPrice;
+            }
+            totalBox.textContent = 'Total: $' + total.toFixed(2);
+        })
+    </script>
+</head>
+<body>
+    <header>
+        <h1>
+            active_learning_array
+        </h1>
+    </header>
+    <main>
+        <section>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays">MDN 問題</a>
+        </section>
+        <section class="output">
+            <ul>
+
+            </ul>
+            <p></p>
+        </section>
+    </main>
+</body>
+</html>

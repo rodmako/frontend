@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>active_learning_array4</title>
+    <script>
+        window.addEventListener("load", () => {
+            const section = document.querySelector(".output");
+            const birds = ["Parrots", "Falcons", "Eagles", "Emus", "Caracaras", "Egrets"];
+
+            // Add your code here
+            const targetIndex = birds.indexOf("Eagles");
+            birds.splice(targetIndex-1, targetIndex);
+            const eBirds = birds.filter(item => {
+                return item.startsWith("E");
+            }).join(" - ");
+            // Don't edit the code below here!
+
+            section.innerHTML = ' ';
+
+            const para1 = document.createElement('p');
+            para1.textContent = eBirds;
+
+            section.appendChild(para1);
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            active_learning_array4
+        </h1>
+    </header>
+    <main>
+        <section>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Test_your_skills:_Arrays">MDN
+                問題</a>
+        </section>
+        <section class="output">
+
+        </section>
+    </main>
+</body>
+
+</html>
