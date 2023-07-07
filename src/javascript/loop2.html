@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Loops: Task 2</title>
+    <style>
+        .container {
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 24px;
+        }
+
+        .controlBox input {
+            width: 100%;
+            height: 24px;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Loop2</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="wrapper">
+                <section class="controlBox">
+                    <input list="quickwords" type="text">
+                    <datalist id="quickwords" class="quick"></datalist>
+                </section>
+                <section class="preview">
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    const para = document.createElement('p');
+
+    const section = document.querySelector('.preview');
+
+    const datalist = document.querySelector('.quick');
+
+    const input = document.querySelector('input');
+
+    section.appendChild(para);
+
+    const phonebook = [
+        { name: 'Chris', number: '1549' },
+        { name: 'Li Kang', number: '9634' },
+        { name: 'Anne', number: '9065' },
+        { name: 'Francesca', number: '3001' },
+        { name: 'Mustafa', number: '6888' },
+        { name: 'Tina', number: '4312' },
+        { name: 'Bert', number: '7780' },
+        { name: 'Jada', number: '2282' },
+    ]
+
+    // Add your code here
+    const findInfo = (name) => {
+        para.textContent = "";
+        for (let i = 0; i < phonebook.length; i++) {
+            if (name === phonebook[i].name) {
+                para.textContent = `名前：${phonebook[i].name} | 番号：${phonebook[i].number}`;
+            }
+        }
+        // Don't edit the code below here!
+
+        section.appendChild(para);
+    }
+
+
+
+    const quickword = () => {
+        datalist.textContent = "";
+        findInfo(input.value);
+        for (const item of phonebook) {
+            if (item.name.includes(input.value) && input.value !== "") {
+                if (item.name === input.value) {
+                    datalist.textContent = "";
+                    break;
+                }
+                const opt = document.createElement('option');
+                opt.textContent = item.name;
+                opt.value = item.name;
+                datalist.appendChild(opt);
+            }
+        }
+    }
+
+    input.addEventListener("input", quickword);
+
+</script>
+
+</html>
