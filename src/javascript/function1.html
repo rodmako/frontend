@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Functions: Task 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="/src/css/function_style.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    const names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+    const namesPara = document.createElement('p');
+    const para = document.createElement('p');
+
+    namesPara.textContent = "Array : " + names;
+
+    // Add your code here
+    const randomName = () => {
+        const namesLength = names.length;
+        const randomIndex = Math.floor(Math.random() * namesLength);
+        const result = names[randomIndex];
+        para.textContent = "random name : " + result;
+    }
+    randomName();
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+    section.appendChild(namesPara);
+    section.appendChild(para);
+  </script>
+
+</html>
