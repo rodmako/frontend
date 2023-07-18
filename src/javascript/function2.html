@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Functions: Task 2</title>
+    <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+
+        .control {
+            width: 200px;
+            display: flex;
+            flex-flow: column;
+            gap: 15px;
+        }
+
+        input[type="color"] {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="preview">
+
+    </section>
+
+    <canvas width="480" height="320">
+
+    </canvas>
+
+    <section class="control">
+        <input type="range" max="480">
+        <input type="range" max="320">
+        <input type="range" min="50" max="430">
+        <input type="range" min="50" max="270">
+        <input type="color">
+    </section>
+
+</body>
+<script>
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let x = 50;
+    let y = 60;
+    let width = 100;
+    let height = 75;
+    let color = 'blue';
+
+    const draw = (x, y, w, h, c, r) => {
+        ctx.clearRect(0, 0, 480, 320);
+        ctx.fillStyle = c;
+        ctx.fillRect(x, y, w, h);
+    }
+
+    draw(x, y, width, height, color);
+
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach((input, index) => {
+        input.addEventListener("input", () => {
+            switch (index) {
+                case 0:
+                    x = input.value;
+                    break;
+                case 1:
+                    y = input.value;
+                    break;
+                case 2:
+                    width = input.value;
+                    break;
+                case 3:
+                    height = input.value;
+                    break;
+                case 4:
+                    color = input.value;
+                    break;
+                default:
+                    break;
+            }
+            draw(x, y, width, height, color);
+        });
+    });
+
+    const section = document.querySelector('section');
+</script>
+
+</html>
