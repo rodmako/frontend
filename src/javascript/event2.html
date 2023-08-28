@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event処理</title>
+    <style>
+        #mom {
+            background-color: rgb(255, 228, 196);
+            padding: 10px;
+        }
+
+        #mom:hover {
+            background-color: rgb(255, 228, 100);
+        }
+
+        #son {
+            background-color: rgb(210, 105, 30);
+            padding: 10px;
+        }
+
+        #son:hover {
+            background-color: rgb(180, 100, 0);
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            let switch1 = "0";
+            let switch2 = "0";
+            const typeButtons = document.querySelectorAll("[data-js=typeButton]");
+            typeButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    switch1 = button.value;
+                });
+            });
+
+            const target1 = document.querySelector("[data-js=backgroundColorChangeButton1]");
+            const target3 = document.querySelector("[data-js=text]");
+
+            const output = document.querySelector("[data-js=output]");
+
+            document.addEventListener("click", () => {
+                output.innerHTML += `document<br>`; 
+            }, false);
+
+            target1.addEventListener("click", (e) => {
+                output.innerHTML += "target1<br>";
+                if(switch1 === "1") {
+                    e.stopPropagation();
+                }else if(switch1 === "2") {
+                    e.stopImmediatePropagation();
+                }else {
+                    
+                }
+            }, false);
+
+            target3.addEventListener("click", (e) => {
+                output.innerHTML += "text1 イベント2つ<br>";
+                if(switch1 === "1") {
+                    e.stopPropagation();
+                }else if(switch1 === "2") {
+                    e.stopImmediatePropagation();
+                }else {
+                    
+                }
+            }, false);
+
+            target3.addEventListener("click", (e) => {
+                output.innerHTML += "text2　イベント2つ<br>";
+            }, false);
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Event 処理</h1>
+    </header>
+    <main>
+        <article>
+            <h2>stopPropagation, stopImmediatePropagation</h2>
+            <section>
+                <button data-js="typeButton" value="0">none</button>
+                <button data-js="typeButton" value="1">stopPropagation</button>
+                <button data-js="typeButton" value="2">stopImmediatePropagation</button>
+            </section>
+            <section>
+                <div id="mom" data-js="backgroundColorChangeButton1">
+                    target
+                    <div id="son" data-js="text">text</div>
+                </div>
+            </section>
+            <hr>
+            <section>
+                <div data-js="output">
+
+                </div>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
