@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Random color example — event handler attribute</title>
+    <style>
+        button {
+            margin: 10px
+        };
+    </style>
+</head>
+
+<body>
+    <p>押さないでください。</p>
+    <button>視力を失う</button>
+    <script>
+        const btn = document.querySelector('button');
+
+        function random(number) {
+            return Math.floor(Math.random() * (number + 1));
+        }
+
+        function randomDelay() {
+            return Math.floor(Math.random() * (250 - 0) + 0);
+        }
+
+        let interval;
+
+        let randomDelayVal = 1000;
+
+        function changeTimer() {
+            randomDelayVal = randomDelay();
+        }
+
+        function fill() {
+            clearInterval(interval);
+            const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+            document.body.style.backgroundColor = rndCol;
+            changeTimer();
+            interval = setInterval(fill, randomDelayVal);
+            console.log(rndCol);
+            if(document.documentElement.exitFullscreen() === true) {
+                document.documentElement.requestFullscreen();
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            document.documentElement.requestFullscreen();
+            document.addEventListener("keydown", (e) => {
+                e.preventDefault();
+            });
+            fill();
+            btn.remove();
+        });
+    </script>
+</body>
+
+</html>
