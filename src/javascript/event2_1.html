@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用語理解検証</title>
+    <script>
+        const bubble1 = () => {
+            const bubbleTest2 = document.querySelector("#bubbleTest2 form");
+            bubbleTest2.addEventListener("click", (event) => {
+                alert(this);
+                alert("target = " + event.target.tagName + ", this=" + event.currentTarget.tagName);
+            });
+        }
+    </script>
+    <style>
+        details {
+            border-bottom: 1px solid black;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        summary {
+            font-size: 1.5rem;
+        }
+
+        #bubbleTest1 * {
+            border: 1px solid red;
+            padding: 1.2rem;
+        }
+
+        #bubbleTest2 form {
+            background-color: green;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #bubbleTest2 div {
+            background-color: blue;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+        }
+
+        #bubbleTest2 p {
+            background-color: red;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            バブリング、キャプチャリング、リスナー、ハンドラー
+        </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+                <details>
+                    <summary>
+                        バブリング
+                    </summary>
+                    <section>
+                        <h2>バブリングとは</h2>
+                    </section>
+                    <section>
+                        <ul>
+                            <li>
+                                form -> div -> p　の構造
+                            </li>
+                            <li>
+                                pをクリックするとpのevent, divのevent, formのイベント順で実行される
+                            </li>
+                            <li>
+                                divをクリックするとdivのevent, formのイベント順で実行される（pのeventは実行されない）
+                            </li>
+                            <li>
+                                クリックしたその要素のevent ->　親要素のevent ->　親の親のevent順でeventが実行されるのがバブリング
+                            </li>
+                        </ul>
+                    </section>
+                    <section id="bubbleTest1">
+                        <form onclick="alert('form')">FORM
+                            <div onclick="alert('div')">DIV
+                                <p onclick="alert('p')">P</p>
+                            </div>
+                        </form>
+                    </section>
+                    <section>
+                        <h2>event.target / this(event.currentTarget)　違い</h2>
+                    </section>
+                    <section id="bubbleTest2">
+                        <form>FORM
+                            <div>DIV
+                                <p>P</p>
+                            </div>
+                        </form>
+                    </section>
+                </details>
+            </section>
+            <section>
+                <details>
+                    <summary>
+                        キャプチャリング
+                    </summary>
+                    <section>
+
+                    </section>
+                </details>
+            </section>
+            <section>
+                <details>
+                    <summary>
+                        リスナー
+                    </summary>
+                    <section>
+
+                    </section>
+                </details>
+            </section>
+            <section>
+                <details>
+                    <summary>
+                        ハンドラー
+                    </summary>
+                    <section>
+
+                    </section>
+                </details>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
