@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>バブリング</title>
+    <style>
+        section {
+            margin: 0 0 10px 0;
+        }
+
+        form,
+        div,
+        p {
+            border: 3px solid black;
+        }
+
+        form {
+            background-color: green;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        div {
+            background-color: blue;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+        }
+
+        p {
+            background-color: red;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0;
+        }
+
+        #bubble2 :is(form, div, p):active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>バブリング</h1>
+    </header>
+    <main>
+        <article>
+            <section id="bubble3">
+                <h2>capture phase, bubbling phase</h2>
+                <ul>
+                    <li>
+                        バブリング　：　ネストされた子要素をクリックして、親要素らのイベントまで順に実行される
+                    </li>
+                    <li>
+                        event.target　：　イベントが開始されたターゲット（バブリング過程で変化しない）
+                    </li>
+                    <li>
+                        this(event.currentTarget)　：　現在実行中のハンドラ
+                    </li>
+                    <li>
+                        capture phase : target phase(イベント開始要素まで辿って下るフェーズ)
+                    </li>
+                    <li>
+                        bubbling phase : 上のバブリングのように現在ハンドラまで辿って上がるフェーズ）
+                    </li>
+                    <li>
+                        target phase : event.target に到達した（個別では処理されないcapture, bubbling phaseが必要）
+                    </li>
+                    <li>
+                        addeventListener("click", () => {alert("something")}, {capture: true || default=false});
+                    </li>
+                </ul>
+                <form>
+                    form
+                    <div>
+                        div
+                        <p>
+                            p
+                        </p>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </main>
+    <script>
+
+        const form3 = document.querySelector("#bubble3 form");
+        for(let elem of document.querySelectorAll("*")){
+            elem.addEventListener("click", () => { alert(`event.target : ${event.target.tagName} / capture phase : ${elem.tagName}`) }, { capture: true});
+            elem.addEventListener("click", () => { alert(`event.target : ${event.target.tagName} / bubbling phase : ${elem.tagName}`) }, { capture: false});
+        };
+    </script>
+</body>
+
+</html>
