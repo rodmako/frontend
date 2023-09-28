@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>removeEventListener</title>
+</head>
+
+<body>
+    <header>
+        <h1>removeEventListener</h1>
+    </header>
+    <main>
+        <article>
+            <section id="rel">
+                <ul>
+                    <li>
+                        alert ボタンに　clickとmouseout2つのイベントがある
+                    </li>
+                    <li>
+                        event removeボタン押したら　alertボタンのclick時のイベントを削除する
+                    </li>
+                    <li>
+                        alertボタンの　mouseoutイベントは生きている
+                    </li>
+                </ul>
+                <button id="btn_alert">alert</button>
+                <button id="btn_event_remove">event remove</button>
+            </section>
+        </article>
+    </main>
+    <script>
+        function jack() {
+            alert("jack");
+        }
+
+        function tom() {
+            alert("tom");
+        }
+
+        const btn_alert = document.querySelector("#btn_alert");
+        const btn_event_remove = document.querySelector("#btn_event_remove");
+
+        btn_alert.addEventListener("click", jack);
+        btn_alert.addEventListener("mouseenter", tom);
+        btn_alert.addEventListener("mouseout", jack);
+
+        btn_event_remove.addEventListener("click", () => {
+            btn_alert.removeEventListener("mouseenter", tom);
+            btn_alert.removeEventListener("mouseout", jack);
+        });
+    </script>
+</body>
+
+</html>
