@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDN Object Homework 2</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            MDN Object Homework 2
+        </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+                <script>
+                    const cat = {
+                        name: 'Bertie',
+                        breed: 'Cymric',
+                        color: 'white',
+                        greeting: function () {
+                            console.log(`Hello, said ${this.name} the ${this.breed}`);
+                        }
+                    }
+                    
+                    const cat2 = {
+                        name: 'K',
+                        breed: 'Jr.K',
+                        color: 'red',
+                        greeting: function () {
+                            console.log(`Hello, said ${this.name} the ${this.breed}`);
+                        }
+                    }
+                    cat.greeting();
+                    cat2.greeting();
+                </script>
+
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
