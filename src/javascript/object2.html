@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDN Object Homework 2</title>
+    <style>
+        data {
+            background: lightgray;
+            padding: 5px;
+            line-height: 2;
+            border-radius: 3px;
+            margin: 0 2px;
+        }
+
+        #result {
+            flex: 1;
+            padding: 15px;
+        }
+
+        #result {
+            background-color: rgb(180, 180, 221);
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            MDN Object Homework 2
+        </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+                <a
+                    href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Test_your_skills:_Object_basics#object_basics_2">MDN課題</a>
+                <ul>
+                    <li>
+                        <data>name</data>: バンドの名
+                    </li>
+                    <li>
+                        <data>nationality</data>: バンドの出身国籍
+                    </li>
+                    <li>
+                        <data>genre</data>: バンドのジャンル
+                    </li>
+                    <li>
+                        <data>members</data>: バンドのメンバー数
+                    </li>
+                    <li>
+                        <data>formed</data>: バンド結成時期
+                    </li>
+                    <li>
+                        <data>split</data>: バンド解除年度、falseは活動中
+                    </li>
+                    <li>
+                        <data>albums</data>: バンドが発売したアルバム、次のnameとreleasedの情報を含むオブジェクト
+                    </li>
+                    <li>
+                        <data>name</data>: アルバム名
+                    </li>
+                    <li>
+                        <data>released</data>: アルバム発売日
+                    </li>
+                    <li>
+                        ※<data>albums</data>には2つ以上のアルバムを含んでほしい
+                    </li>
+                    <li>
+                        作業完了後<data>bandInfo이</data>変数に文字列保存・表示してほしい。文字列には名前、国籍、活動期間、ジャンル、初発売アルバムの名前と発売日を詳しく説明する文章欲しい
+                    </li>
+                    <li>
+                        dev toolで オブジェクト<data>info</data>確認
+                    </li>
+                </ul>
+                <section id="result">
+
+                </section>
+            </section>
+            <section>
+                <script>
+                    function bandSplit(splitDate) {
+                        return splitDate === false ? "" : splitDate;
+                    }
+
+                    function dateFormatForRead(date) {
+                        let result;
+                        const cloned_date = new Date(date);
+                        result = `${cloned_date.getFullYear()}年${cloned_date.getMonth() + 1}月`;
+
+                        return result;
+                    }
+
+                    function dateFormatFix(date) {
+                        let result;
+                        date = date.replaceAll(" ", "T");
+                        date = date.replaceAll("/", "-");
+                        result = date;
+                        return result;
+                    }
+
+                    function oldestReleased(object) {
+                        let result;
+                        for (let i = 0; i < object.albums.length - 1; i++) {
+                            const presentAlbumDate = dateFormatFix(object.albums[i].released);
+                            const presentAlbumDateFixed = new Date(presentAlbumDate);
+                            const nextAlbumDate = dateFormatFix(object.albums[i + 1].released);
+                            const nextAlbumDateFixed = new Date(nextAlbumDate);
+                            presentAlbumDateFixed > nextAlbumDateFixed ? result = object.albums[i + 1] : result = object.albums[i];
+                        }
+                        return result;
+                    }
+
+                    function latestReleased(object) {
+                        let result;
+
+                        return result;
+                    }
+
+                    function oldestBand(object) {
+                        let result;
+                        for (let i = 0; i < object.length - 1; i++) {
+                            let presentBandFormedFix = dateFormatFix(object[i].formed);
+                            let presentBandFormedDate = new Date(presentBandFormedFix);
+                            let nextBandFormedFix = dateFormatFix(object[i + 1].formed);
+                            let nextBandFormedDate = new Date(nextBandFormedFix);
+                            presentBandFormedDate > nextBandFormedDate ? result = object[i + 1] : result = object[i];
+                        }
+                        return result;
+                    }
+
+                    function latestBand(object) {
+                        let result;
+
+                        return result;
+                    }
+
+                    let bandInfo;
+
+                    // Put your code here
+                    let info = [
+                        {
+                            name: "ABC",
+                            nationality: "us",
+                            genre: "Rock",
+                            members: 4,
+                            formed: "2023-01/02 12:00:00",
+                            split: "2023/01-01 00:00:00",
+                            albums: [
+                                {
+                                    name: "Don't touch my butt",
+                                    released: "2020/12/25T09:00:00",
+                                },
+                                {
+                                    name: "Don't touch my tail",
+                                    released: "2022/10/18 09:00:00",
+                                },
+                            ],
+                        },
+                        {
+                            name: "Duck",
+                            nationality: "ja",
+                            genre: "R&B",
+                            members: 2,
+                            formed: "1998-04-01 12:00:00",
+                            split: "2025-01-01 00:00:00",
+                            albums: [
+                                {
+                                    name: "love and soul",
+                                    released: "2001/01-04T23:30:00",
+                                },
+                                {
+                                    name: "Table of chicken dinner with sadness",
+                                    released: "1999-03-22T13:04:00",
+                                },
+                            ],
+                        },
+                    ];
+
+                    const oldestBands = oldestBand(info);
+                    const oldestAlbum = oldestReleased(oldestBands);
+                    console.log(oldestAlbum);
+                    bandInfo = `デビューが一番早いバンドは「${oldestBands.name}」です。活動期間は${dateFormatForRead(dateFormatFix(oldestBands.formed))} ~ ${dateFormatForRead(dateFormatFix(oldestBands.split))}です。デビューアルバムは${dateFormatForRead(dateFormatFix(oldestAlbum.released))}発売の${oldestAlbum.name}です。`;
+
+                    // Don't edit the code below here
+                    const section_result = document.querySelector("#result");
+                    section_result.textContent = bandInfo;
+                </script>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
