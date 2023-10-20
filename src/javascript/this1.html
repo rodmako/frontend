@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this 1</title>
+    <style>
+        table {
+            border: 3px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            background-color: aliceblue;
+        }
+
+        th,
+        td {
+            border: 1px solid gray;
+            padding: 15px 30px;
+        }
+
+        thead tr th:not(:nth-of-type(1)) {
+            background-color: rgb(214, 214, 214);
+        }
+
+        tbody th {
+            background-color: rgb(214, 214, 214);
+        }
+
+        #varletconst {
+            display: flex;
+            gap: 50px;
+            padding: 15px;
+            flex-direction: row;
+        }
+
+        #varletconst table,
+        #varletconst section{
+            flex: 1;
+        }
+        
+        #varletconst section li {
+            border-bottom: 1px solid gray;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            this 1
+        </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+                <script>
+                    "use strict"
+
+                    console.log(`this === window : ${this === window}`);
+
+                    var a = 10;
+
+                    console.log(`window.a:${window.a}, this.a:${this.a}`);
+
+                    (function () {
+                        var a = 111;
+                        console.log(`reset var a = 111;\nand console.log in function \nwindow.a:${window.a}, (just) a:${a}, this.a:error with use strict(sloppy: this.a: 10)`);
+                    })();
+                    console.log(a);
+
+                    (function () {
+                        console.log(`${one}`);
+                        var one = 1;
+                        //let two = 2;
+                        //const three = 3;
+                    })();
+
+                    {
+                        var abc = "abc";
+                        console.log(window.abc);
+                    }
+
+                    var a = 50;
+                    console.log(a);
+
+                    let ojisann = "tonton";
+                    console.log(window.ojisann);
+                    window.dd = ojisann;
+                    console.log(window.dd);
+                </script>
+                <section>
+                    <h2>
+                        スコープ
+                    </h2>
+                    <pre>
+                        1.グローバルスコープ
+                        2.ローカルスコープ
+                        　　2-1関数スコープ
+                        　　2-2ブロックスコープ
+                    </pre>
+                    <ul>
+                        <li>
+                            グローバルスコープ：script直下（window, this）
+                        </li>
+                        <li>
+                            関数スコープ：function(){}の中
+                        </li>
+                        <li>
+                            ブロックスコープ：if, else, while, forなど（{ }これだけでも）の中
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>
+                        var, let, const
+                    </h2>
+                    <section id="varletconst">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>const</th>
+                                    <th>let</th>
+                                    <th>var</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>再宣言</th>
+                                    <td>×</td>
+                                    <td>×</td>
+                                    <td>○</td>
+                                </tr>
+                                <tr>
+                                    <th>再代入</th>
+                                    <td>×</td>
+                                    <td>○</td>
+                                    <td>○</td>
+                                </tr>
+                                <tr>
+                                    <th>スコープ</th>
+                                    <td>ブロック</td>
+                                    <td>ブロック</td>
+                                    <td>関数</td>
+                                </tr>
+                                <tr>
+                                    <th>ホイスティング</th>
+                                    <td>エラー</td>
+                                    <td>エラー</td>
+                                    <td>undefined</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <section>
+                            <h3>var</h3>
+                            <ul>
+                                <li>
+                                    グローバルでvar宣言（sloppyの時はvarなしでも動く）した変数は自動にwindow.aに入る(グローバルでのthis.aはwindow.aと同じ)
+                                </li>
+                                <li>
+                                    グローバルでvar宣言var a = 10; したものをまた　グローバルでvar a = 50;で再宣言可能（代入と違うlet a = 10, let a = 20はできない、let a = 10, a = 20これは　宣言文がないので宣言ではなく代入）
+                                </li>
+                                <li>
+                                    letは代入ならできる, constはどちらもできない
+                                </li>
+                                <li>
+                                    グローバルでvar宣言したら自動的にwindowのプロパティにはいる、letとconstはscriptの直下で宣言してもwindowのプロパティに自動には入らない
+                                </li>
+                                <li>
+                                    varは関数スコープを生成するのでグローバルでvar a = 10;宣言した前提で、functionの中でvar a =
+                                    50;を宣言したらその関数の中でだけ有効（グローバルのaとは別物）let、const同様
+                                </li>
+                                <li>
+                                    varはブロックスコープは生成しないので{ }の中でvar宣言してもグローバルとして再宣言される
+                                </li>
+                                <li>
+                                    宣言文(var, let, const)　をつけないとどのスコープでもグローバル変数として宣言される(多分varとして翻訳される)
+                                    (sloppyの時だけ、strictだったらエラー出ますvarをつけるかで治る)
+                                </li>
+                                <li>
+                                    巻き上げ(ホイスティング):関数内で変数の宣言を行うと関数の先頭に引き上げられる
+                                    <p>
+                                        varのみでlet,constは普通にエラー出る（引き上げられるが、temporal dead zone）
+                                    </p>
+                                    <p>
+                                        ある関数の中で　<data>console.log(one); var one = 1;</data>この順に書くとエラーではなくundefinedが出る
+                                    </p>
+                                    <p>
+                                        先頭に引き上げられて実際のコードの動きは<data>var one; console.log(one); one = 1;</data>のように解釈されている
+                                    </p>
+                                </li>
+                            </ul>
+                        </section>
+                    </section>
+                </section>
+                <section>
+                    <h2>
+                        strict/sloppy
+                    </h2>
+                </section>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
