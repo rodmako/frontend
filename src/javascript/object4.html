@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDN Object Homework 4</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            MDN Object Homework 4
+        </h1>
+    </header>
+    <main>
+        <article>
+            <section>
+                <p>
+                    dev toolで Catクラス確認
+                    cat, cat2オブジェクト確認
+                </p>
+                <script>
+                    class Cat {
+                        constructor(object){
+                            this.name = object.name;
+                            this.bread = object.breed;
+                            this.color = object.color;
+                        }
+                        meow(){
+                            return console.log(`Hello, said ${this.name} the ${this.breed}.`);
+                        }
+                    }
+
+                    const cat = {
+                        name: 'Bertie',
+                        breed: 'Cymric',
+                        color: 'white',
+                        greeting: new Cat(this).meow,
+                    }
+
+                    const cat2 = {
+                        name: 'Elfie',
+                        breed: 'Aphrodite Giant',
+                        color: 'ginger',
+                        greeting: new Cat(this).meow,
+                    }
+
+                    cat.greeting();
+                    cat2.greeting();
+
+                </script>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>
